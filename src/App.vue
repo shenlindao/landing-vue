@@ -1,18 +1,20 @@
 <template>
   <div id="app">
+    <lay-out>
     <div class="items">
       <ItemCard
         v-for="item in items"
-        :itemName="item.name"
-        :itemColors="item.colors"
+        :item="item"
         :key="item.id"
       />
     </div>
+    </lay-out>
   </div>
 </template>
 
 <script>
 import ItemCard from './components/items/ItemCard.vue';
+import LayOut from './components/layout/Layout.vue';
 
 const ITEM_COLORS = [
   { name: 'Красный', color: 'red' },
@@ -31,6 +33,7 @@ export default {
   name: 'App',
   components: {
     ItemCard,
+    LayOut,
   },
   data() {
     return {

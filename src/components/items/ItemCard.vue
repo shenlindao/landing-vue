@@ -1,9 +1,9 @@
 <template>
   <div class="item_card">
-    <h3 :style="{color: headerColor}">{{itemName}}</h3>
+    <h3 :style="{color: headerColor}">{{item.name}}</h3>
     <action-button v-on:buttonClick="order" buttonText="Купить"/>
     <action-button v-on:buttonClick="alertHello" buttonText="Привет"/>
-    <color-picker :colors=itemColors v-on:clickColor="changeColor($event)"/>
+    <color-picker :colors=item.colors v-on:clickColor="changeColor($event)"/>
   </div>
 </template>
 
@@ -18,8 +18,7 @@ export default {
     ColorPicker,
   },
   props: {
-    itemName: String,
-    itemColors: Array,
+    item: Object,
   },
   data() {
     return {
