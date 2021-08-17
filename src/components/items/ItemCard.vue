@@ -1,5 +1,5 @@
 <template>
-  <div class="item_card" :style="{backgroundImage: bgimg}">
+  <div class="item_card" :style="{backgroundImage: 'url(' + bgimg + ')'}">
     <h3 :style="{color: headerColor}">{{item.name}}</h3>
     <action-button v-on:buttonClick="order" buttonText="Купить"/>
     <color-picker :colors=item.colors v-on:clickColor="changeColor($event)"/>
@@ -9,6 +9,7 @@
 <script>
 import ActionButton from '../ActionButton.vue';
 import ColorPicker from './ColorPicker.vue';
+import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
 
 export default {
   name: 'ItemCard',
@@ -22,7 +23,7 @@ export default {
   data() {
     return {
       headerColor: 'red',
-      bgimg: 'require(`@/assets/pics/fujimo_oki-bg_1.jpg`)',
+      bgimg: BackgroundImg,
     };
   },
   methods: {
@@ -42,5 +43,6 @@ export default {
 .item_card {
   width: 100%;
   height: 600px;
+  background-size: cover;
 }
 </style>

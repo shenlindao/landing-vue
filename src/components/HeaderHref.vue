@@ -4,12 +4,16 @@
       <li
         class="header_hrefs"
         v-for="headhref in headhrefs"
-        :item="headhref"
         :key= headhref.id
       >
         {{headhref.title}}
       </li>
+      <!-- <li>Доставка</li>
+      <li>Оплата</li>
+      <li>О компании</li>
+      <li>Контакты</li> -->
     </ul>
+    <div class="tel">8 (800) 888-88-88</div>
   </div>
 </template>
 
@@ -25,7 +29,7 @@ export default {
   name: 'HeadHref',
   data() {
     return {
-      items: HEADHREFS,
+      headhrefs: HEADHREFS,
     };
   },
 };
@@ -33,14 +37,33 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+  ul {
+    width: 45%;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    position: absolute;
+    top: 4px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
   .header_hrefs {
     width: 150px;
-    height: 50px;
     background-color: transparent;
-    color: rgb(39, 39, 39);
+    color: #272727;
+    list-style-type: none;
+    margin-left: 0;
     &:hover {
       cursor: pointer;
-      color: rgb(66, 0, 0);
+      color: #ef1f1d;
     }
+  }
+  .tel {
+    width: 150px;
+    position: absolute;
+    right: 10%;
+    top: 18px;
+    font-size: 14px;
   }
 </style>

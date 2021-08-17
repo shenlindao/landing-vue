@@ -25,8 +25,6 @@ const ITEM_COLORS = [
 const ITEMS = [
   { id: 1, name: 'Desctop 1', colors: ITEM_COLORS },
   { id: 2, name: 'Desctop 2', colors: ITEM_COLORS },
-  { id: 3, name: 'Desctop 3', colors: ITEM_COLORS },
-  { id: 4, name: 'Desctop 4', colors: ITEM_COLORS },
 ];
 
 export default {
