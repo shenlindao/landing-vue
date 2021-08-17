@@ -1,6 +1,6 @@
 <template>
   <div v-on:click="$emit('buttonClick')" class="button">
-    {{buttonText}}
+    <img :src="require(`@/assets/pics/${fileName}`)" :alt="imgDesc">
   </div>
 </template>
 
@@ -9,6 +9,8 @@ export default {
   name: 'ItemCard',
   props: {
     buttonText: String,
+    fileName: String,
+    imgDesc: String,
   },
 };
 </script>

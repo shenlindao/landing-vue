@@ -1,8 +1,7 @@
 <template>
-  <div class="item_card">
+  <div class="item_card" :style="{backgroundImage: bgimg}">
     <h3 :style="{color: headerColor}">{{item.name}}</h3>
     <action-button v-on:buttonClick="order" buttonText="Купить"/>
-    <action-button v-on:buttonClick="alertHello" buttonText="Привет"/>
     <color-picker :colors=item.colors v-on:clickColor="changeColor($event)"/>
   </div>
 </template>
@@ -23,14 +22,12 @@ export default {
   data() {
     return {
       headerColor: 'red',
+      bgimg: 'require(`@/assets/pics/fujimo_oki-bg_1.jpg`)',
     };
   },
   methods: {
     order() {
       console.log('Привет!');
-    },
-    alertHello() {
-      alert(this.itemName);
     },
     changeColor(color) {
       console.log(color);
@@ -43,8 +40,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .item_card {
-  width: 400px;
-  height: 300px;
-  background-color: gray;
+  width: 100%;
+  height: 600px;
 }
 </style>

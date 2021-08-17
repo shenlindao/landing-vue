@@ -1,24 +1,26 @@
 <template>
   <div>
-    <img :src="require(`@/assets/pics/${fileName}`)" :alt="imgDesc">
-    <p>{{companyName}}</p>
+    <div class="header_container">
+      <img :src="require(`@/assets/pics/FUJIMO_LOGO_R.svg`)" :alt="imgDesc">
+      <p>{{companyName}}</p>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Logo',
-  props: {
-    fileName: String,
-    companyName: String,
-    imgDesc: String,
-  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 img {
-  width: 200px;
+  position: absolute;
+  height: 20px;
+  width: 90px;
+  left: 199px;
+  top: 17px;
+  border-radius: 0px;
 }
 </style>
