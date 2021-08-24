@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import ItemCard from './components/items/ItemCard.vue';
+import ItemCard from './components/ItemCard.vue';
 import LayOut from './components/layout/Layout.vue';
 
 const ITEM_COLORS = [
@@ -24,7 +24,6 @@ const ITEM_COLORS = [
 ];
 const ITEMS = [
   { id: 1, name: 'Desctop 1', colors: ITEM_COLORS },
-  { id: 2, name: 'Desctop 2', colors: ITEM_COLORS },
 ];
 
 export default {
@@ -42,12 +41,15 @@ export default {
 </script>
 
 <style lang="scss">
+body{
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>

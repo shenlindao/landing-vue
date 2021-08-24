@@ -11,7 +11,7 @@
 export default {
   name: 'Logo',
   props: {
-    companyName: String, // Используешь проперти, а добавить его в список пропертей забыл
+    companyName: String,
   },
 };
 </script>

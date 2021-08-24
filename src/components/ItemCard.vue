@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import ColorPicker from './ColorPicker.vue';
-import BuyBlock from '../BuyBlock.vue';
+import ColorPicker from './items/ColorPicker.vue';
+import BuyBlock from './items/BuyBlock.vue';
 import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
 
 export default {
@@ -43,5 +43,6 @@ export default {
   height: 750px;
   top: 0;
   background-size: cover;
+  position: relative;
 }
 </style>

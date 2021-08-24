@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import HeaderHref from '../HeaderHref.vue';
-import Logo from '../Logo.vue';
+import HeaderHref from '../items/HeaderHref.vue';
+import Logo from '../items/Logo.vue';
 
 export default {
   name: 'Header',
@@ -29,5 +29,6 @@ export default {
   position: fixed;
   background-color: #fff;
   box-shadow: 0px 0px 7px rgb(0 0 0 / 30%);
+  z-index: 100;
 }
 </style>
