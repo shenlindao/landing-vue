@@ -1,28 +1,59 @@
 <template>
+  <div>Выберите цвет:
   <ul>
     <li
       v-for="color in colors"
-      :key="color.name"
-      :style="{color: color.color}"
-      @click="$emit('clickColor', color)"
+      :key="color.id"
+      :style="{ backgroundColor: color.hex }"
     >
-      {{color.name}}
     </li>
   </ul>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'ColorPicker',
   props: {
-    colors: Array,
+  },
+  data() {
+    return {
+      colors: [
+        { id: 0, name: 'Коричневый', hex: '#7d361e' },
+        { id: 1, name: 'Бежевый', hex: '#fcefba' },
+        { id: 2, name: 'Черный', hex: '#000000' },
+        { id: 3, name: 'Бронзовый', hex: '#ff7b13' },
+      ],
+    };
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+div {
+  position: absolute;
+  bottom: 23%;
+  left: 10%;
+  text-align: left;
+  font-size: 12px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
 li {
   list-style-type: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  margin-top: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid #6db6ffa6;
+  }
 }
 </style>

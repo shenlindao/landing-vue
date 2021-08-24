@@ -24,4 +24,11 @@ export default {
       box-shadow: 0px 2px 2px rgb(0 0 0 / 25%);
     }
   }
+  .button img {
+    position: absolute;
+    width: 60px;
+    height: auto;
+    left: 10%;
+    bottom: 5%;
+  }
 </style>

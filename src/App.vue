@@ -16,14 +16,8 @@
 import ItemCard from './components/ItemCard.vue';
 import LayOut from './components/layout/Layout.vue';
 
-const ITEM_COLORS = [
-  { name: 'Красный', color: 'red' },
-  { name: 'Зеленый', color: 'green' },
-  { name: 'Голубой', color: 'blue' },
-  { name: 'Черный', color: 'black' },
-];
 const ITEMS = [
-  { id: 1, name: 'Desctop 1', colors: ITEM_COLORS },
+  { id: 1, name: 'Desctop 1' },
 ];
 
 export default {

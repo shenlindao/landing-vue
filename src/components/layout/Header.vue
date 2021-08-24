@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <logo/>
+    <logo class="headerlogo"/>
     <header-href/>
   </div>
 </template>
@@ -30,5 +30,13 @@ export default {
   background-color: #fff;
   box-shadow: 0px 0px 7px rgb(0 0 0 / 30%);
   z-index: 100;
+}
+.headerlogo {
+  position: absolute;
+  height: 20px;
+  width: 90px;
+  left: 6%;
+  top: 17px;
+  border-radius: 0px;
 }
 </style>
