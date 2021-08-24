@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="header_container">
-      <img :src="require(`@/assets/pics/FUJIMO_LOGO_R.svg`)" :alt="imgDesc">
-      <p>{{companyName}}</p>
+      <img :src="require(`@/assets/pics/FUJIMO_LOGO_R.svg`)">
+      <p>{{companyName}}</p> 
     </div>
   </div>
 </template>
@@ -10,6 +10,9 @@
 <script>
 export default {
   name: 'Logo',
+  props: {
+    companyName: String, // Используешь проперти, а добавить его в список пропертей забыл
+  },
 };
 </script>
 
