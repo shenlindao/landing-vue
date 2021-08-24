@@ -1,6 +1,6 @@
 <template>
   <div class="buyblock">
-    <app-button v-on:buttonClick="order" :buttonText="Купить"/>
+    <app-button v-on:buttonClick="order" buttonText="Купить"/>
   </div>
 </template>
 
@@ -23,7 +23,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .buyblock {
-    position: absolute;
+    // position: absolute;  // Из за того что ты зафигачил абсолютное
+    // позиционирование кнопка улетает хз куда
+    // вообще с этой шнягой надо аккуратнее
     width: 345px;
     height: 425px;
     left: 889px;
