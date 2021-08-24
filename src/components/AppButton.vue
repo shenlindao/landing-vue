@@ -1,6 +1,8 @@
 <template>
-  <div v-on:click="$emit('buttonClick')" class="button">
-    <img :src="require(`@/assets/pics/${fileName}`)" :alt="imgDesc">
+  <div  v-on:click="$emit('buttonClick')" class="button">
+    <!-- <img :src="require(`@/assets/pics/${fileName}`)" alt="imgDesc">
+    Вот тут он пытается импортировать то чего не существует и вопит-->
+    {{buttonText}}
   </div>
 </template>
 
