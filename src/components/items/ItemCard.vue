@@ -26,9 +26,12 @@ export default {
       bgimg: BackgroundImg,
     };
   },
-  changeColor(color) {
-    console.log(color);
-    this.headerColor = color.color;
+  methods: {
+    // Зачем метод из списка методов вытащил?
+    changeColor(color) {
+      console.log(color);
+      this.headerColor = color.color;
+    },
   },
 };
 </script>
