@@ -2,7 +2,7 @@
   <div>
     <div class="header_container">
       <img :src="require(`@/assets/pics/FUJIMO_LOGO_R.svg`)">
-      <p>{{companyName}}</p> 
+      <p>{{companyName}}</p>
     </div>
   </div>
 </template>
