@@ -2,7 +2,7 @@
   <ul>
     <li
       v-for="color in colors"
-      :key="color"
+      :key="color.name"
       :style="{color: color.color}"
       @click="$emit('clickColor', color)"
     >
