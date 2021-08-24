@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'ItemCard',
+  name: 'AppButton',
   props: {
     buttonText: String,
     fileName: String,

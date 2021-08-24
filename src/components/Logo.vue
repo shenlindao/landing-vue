@@ -19,7 +19,7 @@ img {
   position: absolute;
   height: 20px;
   width: 90px;
-  left: 199px;
+  left: 6%;
   top: 17px;
   border-radius: 0px;
 }

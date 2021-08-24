@@ -1,20 +1,20 @@
 <template>
   <div class="item_card" :style="{backgroundImage: 'url(' + bgimg + ')'}">
     <h3 :style="{color: headerColor}">{{item.name}}</h3>
-    <action-button v-on:buttonClick="order" buttonText="Купить"/>
     <color-picker :colors=item.colors v-on:clickColor="changeColor($event)"/>
+    <buy-block/>
   </div>
 </template>
 
 <script>
-import ActionButton from '../ActionButton.vue';
 import ColorPicker from './ColorPicker.vue';
+import BuyBlock from '../BuyBlock.vue';
 import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
 
 export default {
   name: 'ItemCard',
   components: {
-    ActionButton,
+    BuyBlock,
     ColorPicker,
   },
   props: {
@@ -26,14 +26,9 @@ export default {
       bgimg: BackgroundImg,
     };
   },
-  methods: {
-    order() {
-      console.log('Привет!');
-    },
-    changeColor(color) {
-      console.log(color);
-      this.headerColor = color.color;
-    },
+  changeColor(color) {
+    console.log(color);
+    this.headerColor = color.color;
   },
 };
 </script>
@@ -42,7 +37,8 @@ export default {
 <style scoped lang="scss">
 .item_card {
   width: 100%;
-  height: 600px;
+  height: 750px;
+  top: 0;
   background-size: cover;
 }
 </style>

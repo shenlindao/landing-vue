@@ -8,10 +8,6 @@
       >
         {{headhref.title}}
       </li>
-      <!-- <li>Доставка</li>
-      <li>Оплата</li>
-      <li>О компании</li>
-      <li>Контакты</li> -->
     </ul>
     <div class="tel">8 (800) 888-88-88</div>
   </div>
@@ -56,13 +52,14 @@ export default {
     margin-left: 0;
     &:hover {
       cursor: pointer;
-      color: #ef1f1d;
+      color: #7A7A7A
+;
     }
   }
   .tel {
     width: 150px;
     position: absolute;
-    right: 10%;
+    right: 3%;
     top: 18px;
     font-size: 14px;
   }
