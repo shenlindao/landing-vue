@@ -1,5 +1,5 @@
 <template>
-  <div>Выберите цвет:
+  <div>{{colorPickerLine}}
   <ul>
     <li
       v-for="color in colors"
@@ -12,18 +12,18 @@
 </template>
 
 <script>
+const COLORPICKER = [
+  { id: 0, name: 'Коричневый', hex: '#7d361e' },
+  { id: 1, name: 'Бежевый', hex: '#fcefba' },
+  { id: 2, name: 'Черный', hex: '#000000' },
+  { id: 3, name: 'Бронзовый', hex: '#ff7b13' },
+];
 export default {
   name: 'ColorPicker',
-  props: {
-  },
   data() {
     return {
-      colors: [
-        { id: 0, name: 'Коричневый', hex: '#7d361e' },
-        { id: 1, name: 'Бежевый', hex: '#fcefba' },
-        { id: 2, name: 'Черный', hex: '#000000' },
-        { id: 3, name: 'Бронзовый', hex: '#ff7b13' },
-      ],
+      colorPickerLine: 'Выберите цвет:',
+      colors: COLORPICKER,
     };
   },
 };

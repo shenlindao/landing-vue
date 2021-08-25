@@ -1,16 +1,17 @@
 <template>
-  <div>
     <div class="priceblock">
-      <p>₽</p>
+      {{price}}
+      <slot/>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
   name: 'PriceBlock',
-  props: {
-    companyName: String,
+  data() {
+    return {
+      price: '219 000',
+    };
   },
 };
 </script>
@@ -26,5 +27,12 @@ export default {
     margin: 0;
     width: 100%;
     max-width: 275px;
+
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 53px;
+    letter-spacing: 0em;
+    text-align: left;
   }
 </style>

@@ -2,16 +2,24 @@
   <div class="item_card" :style="{backgroundImage: 'url(' + bgimg + ')'}">
     <!-- <h3 :style="{color: headerColor}">{{item.name}}</h3> -->
     <buy-block/>
+    <product-pic/>
+    <label-product>
+      <img :src="require(`@/assets/pics/label.svg`)">
+    </label-product>
   </div>
 </template>
 
 <script>
+import ProductPic from './items/ProductPic.vue';
+import LabelProduct from './items/LabelProduct.vue';
 import BuyBlock from './items/BuyBlock.vue';
 import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
 
 export default {
   name: 'ItemCard',
   components: {
+    LabelProduct,
+    ProductPic,
     BuyBlock,
   },
   data() {
@@ -20,13 +28,11 @@ export default {
       bgimg: BackgroundImg,
     };
   },
-  methods: {
-    // Зачем метод из списка методов вытащил?
-    changeColor(color) {
-      console.log(color);
-      this.headerColor = color.color;
-    },
-  },
+  // methods: {
+  //   changeColor(color) {
+  //     this.headerColor = color.color;
+  //   },
+  // },
 };
 </script>
 

@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="header_container">
-      <img :src="require(`@/assets/pics/FUJIMO_LOGO_R.svg`)">
-      <p>{{companyName}}</p>
+      <img :src="require(`@/assets/pics/fujimo_logo.svg`)">
     </div>
   </div>
 </template>
@@ -10,9 +9,6 @@
 <script>
 export default {
   name: 'Logo',
-  props: {
-    companyName: String,
-  },
 };
 </script>
 

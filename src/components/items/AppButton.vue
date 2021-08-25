@@ -1,5 +1,6 @@
 <template>
-  <div  v-on:click="$emit('buttonClick')" class="button">
+  <div  v-on:click="$emit('buttonClick')" class="appbutton">
+    <slot/>
   </div>
 </template>
 
@@ -11,7 +12,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  .button {
+  .appbutton {
     height: 55px;
     width: 220px;
     border-radius: 3px;
@@ -23,12 +24,5 @@ export default {
       cursor: pointer;
       box-shadow: 0px 2px 2px rgb(0 0 0 / 25%);
     }
-  }
-  .button img {
-    position: absolute;
-    width: 60px;
-    height: auto;
-    left: 10%;
-    bottom: 5%;
   }
 </style>

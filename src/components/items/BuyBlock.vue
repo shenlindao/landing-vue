@@ -2,10 +2,12 @@
   <div class="buyblock">
     <logo class="buyblocklogo"/>
     <div class="buyblocktext">
-    <h2>Интеллектуальный помощник</h2>
-    <p>Массажный механизм с точностью иммитирует человеческие руки</p>
+    <h2>{{buyBlockH1}}</h2>
+    <p>{{buyBlockP}}</p>
     </div>
-    <price-block/>
+    <price-block>
+      <span>{{priceBlockSpan}}</span>
+    </price-block>
     <color-picker/>
     <app-button v-on:buttonClick="order">
       <img :src="require(`@/assets/pics/for_buy_button.svg`)">
@@ -19,6 +21,13 @@ import PriceBlock from './PriceBlock.vue';
 import AppButton from './AppButton.vue';
 import ColorPicker from './ColorPicker.vue';
 
+// const PRICE = [
+//   { id: 0, count: '219 000' },
+//   { id: 1, count: '230 000' },
+//   { id: 2, count: '240 000' },
+//   { id: 3, count: '250 000' },
+// ];
+
 export default {
   name: 'BuyBlock',
   components: {
@@ -31,6 +40,16 @@ export default {
     order() {
       console.log('Привет!');
     },
+    changePrice(priceChanging) {
+      this.price = priceChanging;
+    },
+  },
+  data() {
+    return {
+      buyBlockH1: 'Интеллектуальный помощник',
+      buyBlockP: 'Массажный механизм с точностью иммитирует человеческие руки',
+      priceBlockSpan: '₽',
+    };
   },
 };
 </script>
@@ -77,5 +96,16 @@ export default {
   }
   p {
     font-size: 15px;
+  }
+  .appbutton img {
+    margin-top: 15px;
+  }
+  .priceblock span {
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 29px;
+    letter-spacing: 0em;
+    text-align: left;
   }
 </style>
