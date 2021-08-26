@@ -1,6 +1,5 @@
 <template>
     <div class="priceblock">
-      {{price}}
       <slot/>
     </div>
 </template>

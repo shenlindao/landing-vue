@@ -1,5 +1,5 @@
 <template>
-  <div  v-on:click="$emit('buttonClick')" class="appbutton">
+  <div v-on:click="$emit('buttonClick')" class="appbutton">
     <slot/>
   </div>
 </template>

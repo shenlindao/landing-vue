@@ -6,12 +6,21 @@
     <p>{{buyBlockP}}</p>
     </div>
     <price-block>
+      {{actualPrice}}
       <span>{{priceBlockSpan}}</span>
     </price-block>
-    <color-picker/>
+    <color-picker v-on:clickColor="changeColor($event)"/>
     <app-button v-on:buttonClick="order">
       <img :src="require(`@/assets/pics/for_buy_button.svg`)">
     </app-button>
+    <ul>
+    <li
+      v-for="color in colors"
+      :key="color.id"
+      :style="{ backgroundColor: color.hex }"
+    >
+    </li>
+  </ul>
   </div>
 </template>
 
@@ -21,35 +30,32 @@ import PriceBlock from './PriceBlock.vue';
 import AppButton from './AppButton.vue';
 import ColorPicker from './ColorPicker.vue';
 
-// const PRICE = [
-//   { id: 0, count: '219 000' },
-//   { id: 1, count: '230 000' },
-//   { id: 2, count: '240 000' },
-//   { id: 3, count: '250 000' },
-// ];
-
 export default {
   name: 'BuyBlock',
+  props: {
+    color: Object,
+  },
   components: {
     Logo,
     PriceBlock,
     AppButton,
     ColorPicker,
   },
-  methods: {
-    order() {
-      console.log('Привет!');
-    },
-    changePrice(priceChanging) {
-      this.price = priceChanging;
-    },
-  },
   data() {
     return {
       buyBlockH1: 'Интеллектуальный помощник',
       buyBlockP: 'Массажный механизм с точностью иммитирует человеческие руки',
       priceBlockSpan: '₽',
+      actualPrice: '219000',
     };
+  },
+  methods: {
+    order() {
+      console.log('Привет!');
+    },
+    changeColor(color) {
+      this.actualPrice = color.price;
+    },
   },
 };
 </script>

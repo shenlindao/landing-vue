@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <lay-out>
-    <div class="items">
+    <div>
       <ItemCard
         v-for="item in items"
         :item="item"

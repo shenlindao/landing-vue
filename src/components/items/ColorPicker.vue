@@ -13,10 +13,18 @@
 
 <script>
 const COLORPICKER = [
-  { id: 0, name: 'Коричневый', hex: '#7d361e' },
-  { id: 1, name: 'Бежевый', hex: '#fcefba' },
-  { id: 2, name: 'Черный', hex: '#000000' },
-  { id: 3, name: 'Бронзовый', hex: '#ff7b13' },
+  {
+    id: 0, name: 'Коричневый', hex: '#7d361e', price: 219000,
+  },
+  {
+    id: 1, name: 'Бежевый', hex: '#fcefba', price: 230000,
+  },
+  {
+    id: 2, name: 'Черный', hex: '#000000', price: 240000,
+  },
+  {
+    id: 3, name: 'Бронзовый', hex: '#ff7b13', price: 250000,
+  },
 ];
 export default {
   name: 'ColorPicker',
