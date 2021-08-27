@@ -12,7 +12,7 @@
 import ProductPic from '../items/ProductPic.vue';
 import LabelProduct from '../items/LabelProduct.vue';
 import BuyBlock from '../items/BuyBlock.vue';
-import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
+// import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
 
 export default {
   name: 'Desctop1',
@@ -20,11 +20,11 @@ export default {
     ProductPic,
     LabelProduct,
     BuyBlock,
-    BackgroundImg,
+    // BackgroundImg,
   },
   data() {
     return {
-      bgimg: BackgroundImg,
+      // bgimg: BackgroundImg,
     };
   },
 };

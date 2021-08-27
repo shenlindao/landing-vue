@@ -40,9 +40,9 @@ export default {
     justify-content: space-evenly;
     flex-direction: row;
     position: absolute;
-    top: 4px;
+    top: 45%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -45%);
   }
   .header_hrefs {
     width: 150px;

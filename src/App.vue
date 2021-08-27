@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
+  <div>
+    <v-app>
     <lay-out>
-    <div>
+    <div class="items">
       <ItemCard
         v-for="item in items"
         :item="item"
@@ -9,6 +10,7 @@
       />
     </div>
     </lay-out>
+    </v-app>
   </div>
 </template>
 
@@ -19,7 +21,6 @@ import LayOut from './components/layout/Layout.vue';
 const ITEMS = [
   { id: 1, name: 'Desctop 1' },
 ];
-
 export default {
   name: 'App',
   components: {
@@ -35,15 +36,12 @@ export default {
 </script>
 
 <style lang="scss">
-body{
-  margin: 0;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 0px;
+  margin-top: 60px;
 }
 </style>
