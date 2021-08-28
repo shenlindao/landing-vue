@@ -1,10 +1,12 @@
 <template>
-  <div>{{colorPickerLine}}
+  <div>Выберите цвет:
   <ul>
     <li
-      v-for="color in colors"
-      :key="color.id"
-      :style="{ backgroundColor: color.hex }"
+      v-for="variant in variants"
+      :key="variant.variantId"
+      :style="{ backgroundColor: variant.color.hex }"
+      @click="$emit('clickVariant', variant.variantId)"
+      @mouseenter="$emit('hoverVariant', variant.variantId)"
     >
     </li>
   </ul>
@@ -12,27 +14,10 @@
 </template>
 
 <script>
-const COLORPICKER = [
-  {
-    id: 0, name: 'Коричневый', hex: '#7d361e', price: 219000,
-  },
-  {
-    id: 1, name: 'Бежевый', hex: '#fcefba', price: 230000,
-  },
-  {
-    id: 2, name: 'Черный', hex: '#000000', price: 240000,
-  },
-  {
-    id: 3, name: 'Бронзовый', hex: '#ff7b13', price: 250000,
-  },
-];
 export default {
   name: 'ColorPicker',
-  data() {
-    return {
-      colorPickerLine: 'Выберите цвет:',
-      colors: COLORPICKER,
-    };
+  props: {
+    variants: Array,
   },
 };
 </script>

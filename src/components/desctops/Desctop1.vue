@@ -1,7 +1,11 @@
 <template>
   <div class="desctop1" :style="{backgroundImage: 'url(' + bgimg + ')'}">
-    <buy-block/>
-    <product-pic/>
+    <buy-block
+      v-on:variantCahnged="setVariant($event)"
+      :itemData="itemData"
+      :variant="variant"
+    />
+    <product-pic :imageChair="variant.picture"/>
     <label-product>
       <img :src="require(`@/assets/pics/label.svg`)">
     </label-product>
@@ -12,7 +16,7 @@
 import ProductPic from '../items/ProductPic.vue';
 import LabelProduct from '../items/LabelProduct.vue';
 import BuyBlock from '../items/BuyBlock.vue';
-// import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
+import BackgroundImg from '@/assets/pics/fujimo_oki-bg_1.jpg';
 
 export default {
   name: 'Desctop1',
@@ -20,12 +24,23 @@ export default {
     ProductPic,
     LabelProduct,
     BuyBlock,
-    // BackgroundImg,
+  },
+  props: {
+    itemData: Object,
   },
   data() {
     return {
-      // bgimg: BackgroundImg,
+      bgimg: BackgroundImg,
+      variant: this.itemData.variants[0],
     };
+  },
+  methods: {
+    setVariant(variantId) {
+      // console.log('from Desctop1', variantId);
+      this.variant = this.itemData.variants.find(
+        (variant) => variant.variantId === variantId,
+      );
+    },
   },
 };
 </script>

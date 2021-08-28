@@ -2,19 +2,23 @@
   <div class="buyblock">
     <logo class="buyblocklogo" />
     <div class="buyblocktext">
-      <h2>{{ buyBlockH1 }}</h2>
-      <p>{{ buyBlockP }}</p>
+      <h2>{{ itemData.title }}</h2>
+      <p>{{ itemData.description }}</p>
     </div>
     <price-block>
-      {{ actualPrice }}
-      <span>{{ priceBlockSpan }}</span>
+      {{ variant.price }}
+      <span>Р.</span>
     </price-block>
     <v-main>
       <app-button>
         <img :src="require(`@/assets/pics/for_buy_button.svg`)" />
       </app-button>
     </v-main>
-    <color-picker v-on:clickColor="changeColor($event)" />
+    <variant-picker
+      :variants="itemData.variants"
+      v-on:clickVariant="changeVaiant($event)"
+      v-on:hoverVariant="hoverVaiant($event)"
+    />
   </div>
 </template>
 
@@ -22,33 +26,31 @@
 import Logo from './Logo.vue';
 import PriceBlock from './PriceBlock.vue';
 import AppButton from './AppButton.vue';
-import ColorPicker from './ColorPicker.vue';
+import VariantPicker from './ColorPicker.vue';
 
 export default {
   name: 'BuyBlock',
+  emits: ['variantCahnged'],
   props: {
-    color: Object,
+    itemData: Object,
+    variant: Object,
   },
   components: {
     Logo,
     PriceBlock,
     AppButton,
-    ColorPicker,
-  },
-  data() {
-    return {
-      buyBlockH1: 'Интеллектуальный помощник',
-      buyBlockP: 'Массажный механизм с точностью иммитирует человеческие руки',
-      priceBlockSpan: '₽',
-      actualPrice: '219000',
-    };
+    VariantPicker,
   },
   methods: {
     order() {
       console.log('Привет!');
     },
-    changeColor(color) {
-      this.actualPrice = color.price;
+    changeVaiant(variantId) {
+      console.log('changeVaiant', variantId);
+      this.$emit('variantCahnged', variantId);
+    },
+    hoverVaiant(variantId) {
+      console.log(variantId);
     },
   },
 };

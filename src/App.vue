@@ -3,11 +3,7 @@
     <v-app>
     <lay-out>
     <div class="items">
-      <ItemCard
-        v-for="item in items"
-        :item="item"
-        :key="item.id"
-      />
+      <Desctop1 :itemData="itemData"/>
     </div>
     </lay-out>
     </v-app>
@@ -15,21 +11,19 @@
 </template>
 
 <script>
-import ItemCard from './components/ItemCard.vue';
+import Desctop1 from './components/desctops/Desctop1.vue';
 import LayOut from './components/layout/Layout.vue';
+import itemData from './data/items';
 
-const ITEMS = [
-  { id: 1, name: 'Desctop 1' },
-];
 export default {
   name: 'App',
   components: {
-    ItemCard,
+    Desctop1,
     LayOut,
   },
   data() {
     return {
-      items: ITEMS,
+      itemData,
     };
   },
 };

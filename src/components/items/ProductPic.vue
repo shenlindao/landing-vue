@@ -1,12 +1,16 @@
 <template>
   <div class="product-pic">
-    <img class="product-img" :src="require(`@/assets/pics/fujimo_oki_1.png`)">
+    <img class="product-img" :src="imageChair">
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'ProductPic',
+  props: {
+    imageChair: Object,
+  },
 };
 </script>
 
