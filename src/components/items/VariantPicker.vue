@@ -6,7 +6,6 @@
       :key="variant.variantId"
       :style="{ backgroundColor: variant.color.hex }"
       @click="$emit('clickVariant', variant.variantId)"
-      @mouseenter="$emit('hoverVariant', variant.variantId)"
     >
     </li>
   </ul>
@@ -16,6 +15,7 @@
 <script>
 export default {
   name: 'ColorPicker',
+  emits: ['clickVariant'],
   props: {
     variants: Array,
   },

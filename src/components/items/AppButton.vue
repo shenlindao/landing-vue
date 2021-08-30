@@ -117,4 +117,7 @@ button.v-btn.v-btn--icon.v-btn--round.theme--light.v-size--default {
   position: absolute;
   right: 25px;
 }
+.theme--light.v-btn:focus::before {
+    opacity: 0;
+}
 </style>

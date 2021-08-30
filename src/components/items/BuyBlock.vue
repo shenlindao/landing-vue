@@ -6,8 +6,8 @@
       <p>{{ itemData.description }}</p>
     </div>
     <price-block>
-      {{ variant.price }}
-      <span>Р.</span>
+      {{ variant.price.toLocaleString('ru-RU') }}
+      <span>₽</span>
     </price-block>
     <v-main>
       <app-button>
@@ -17,7 +17,6 @@
     <variant-picker
       :variants="itemData.variants"
       v-on:clickVariant="changeVaiant($event)"
-      v-on:hoverVariant="hoverVaiant($event)"
     />
   </div>
 </template>
@@ -26,7 +25,7 @@
 import Logo from './Logo.vue';
 import PriceBlock from './PriceBlock.vue';
 import AppButton from './AppButton.vue';
-import VariantPicker from './ColorPicker.vue';
+import VariantPicker from './VariantPicker.vue';
 
 export default {
   name: 'BuyBlock',
@@ -46,11 +45,8 @@ export default {
       console.log('Привет!');
     },
     changeVaiant(variantId) {
-      console.log('changeVaiant', variantId);
+      // console.log('changeVaiant', variantId);
       this.$emit('variantCahnged', variantId);
-    },
-    hoverVaiant(variantId) {
-      console.log(variantId);
     },
   },
 };

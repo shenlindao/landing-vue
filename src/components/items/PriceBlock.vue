@@ -7,11 +7,6 @@
 <script>
 export default {
   name: 'PriceBlock',
-  data() {
-    return {
-      price: '219 000',
-    };
-  },
 };
 </script>
 

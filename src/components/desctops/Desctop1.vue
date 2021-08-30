@@ -1,5 +1,5 @@
 <template>
-  <div class="desctop1" :style="{backgroundImage: 'url(' + bgimg + ')'}">
+  <div class="desctop" :style="{backgroundImage: 'url(' + bgimg + ')'}">
     <buy-block
       v-on:variantCahnged="setVariant($event)"
       :itemData="itemData"
@@ -47,7 +47,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.desctop1 {
+.desctop {
   width: 100%;
   height: 750px;
   top: 0;

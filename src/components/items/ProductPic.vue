@@ -9,7 +9,7 @@
 export default {
   name: 'ProductPic',
   props: {
-    imageChair: Object,
+    imageChair: String,
   },
 };
 </script>
@@ -20,7 +20,7 @@ export default {
     height: 533px;
     max-width: 617px;
     width: 100%;
-    left: 18%;
+    left: 15%;
     top: 20%;
     position: absolute;
   }
