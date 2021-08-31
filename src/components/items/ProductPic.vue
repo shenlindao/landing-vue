@@ -1,6 +1,6 @@
 <template>
   <div class="product-pic">
-    <img class="product-img" :src="imageChair">
+    <img class="product-img" :src="chairImage">
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 export default {
   name: 'ProductPic',
   props: {
-    imageChair: String,
+    chairImage: String,
   },
 };
 </script>

@@ -1,20 +1,23 @@
 <template>
   <div class="desctop" :style="{backgroundImage: 'url(' + chairFunction.background + ')'}">
-    <h2>{{ chairFunction.title }}</h2>
+    <h2>{{chairFunction.title}}</h2>
     <function-list
       v-on:clickFunction="setFunction($event)"
       :chairFunctions="funcData.chairFunctions"
     />
+    <content-massage v-if="chairFunction.id == '1'"/>
   </div>
 </template>
 
 <script>
 import FunctionList from '../items/FunctionList.vue';
+import ContentMassage from '../content/ContentMassage.vue';
 
 export default {
   name: 'Desctop2',
   components: {
     FunctionList,
+    ContentMassage,
   },
   props: {
     funcData: Object,
@@ -45,7 +48,7 @@ export default {
 }
 h2 {
     position: absolute;
-    left: 10%;
+    left: 15%;
     top: 10%;
     font-size: 30pt;
     background-color: #ffffffb5;

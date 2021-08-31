@@ -5,7 +5,7 @@
       :itemData="itemData"
       :variant="variant"
     />
-    <product-pic :imageChair="variant.picture"/>
+    <product-pic :chairImage="variant.picture"/>
     <label-product>
       <img :src="require(`@/assets/pics/label.svg`)">
     </label-product>

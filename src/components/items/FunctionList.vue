@@ -25,8 +25,8 @@ export default {
 <style scoped lang="scss">
 .function-list {
   width: 345px;
-  right: 15%;
-  top: 20%;
+  right: 5%;
+  top: 25%;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 3px;
   position: absolute;
