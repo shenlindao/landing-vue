@@ -1,5 +1,13 @@
 <template>
   <div class="massage-parts">
+    <ul>
+      <li
+        v-for="massagePart in massageParts"
+        :key="massagePart.id"
+      >
+      {{ massagePart.title }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -7,6 +15,8 @@
 export default {
   name: 'MassageParts',
   props: {
+    massages: Array,
+    massageParts: Array,
   },
 };
 </script>

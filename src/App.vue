@@ -3,8 +3,12 @@
     <v-app>
     <lay-out>
     <div class="items">
-      <Desctop1 :itemData="itemData"/>
-      <Desctop2 :funcData="funcData"/>
+      <Desctop1
+      :itemData="itemData"
+      />
+      <Desctop2
+      :funcData="funcData"
+      />
     </div>
     </lay-out>
     </v-app>

@@ -5,13 +5,17 @@
       v-on:clickFunction="setFunction($event)"
       :chairFunctions="funcData.chairFunctions"
     />
-    <content-massage v-if="chairFunction.id == '1'"/>
+    <content-massage
+    v-if="chairFunction.id == '1'"
+    :massageData="massageData"
+    />
   </div>
 </template>
 
 <script>
 import FunctionList from '../items/FunctionList.vue';
 import ContentMassage from '../content/ContentMassage.vue';
+import massageData from '@/data/massage';
 
 export default {
   name: 'Desctop2',
@@ -25,6 +29,7 @@ export default {
   data() {
     return {
       chairFunction: this.funcData.chairFunctions[0],
+      massageData,
     };
   },
   methods: {

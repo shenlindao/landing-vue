@@ -1,21 +1,24 @@
 <template>
   <div class="massage-vid">
+    <ul>
+      <li
+        v-for="massage in massages"
+        :key="massage.id"
+        @click="$emit('clickMassage', massage.id)"
+      >
+      <img class="massage-img" :src="massageImage">
+      {{ massage.title }}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   name: 'MassageVid',
-  emits: [''],
+  emits: ['clickMassage'],
   props: {
-  },
-  components: {
-  },
-  methods: {
-    // changeVaiant(variantId) {
-    //   // console.log('changeVaiant', variantId);
-    //   this.$emit('variantCahnged', variantId);
-    // },
+    massages: Array,
   },
 };
 </script>
@@ -31,5 +34,20 @@ export default {
   border-radius: 3px;
   position: absolute;
   color: #141414;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>
