@@ -1,7 +1,13 @@
-import MassageRoll from '@/assets/pics/massage-roll.png';
-import MassageStr from '@/assets/pics/massage-str.png';
-import MassageShiazu from '@/assets/pics/massage-shiazu.png';
-import MassageAir from '@/assets/pics/massage-air.png';
+import MassageRoll from '@/assets/pics/massage-roll.svg';
+import MassageStr from '@/assets/pics/massage-str.svg';
+import MassageShiazu from '@/assets/pics/massage-shiazu.svg';
+import MassageAir from '@/assets/pics/massage-air.svg';
+
+import PartArms from '@/assets/pics/part-arms.svg';
+import PartCalves from '@/assets/pics/part-calves.svg';
+import PartFeet from '@/assets/pics/part-feet.svg';
+import PartHips from '@/assets/pics/part-hips.svg';
+import PartShoulders from '@/assets/pics/part-shoulders.svg';
 
 import MassageRollChair from '@/assets/pics/massage-roll-chair.png';
 import MassageStrChair from '@/assets/pics/massage-str-chair.png';
@@ -9,11 +15,11 @@ import MassageShiazuChair from '@/assets/pics/massage-shiazu-chair.png';
 import MassageAirChair from '@/assets/pics/massage-air-chair.png';
 
 export const MASSAGE_PARTS = [
-  { name: 'Плечи' },
-  { name: 'Руки' },
-  { name: 'Бедра' },
-  { name: 'Икры' },
-  { name: 'Стопы' },
+  { name: 'Плечи', icon: PartShoulders },
+  { name: 'Руки', icon: PartArms },
+  { name: 'Бедра', icon: PartHips },
+  { name: 'Икры', icon: PartCalves },
+  { name: 'Стопы', icon: PartFeet },
 ];
 
 export const MASSAGE_PARTS_STR = MASSAGE_PARTS.filter((parts) => parts.name !== 'Стопы' && parts.name !== 'Икры');

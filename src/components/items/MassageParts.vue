@@ -1,8 +1,12 @@
 <template>
     <div class="massage-parts">
       <ul>
-        <li v-for="part in massageParts" :key="part.name">
-          {{ part.name }}
+        <li
+        v-for="part in massageParts"
+        :key="part.name"
+        >
+        <img class="part-img" :src="part.icon">
+        <div class="part-name">{{ part.name }}</div>
         </li>
       </ul>
     </div>
@@ -20,13 +24,27 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .massage-parts {
-  width: 80px;
+  max-width: 140px;
+  width: 100%;
   height: 400px;
-  left: 50%;
-  top: 25%;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 3px;
+  right: 27%;
+  top: 28%;
   position: absolute;
   color: #141414;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+  text-align: center;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.part-name {
+    line-height: 70px;
 }
 </style>

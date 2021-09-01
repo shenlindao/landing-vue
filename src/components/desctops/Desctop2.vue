@@ -52,11 +52,10 @@ export default {
   position: relative;
 }
 h2 {
-    position: absolute;
-    left: 15%;
-    top: 10%;
-    font-size: 30pt;
-    background-color: #ffffffb5;
-    padding: 10px;
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, 0);
+  font-size: 22pt;
 }
 </style>

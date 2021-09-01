@@ -6,8 +6,8 @@
         :key="massage.id"
         @click="$emit('clickMassage', massage.id)"
       >
-      <img class="massage-img" :src="massageImage">
-      {{ massage.title }}
+      <img class="massage-vid-img" :src="massage.icon">
+      <div class="massage-vid-title">{{ massage.title }}</div>
       </li>
     </ul>
   </div>
@@ -26,14 +26,19 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .massage-vid {
-  width: 100px;
-  height: 400px;
-  left: 5%;
-  top: 25%;
-  background: rgba(255, 255, 255, 0.85);
+  max-width: 420px;
+  width: 100%;
+  height: 360px;
+  left: 7%;
+  top: 13%;
   border-radius: 3px;
   position: absolute;
   color: #141414;
+}
+img {
+  width: 100%;
+  height: 123px;
+  padding-left: 20px;
 }
 ul {
   margin: 0;
@@ -41,13 +46,22 @@ ul {
 }
 li {
   list-style-type: none;
-  text-align: left;
   font-size: 11px;
   font-weight: 600;
   text-align: center;
   margin-bottom: 30px;
+  width: 170px;
+  height: 170px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 5px;
   &:hover {
     cursor: pointer;
   }
+}
+.massage-vid-title {
+  max-width: 135px;
+  width: 100%;
+  padding-left: 40px;
 }
 </style>

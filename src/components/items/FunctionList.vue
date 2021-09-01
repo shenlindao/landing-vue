@@ -5,7 +5,8 @@
       v-for="chairFunction in chairFunctions"
       :key="chairFunction.id"
       @click="$emit('clickFunction', chairFunction.id)"
-    >{{chairFunction.title}}
+    >
+    <div class="list">{{chairFunction.title}}</div>
     </li>
   </ul>
   </div>
@@ -25,9 +26,10 @@ export default {
 <style scoped lang="scss">
 .function-list {
   width: 345px;
-  right: 5%;
-  top: 25%;
-  background: rgba(255, 255, 255, 0.85);
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  background: #CBCBCB;
   border-radius: 3px;
   position: absolute;
   color: #141414;
@@ -39,11 +41,19 @@ ul {
 li {
   list-style-type: none;
   text-align: left;
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+  height: 57px;
+  position: relative;
   &:hover {
     cursor: pointer;
   }
+}
+.list {
+  left: 12%;
+  top: 50%;
+  transform: translate(0, -50%);
+  position: absolute;
 }
 </style>

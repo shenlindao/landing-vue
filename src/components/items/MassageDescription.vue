@@ -16,16 +16,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .massage-description {
-  width: 800px;
-  height: auto;
-  padding: 10px;
-  left: 15%;
+  height: 210px;
+  width: 420px;
+  left: 7%;
   bottom: 5%;
-  background: rgba(255, 255, 255, 0.85);
   border-radius: 3px;
   position: absolute;
   color: #141414;
-  font-size: 10px;
+  font-size: 12px;
   text-align: justify;
 }
 </style>
