@@ -17,21 +17,20 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .product-pic {
-  height: 533px;
-  max-width: 617px;
+  height: auto;
+  max-width: 595px;
   width: 100%;
-  left: 15%;
+  left: 16%;
   top: 20%;
   position: absolute;
 }
 .product-img {
   max-width: 100%;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .product-pic {
   height: auto;
   max-width: 448px;
-  left: 9%;
   top: 25%;
 }
 }

@@ -54,7 +54,7 @@ export default {
   background-size: cover;
   position: relative;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .desctop {
   height: 600px;
 }

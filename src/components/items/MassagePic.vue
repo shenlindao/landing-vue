@@ -30,7 +30,7 @@ export default {
   max-width: 100%;
   max-height: 100%;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .massage-pic {
   left: 56%;
 }

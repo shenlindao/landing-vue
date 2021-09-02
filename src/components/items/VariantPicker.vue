@@ -5,7 +5,8 @@
       v-for="variant in variants"
       :key="variant.variantId"
       :style="{ backgroundColor: variant.color.hex }"
-      @click="$emit('clickVariant', variant.variantId)"
+      @click="$emit('clickVariant', variant.variantId),selected = variant.variantId"
+      :class="{highlight:variant.variantId == selected}"
     >
     </li>
   </ul>
@@ -18,6 +19,11 @@ export default {
   emits: ['clickVariant'],
   props: {
     variants: Array,
+  },
+  data() {
+    return {
+      selected: 1,
+    };
   },
 };
 </script>
@@ -47,6 +53,11 @@ li {
   &:hover {
     cursor: pointer;
     border: 2px solid #6db6ffa6;
+    transform: scale(1.2);
+    transition: all 0.5s;
   }
+}
+li.highlight {
+  border: 2px solid #fd2f2f;
 }
 </style>

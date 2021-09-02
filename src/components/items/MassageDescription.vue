@@ -1,6 +1,5 @@
 <template>
-  <div class="massage-description">
-    {{ massageDescription }}
+  <div class="massage-description"  v-html="massageDescription">
   </div>
 </template>
 
@@ -16,19 +15,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .massage-description {
-  height: 210px;
+  height: auto;
   width: 420px;
   left: 7%;
-  bottom: 8%;
+  top: 64%;
   border-radius: 3px;
   position: absolute;
   color: #141414;
   font-size: 12px;
   text-align: justify;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .massage-description {
-  top: 64%;
   width: 340px;
   left: 3%;
   font-size: 11px;

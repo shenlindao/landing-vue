@@ -87,7 +87,7 @@ li {
   transform: translate(0, -50%);
   position: absolute;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .v-list-item {
   padding: 0;
 }

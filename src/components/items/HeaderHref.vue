@@ -17,8 +17,7 @@
 const HEADHREFS = [
   { id: 0, title: 'Доставка' },
   { id: 1, title: 'Оплата' },
-  { id: 2, title: 'О компании' },
-  { id: 3, title: 'Контакты' },
+  { id: 2, title: 'Контакты' },
 ];
 
 export default {

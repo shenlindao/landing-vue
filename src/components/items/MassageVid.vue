@@ -57,6 +57,8 @@ li {
   margin: 5px;
   &:hover {
     cursor: pointer;
+    transform: scale(1.2);
+    transition: all 1s;
   }
 }
 .massage-vid-title {
@@ -64,7 +66,7 @@ li {
   width: 100%;
   padding-left: 40px;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .massage-vid {
   max-width: 368px;
   height: 360px;

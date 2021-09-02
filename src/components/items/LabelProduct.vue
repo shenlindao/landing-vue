@@ -26,7 +26,7 @@ export default {
   .label-product img {
     width: 100%;
   }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .label-product[data-v-281e9b0c] {
   left: 16%;
   bottom: 8%;

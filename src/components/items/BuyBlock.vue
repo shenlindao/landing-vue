@@ -117,7 +117,7 @@ p {
 .theme--light.v-btn {
   color: transparent;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .buyblock {
   top: 18%;
   right: 2%;

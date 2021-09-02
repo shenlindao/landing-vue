@@ -47,7 +47,7 @@ li {
 .part-name {
     line-height: 70px;
 }
-@media (max-width: 1024px){
+@media (max-width: 1200px){
 .massage-parts {
   right: 0;
   left: auto;
