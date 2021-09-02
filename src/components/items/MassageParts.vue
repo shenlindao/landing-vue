@@ -28,7 +28,7 @@ export default {
   width: 100%;
   height: 400px;
   right: 27%;
-  top: 28%;
+  top: 20%;
   position: absolute;
   color: #141414;
 }

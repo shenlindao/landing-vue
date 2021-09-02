@@ -8,7 +8,7 @@
 export default {
   name: 'MassageDescription',
   props: {
-    massageDescription: Array,
+    massageDescription: String,
   },
 };
 </script>
@@ -19,7 +19,7 @@ export default {
   height: 210px;
   width: 420px;
   left: 7%;
-  bottom: 5%;
+  bottom: 8%;
   border-radius: 3px;
   position: absolute;
   color: #141414;

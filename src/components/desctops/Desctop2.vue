@@ -1,7 +1,7 @@
 <template>
   <div class="desctop" :style="{backgroundImage: 'url(' + chairFunction.background + ')'}">
     <h2>{{chairFunction.title}}</h2>
-    <function-list
+    <function-list-2
       v-on:clickFunction="setFunction($event)"
       :chairFunctions="funcData.chairFunctions"
     />
@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import FunctionList from '../items/FunctionList.vue';
+import FunctionList2 from '../items/FunctionList2.vue';
 import ContentMassage from '../content/ContentMassage.vue';
 import massageData from '@/data/massage';
 
 export default {
   name: 'Desctop2',
   components: {
-    FunctionList,
+    FunctionList2,
     ContentMassage,
   },
   props: {

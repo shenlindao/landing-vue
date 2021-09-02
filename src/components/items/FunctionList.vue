@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'FunctionList',
+  name: 'FunctionList2',
   emits: ['clickFunction'],
   props: {
     chairFunctions: Array,
