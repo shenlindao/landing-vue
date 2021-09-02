@@ -26,4 +26,12 @@ export default {
   font-size: 12px;
   text-align: justify;
 }
+@media (max-width: 1024px){
+.massage-description {
+  top: 64%;
+  width: 340px;
+  left: 3%;
+  font-size: 11px;
+}
+}
 </style>

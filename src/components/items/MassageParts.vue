@@ -47,4 +47,22 @@ li {
 .part-name {
     line-height: 70px;
 }
+@media (max-width: 1024px){
+.massage-parts {
+  right: 0;
+  left: auto;
+  max-width: 270px;
+  width: 100%;
+  height: auto;
+  top: 54%;
+}
+li {
+  display: inline-block;
+  margin-bottom: 10px;
+  margin: 5px;
+}
+.part-name {
+  line-height: 20px;
+}
+}
 </style>

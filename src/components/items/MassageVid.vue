@@ -64,4 +64,12 @@ li {
   width: 100%;
   padding-left: 40px;
 }
+@media (max-width: 1024px){
+.massage-vid {
+  max-width: 368px;
+  height: 360px;
+  left: 1%;
+  top: 14%;
+}
+}
 </style>

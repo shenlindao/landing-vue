@@ -87,4 +87,16 @@ li {
   transform: translate(0, -50%);
   position: absolute;
 }
+@media (max-width: 1024px){
+.v-list-item {
+  padding: 0;
+}
+.v-list-item__content {
+  padding: 12px 18px;
+}
+.function-list {
+  width: 255px;
+  top: 35%;
+}
+}
 </style>

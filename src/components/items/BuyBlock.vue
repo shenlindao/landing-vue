@@ -112,9 +112,16 @@ p {
   bottom: 5%;
 }
 .theme--light.v-btn:focus {
-    opacity: 0 !important;
+  opacity: 0 !important;
 }
 .theme--light.v-btn {
-    color: transparent;
+  color: transparent;
+}
+@media (max-width: 1024px){
+.buyblock {
+  top: 18%;
+  right: 2%;
+  width: 306px;
+}
 }
 </style>
