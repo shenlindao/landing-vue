@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="header_container">
+      <a href="/about">
       <img :src="require(`@/assets/pics/fujimo_logo.svg`)">
+      </a>
     </div>
   </div>
 </template>

@@ -22,6 +22,15 @@ import LayOut from './components/layout/Layout.vue';
 import itemData from './data/items';
 import funcData from './data/functions';
 
+const NotFound = { template: '<p>Страница не найдена</p>' };
+const Home = { template: '<p>главная</p>' };
+const About = { template: '<p>о нас</p>' };
+
+const routes = {
+  '/': Home,
+  '/about': About,
+};
+
 export default {
   name: 'App',
   components: {
@@ -33,8 +42,15 @@ export default {
     return {
       itemData,
       funcData,
+      currentRoute: window.location.pathname,
     };
   },
+  computed: {
+    ViewComponent() {
+      return routes[this.currentRoute] || NotFound;
+    },
+  },
+  render(h) { return h(this.ViewComponent); },
 };
 </script>
 

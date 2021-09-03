@@ -58,6 +58,6 @@ li {
   }
 }
 li.highlight {
-  border: 2px solid #fd2f2f;
+  border: 3px solid #fd2f2f;
 }
 </style>
