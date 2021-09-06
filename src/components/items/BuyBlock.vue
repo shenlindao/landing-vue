@@ -14,10 +14,12 @@
         <img :src="require(`@/assets/pics/for_buy_button.svg`)" />
       </app-button>
     </v-main>
+    <keep-alive>
     <variant-picker
       :variants="itemData.variants"
       v-on:clickVariant="changeVaiant($event)"
     />
+    </keep-alive>
   </div>
 </template>
 

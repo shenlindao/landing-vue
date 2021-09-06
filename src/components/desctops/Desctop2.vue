@@ -5,10 +5,12 @@
       v-on:clickFunction="setFunction($event)"
       :chairFunctions="funcData.chairFunctions"
     />
+    <keep-alive>
     <content-massage
     v-if="chairFunction.id == '1'"
     :massageData="massageData"
     />
+    </keep-alive>
   </div>
 </template>
 

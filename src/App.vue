@@ -3,12 +3,7 @@
     <v-app>
     <lay-out>
     <div class="items">
-      <Desctop1
-      :itemData="itemData"
-      />
-      <Desctop2
-      :funcData="funcData"
-      />
+      <item-page/>
     </div>
     </lay-out>
     </v-app>
@@ -16,41 +11,32 @@
 </template>
 
 <script>
-import Desctop1 from './components/desctops/Desctop1.vue';
-import Desctop2 from './components/desctops/Desctop2.vue';
 import LayOut from './components/layout/Layout.vue';
-import itemData from './data/items';
-import funcData from './data/functions';
-
-const NotFound = { template: '<p>Страница не найдена</p>' };
-const Home = { template: '<p>главная</p>' };
-const About = { template: '<p>о нас</p>' };
-
-const routes = {
-  '/': Home,
-  '/about': About,
-};
+import routes from './data/routes';
+import ItemPage from './components/layout/ItemPage.vue';
 
 export default {
   name: 'App',
   components: {
-    Desctop1,
-    Desctop2,
     LayOut,
+    ItemPage,
   },
   data() {
     return {
-      itemData,
-      funcData,
       currentRoute: window.location.pathname,
     };
   },
   computed: {
     ViewComponent() {
-      return routes[this.currentRoute] || NotFound;
+      const matchingView = routes[this.currentRoute];
+      return matchingView
+        ? require(`./pages/${matchingView}.vue`)
+        : require('./pages/404.vue');
     },
   },
-  render(h) { return h(this.ViewComponent); },
+  render(h) {
+    return h(this.ViewComponent);
+  },
 };
 </script>
 

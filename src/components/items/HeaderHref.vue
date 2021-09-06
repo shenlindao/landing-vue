@@ -6,7 +6,7 @@
         v-for="headhref in headhrefs"
         :key= headhref.id
       >
-        {{headhref.title}}
+        <v-link :href="headhref.href">{{headhref.title}}</v-link>
       </li>
     </ul>
     <div class="tel">8 (800) 888-88-88</div>
@@ -14,10 +14,12 @@
 </template>
 
 <script>
+import VLink from '../VLink.vue';
+
 const HEADHREFS = [
-  { id: 0, title: 'Доставка' },
-  { id: 1, title: 'Оплата' },
-  { id: 2, title: 'Контакты' },
+  { id: 0, title: 'Доставка', href: '/delivery' },
+  { id: 1, title: 'Оплата', href: '/pay' },
+  { id: 2, title: 'Контакты', href: '/contacts' },
 ];
 
 export default {
@@ -26,6 +28,9 @@ export default {
     return {
       headhrefs: HEADHREFS,
     };
+  },
+  components: {
+    VLink,
   },
 };
 </script>
