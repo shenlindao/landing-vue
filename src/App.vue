@@ -27,9 +27,9 @@ export default {
   computed: {
     ViewComponent() {
       const matchingView = routes[this.currentRoute];
-      return matchingView
-        ? require(`./pages/${matchingView}.vue`)
-        : require('./pages/404.vue');
+      const matching = `./pages/${matchingView}.vue`;
+      const four0four = './pages/404.vue';
+      return matchingView ? matching : four0four;
     },
   },
   render(h) {
