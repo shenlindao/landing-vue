@@ -2,9 +2,7 @@
   <div>
     <v-app>
     <lay-out>
-    <div class="items">
       <item-page/>
-    </div>
     </lay-out>
     </v-app>
   </div>
