@@ -36,11 +36,11 @@
 </template>
 
 <script>
+
 export default {
   name: 'Footer',
   data: () => ({
     icons: [
-      'mdi-vk',
       'mdi-instagram',
       'mdi-facebook',
     ],

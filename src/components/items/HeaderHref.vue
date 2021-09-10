@@ -50,6 +50,7 @@ ul {
   margin-left: 0;
   background-color: transparent;
   color: #272727;
+  text-decoration: none;
   &:hover {
     cursor: pointer;
     color: #7a7a7a;
