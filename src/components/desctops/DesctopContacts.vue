@@ -1,12 +1,12 @@
 <template>
   <div class="desctop">
-    <h2>Доставка</h2>
+    <h2>Контакты</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'DesctopD',
+  name: 'DesctopContacts',
 };
 </script>
 
@@ -23,7 +23,7 @@ export default {
 h2 {
   position: absolute;
   left: 50%;
-  top: 5%;
+  top: 15%;
   transform: translate(-50%, 0);
   font-size: 22pt;
   color: rgb(233, 245, 255);

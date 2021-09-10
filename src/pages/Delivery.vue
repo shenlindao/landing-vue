@@ -1,18 +1,14 @@
 <template>
-<item-page>
-    <desctop-d />
-</item-page>
+    <desctop-delivery />
 </template>
 
 <script>
-import DesctopD from '../components/desctops/DesctopD.vue';
-import ItemPage from '../components/layout/ItemPage.vue';
+import DesctopDelivery from '../components/desctops/DesctopDelivery.vue';
 
 export default {
   name: 'Delivery',
   components: {
-    DesctopD,
-    ItemPage,
+    DesctopDelivery,
   },
 };
 </script>

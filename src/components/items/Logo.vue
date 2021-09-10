@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="header_container">
-      <a href="/about">
-      <img :src="require(`@/assets/pics/fujimo_logo.svg`)">
-      </a>
+      <img
+      :src="require(`@/assets/pics/fujimo_logo.svg`)"
+      @click="$router.push({ name: 'home' })"
+      >
     </div>
   </div>
 </template>
@@ -16,4 +17,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+img {
+  cursor: pointer;
+}
 </style>

@@ -2,7 +2,7 @@
   <div>
     <v-app>
     <lay-out>
-      <item-page/>
+        <router-view></router-view>
     </lay-out>
     </v-app>
   </div>
@@ -10,30 +10,11 @@
 
 <script>
 import LayOut from './components/layout/Layout.vue';
-import routes from './data/routes';
-import ItemPage from './components/layout/ItemPage.vue';
 
 export default {
   name: 'App',
   components: {
     LayOut,
-    ItemPage,
-  },
-  data() {
-    return {
-      currentRoute: window.location.pathname,
-    };
-  },
-  computed: {
-    ViewComponent() {
-      const matchingView = routes[this.currentRoute];
-      const matching = `./pages/${matchingView}.vue`;
-      const four0four = './pages/404.vue';
-      return matchingView ? matching : four0four;
-    },
-  },
-  render(h) {
-    return h(this.ViewComponent);
   },
 };
 </script>
