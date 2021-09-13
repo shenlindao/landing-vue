@@ -26,8 +26,8 @@
 <script>
 import Logo from './Logo.vue';
 import PriceBlock from './PriceBlock.vue';
-import AppButton from './AppButton.vue';
 import VariantPicker from './VariantPicker.vue';
+import AppButton from './AppButton.vue';
 
 export default {
   name: 'BuyBlock',

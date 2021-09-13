@@ -3,11 +3,7 @@
     <v-col cols="auto">
       <v-dialog transition="dialog-top-transition" max-width="560" height="600">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn
-          v-bind="attrs"
-          v-on="on"
-          class="buy-btn"
-          >
+          <v-btn v-bind="attrs" v-on="on" class="buy-btn">
             <slot />
           </v-btn>
         </template>
@@ -15,27 +11,45 @@
           <v-card>
             <v-toolbar
               ><div class="zag">Отправить заявку</div>
-              <v-btn
-              icon
-              @click="dialog.value = false"
-              >
+              <v-btn icon @click="dialog.value = false">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
             </v-toolbar>
             <v-col cols="12">
-              <v-text-field label="Имя"></v-text-field>
-            </v-col>
-            <v-col cols="12">
-              <v-text-field label="E-mail"></v-text-field>
-            </v-col>
-            <v-col cols="12">
-              <v-text-field label="Телефон"></v-text-field>
-            </v-col>
-            <v-btn
+              <v-text-field
+                label="Имя"
+                type="name"
+                v-model.trim="form.personName"
+                :class="$v.form.personName.$error ? 'is-invalid' : ''"
+              >
+              </v-text-field>
+              <v-alert
+              color="red"
+              dense
+              outlined
+              prominent
               text
-              @click="dialog.value = false"
-              class="order-btn"
+              type="error"
+              class="invalid-feedback"
+              v-if="$v.form.personName.$dirty && !$v.form.personName.required"
+              >
+              Обязательное поле
+              </v-alert>
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                label="Телефон"
+                v-model.trim="form.personPhone"
+              ></v-text-field>
+            </v-col>
+            <v-checkbox
+              v-model="form.agreement"
+              label="Согласие на обработку персональных данных"
+              color="red"
+              hide-details
             >
+            </v-checkbox>
+            <v-btn text @click="checkForm" class="order-btn">
               Подтвердить
             </v-btn>
           </v-card>
@@ -46,23 +60,57 @@
 </template>
 
 <script>
+import { validationMixin } from 'vuelidate';
+import { required, minLength, numeric } from 'vuelidate/lib/validators';
+
 export default {
+  mixins: [validationMixin],
   name: 'AppButton',
+  data: () => ({
+    form: {
+      personName: '',
+      personPhone: '',
+      agreement: 'false',
+    },
+  }),
+  methods: {
+    // postMessage() {
+    //   console.log(`Имя: ${this.form.personName}`);
+    //   console.log(`Телфон: ${this.form.personPhone}`);
+    // },
+    checkForm() {
+      this.$v.form.$touch();
+      if (!this.$v.form.$error) {
+        console.log('Валидация прошла успешно');
+      }
+    },
+  },
+  validations: {
+    form: {
+      personName: {
+        required,
+      },
+      personPhone: {
+        required,
+        minLength: minLength(11),
+        numeric,
+      },
+    },
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .v-dialog {
-    height: inherit;
+  height: inherit;
 }
 .v-card.v-sheet.theme--light {
-    height: 100%;
+  height: 100%;
 }
 .v-btn:focus {
-    opacity: 1.0 !important;
+  opacity: 1 !important;
 }
-.buy-btn{
+.buy-btn {
   width: 220px !important;
   height: 55px !important;
 }
@@ -118,6 +166,25 @@ button.v-btn.v-btn--icon.v-btn--round.theme--light.v-size--default {
   right: 25px;
 }
 .theme--light.v-btn:focus::before {
-    opacity: 0;
+  opacity: 0;
+}
+i.v-icon.notranslate.mdi.mdi-checkbox-marked.theme--light.red--text {
+  font-size: inherit !important;
+}
+.v-input--selection-controls {
+  margin: 0 0 15px 0 !important;
+  padding-top: 0 !important;
+}
+.v-alert--dense {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  align-items: center;
+  display: inline-flex;
+  flex: 1 1 auto;
+  font-size: 16px;
+  letter-spacing: normal;
+  max-width: 60%;
+  width: 100%;
+  text-align: left;
 }
 </style>
