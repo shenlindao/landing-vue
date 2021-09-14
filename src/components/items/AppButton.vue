@@ -24,31 +24,43 @@
               >
               </v-text-field>
               <v-alert
-              color="red"
               dense
               outlined
-              prominent
-              text
               type="error"
-              class="invalid-feedback"
               v-if="$v.form.personName.$dirty && !$v.form.personName.required"
               >
-              Обязательное поле
+              Пожалуйста, укажите свое имя
               </v-alert>
             </v-col>
             <v-col cols="12">
-              <v-text-field
+              <vue-tel-input-vuetify
                 label="Телефон"
+                placeholder=""
                 v-model.trim="form.personPhone"
-              ></v-text-field>
+              ></vue-tel-input-vuetify>
             </v-col>
+            <v-alert
+              dense
+              outlined
+              type="error"
+              v-if="$v.form.personPhone.$dirty && !$v.form.personPhone.required"
+              >
+              Пожалуйста, укажите свой номер телефона
+              </v-alert>
             <v-checkbox
               v-model="form.agreement"
               label="Согласие на обработку персональных данных"
               color="red"
-              hide-details
             >
             </v-checkbox>
+            <v-alert
+              dense
+              outlined
+              type="error"
+              v-if="$v.form.agreement.$dirty && !$v.form.agreement.mustBeTrue"
+              >
+              Требуется ваше согласие на обработку персональных данных
+              </v-alert>
             <v-btn text @click="checkForm" class="order-btn">
               Подтвердить
             </v-btn>
@@ -61,16 +73,20 @@
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { required, minLength, numeric } from 'vuelidate/lib/validators';
+import { required } from 'vuelidate/lib/validators';
+import VueTelInputVuetify from 'vue-tel-input-vuetify/lib/vue-tel-input-vuetify.vue';
 
 export default {
   mixins: [validationMixin],
   name: 'AppButton',
+  components: {
+    VueTelInputVuetify,
+  },
   data: () => ({
     form: {
       personName: '',
       personPhone: '',
-      agreement: 'false',
+      agreement: false,
     },
   }),
   methods: {
@@ -82,6 +98,8 @@ export default {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {
         console.log('Валидация прошла успешно');
+      } else {
+        console.log('Валидация не прошла');
       }
     },
   },
@@ -92,8 +110,11 @@ export default {
       },
       personPhone: {
         required,
-        minLength: minLength(11),
-        numeric,
+      },
+      agreement: {
+        mustBeTrue(value) {
+          return value;
+        },
       },
     },
   },
@@ -151,7 +172,8 @@ export default {
 .v-sheet.v-toolbar:not(.v-sheet--outlined) {
   box-shadow: none;
 }
-.v-input {
+.v-input,
+.vue-tel-input-vuetify {
   align-items: center;
   display: inline-flex;
   flex: 1 1 auto;
@@ -172,7 +194,7 @@ i.v-icon.notranslate.mdi.mdi-checkbox-marked.theme--light.red--text {
   font-size: inherit !important;
 }
 .v-input--selection-controls {
-  margin: 0 0 15px 0 !important;
+  margin: 15px 0 15px 0 !important;
   padding-top: 0 !important;
 }
 .v-alert--dense {
@@ -186,5 +208,16 @@ i.v-icon.notranslate.mdi.mdi-checkbox-marked.theme--light.red--text {
   max-width: 60%;
   width: 100%;
   text-align: left;
+}
+.v-alert--prominent .v-alert__icon {
+  align-self: center;
+  height: auto;
+  min-width: auto;
+}
+.v-alert--prominent .v-alert__icon.v-icon {
+  font-size: 20px;
+}
+.v-alert--dense[data-v-69a92d24] {
+  font-size: 12px;
 }
 </style>
