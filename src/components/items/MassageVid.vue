@@ -2,7 +2,7 @@
   <div class="massage-vid">
     <ul>
       <li
-        v-for="massage in massages"
+        v-for="massage in massages.slice(0,-1)"
         :key="massage.id"
         @click="$emit('clickMassage', massage.id)"
       >

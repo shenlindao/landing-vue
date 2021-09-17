@@ -18,7 +18,7 @@
 const HEADHREFS = [
   { id: 0, title: 'Доставка', href: 'delivery' },
   { id: 1, title: 'Оплата', href: 'pay' },
-  { id: 2, title: 'Контакты', href: 'contacts' },
+  { id: 2, title: 'Каталог', href: 'catalog' },
 ];
 
 export default {

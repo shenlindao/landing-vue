@@ -2,6 +2,7 @@ import MassageRoll from '@/assets/pics/massage-roll.svg';
 import MassageStr from '@/assets/pics/massage-str.svg';
 import MassageShiazu from '@/assets/pics/massage-shiazu.svg';
 import MassageAir from '@/assets/pics/massage-air.svg';
+import Heating from '@/assets/pics/heating.png';
 
 import PartArms from '@/assets/pics/part-arms.svg';
 import PartCalves from '@/assets/pics/part-calves.svg';
@@ -13,6 +14,7 @@ import MassageRollChair from '@/assets/pics/massage-roll-chair.png';
 import MassageStrChair from '@/assets/pics/massage-str-chair.png';
 import MassageShiazuChair from '@/assets/pics/massage-shiazu-chair.png';
 import MassageAirChair from '@/assets/pics/massage-air-chair.png';
+import HeatingChair from '@/assets/pics/heating-chair.png';
 
 export const MASSAGE_PARTS = [
   { name: 'Плечи', icon: PartShoulders },
@@ -24,7 +26,7 @@ export const MASSAGE_PARTS = [
 
 export const MASSAGE_PARTS_STR = MASSAGE_PARTS.filter((parts) => parts.name !== 'Стопы' && parts.name !== 'Икры');
 
-export const MASSAGE_PARTS_SHIATZU_ROLL = MASSAGE_PARTS.filter((parts) => parts.name !== 'Руки');
+export const MASSAGE_PARTS_SHIATZU_ROLL_HEAT = MASSAGE_PARTS.filter((parts) => parts.name !== 'Руки');
 
 const MASSAGE = {
   massages: [
@@ -34,7 +36,7 @@ const MASSAGE = {
       description: 'Разминание оказывает основное воздействие на мышцы человека, благодаря чему повышается их сократительная функция, увеличивается эластичность сумочно-связочного аппарата, растягиваются укороченные фасции, апоневрозы. Разминание способствует усилению крово- и лимфообращения; при этом значительно улучшается питание тканей, повышается обмен веществ, уменьшается или полностью снимается мышечное утомление, повышаются работоспособность мышц, их тонус и сократительная функция.',
       icon: MassageRoll,
       picture: MassageRollChair,
-      parts: MASSAGE_PARTS_SHIATZU_ROLL,
+      parts: MASSAGE_PARTS_SHIATZU_ROLL_HEAT,
     },
     {
       id: 2,
@@ -50,7 +52,7 @@ const MASSAGE = {
       description: 'Шиацу – разновидность японского точечного массажа, стимулирующего ток крови и лимфы, а также положительно влияющего на мысли и потоки энергии тела человека. Его название дословно переводится как «пальцы» и «надавливать». Благодаря точечному воздействию, процедура массажа шиацу не только приносит приятные ощущения, но и обеспечивает целебный эффект. При надавливании на определенные точки на теле можно стимулировать функции иммунной системы организма, сделать кожу упругой и здоровой, избавиться от разных болезней и недомоганий.',
       icon: MassageShiazu,
       picture: MassageShiazuChair,
-      parts: MASSAGE_PARTS_SHIATZU_ROLL,
+      parts: MASSAGE_PARTS_SHIATZU_ROLL_HEAT,
     },
     {
       id: 4,
@@ -59,6 +61,14 @@ const MASSAGE = {
       icon: MassageAir,
       picture: MassageAirChair,
       parts: MASSAGE_PARTS,
+    },
+    {
+      id: 5,
+      title: 'Выступ роликов 11см',
+      description: 'Японская технологии стоун-терапии с применением инфракрасного нагрева роликов',
+      icon: Heating,
+      picture: HeatingChair,
+      parts: MASSAGE_PARTS_SHIATZU_ROLL_HEAT,
     },
   ],
 };

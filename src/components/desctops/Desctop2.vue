@@ -11,6 +11,18 @@
     :massageData="massageData"
     />
     </keep-alive>
+    <content-heat
+    v-if="chairFunction.id == '2'"
+    :massageData="massageData"
+    />
+    <content-zero-gravity
+    v-if="chairFunction.id == '3'"
+    :massageData="massageData"
+    />
+    <content-scan
+    v-if="chairFunction.id == '4'"
+    :massageData="massageData"
+    />
   </div>
 </template>
 
@@ -18,12 +30,18 @@
 import FunctionList from '../items/FunctionList.vue';
 import ContentMassage from '../content/ContentMassage.vue';
 import massageData from '@/data/massage';
+import ContentHeat from '../content/ContentHeat.vue';
+import ContentZeroGravity from '../content/ContentZeroGravity.vue';
+import ContentScan from '../content/ContentScan.vue';
 
 export default {
   name: 'Desctop2',
   components: {
     FunctionList,
     ContentMassage,
+    ContentHeat,
+    ContentZeroGravity,
+    ContentScan,
   },
   props: {
     funcData: Object,
