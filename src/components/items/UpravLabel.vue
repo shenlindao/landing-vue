@@ -48,10 +48,10 @@ export default {
 }
 .label-2 .uprav-label-container {
   width: 200px;
-  height: 180px;
+  height: auto;
   position: absolute;
   left: 50%;
-  top: 10%;
+  top: 25%;
   transform: rotate(180deg) translate(50%, 0);
 }
 </style>
