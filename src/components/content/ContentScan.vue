@@ -34,9 +34,6 @@ export default {
   width: 100%;
   height: 100%;
 }
-h2 {
-  color: #fff;
-}
 .heat-vid-img {
   height: auto;
   max-width: 325px;

@@ -1,6 +1,7 @@
 <template>
   <div class="desctop" :style="{backgroundImage: 'url(' + chairFunction.background + ')'}">
-    <h2>{{chairFunction.title}}</h2>
+    <h2 :style="{color: [chairFunction.id == '4' ? '#fff': '#000']}"
+    >{{chairFunction.title}}</h2>
     <function-list
       v-on:clickFunction="setFunction($event)"
       :chairFunctions="funcData.chairFunctions"

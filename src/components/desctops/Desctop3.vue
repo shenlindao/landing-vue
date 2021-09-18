@@ -2,8 +2,14 @@
   <div class="desctop">
     <img class="desctop3-panel-img" :src="panelImg" />
     <img class="desctop3-laptop-img" :src="laptopImg" />
-    <uprav-label class="label-1" />
-    <uprav-label class="label-2" />
+    <uprav-label class="label-1">
+      <h2>{{h2Panel}}</h2>
+      <p>{{pPanel}}</p>
+    </uprav-label>
+    <uprav-label class="label-2">
+      <h2>{{h2Laptop}}</h2>
+      <p>{{pLaptop}}</p>
+    </uprav-label>
   </div>
 </template>
 
@@ -21,6 +27,10 @@ export default {
     return {
       panelImg: desctopPanelImg,
       laptopImg: desctopLaptopImg,
+      h2Panel: 'Боковая панель управления',
+      pPanel: 'Панель управления массажным креслом FUJIMO TON расположена на правом подлокотнике. Кнопки с символами интуитивно понятны и максимально облегчают использование.',
+      h2Laptop: 'Сенсорное управление',
+      pLaptop: 'Русифицированный 7-дюймовый пульт управления делает использование кресла простым и удобным.',
     };
   },
 };
@@ -55,8 +65,6 @@ export default {
   position: absolute;
   bottom: 5%;
   right: 27%;
-}
-.uprav-label .uprav-label-img {
-  transform: rotate(-180deg) !important;
+  transform: rotate(-180deg);
 }
 </style>
