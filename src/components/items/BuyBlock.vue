@@ -43,11 +43,7 @@ export default {
     VariantPicker,
   },
   methods: {
-    order() {
-      console.log('Привет!');
-    },
     changeVaiant(variantId) {
-      // console.log('changeVaiant', variantId);
       this.$emit('variantCahnged', variantId);
     },
   },
