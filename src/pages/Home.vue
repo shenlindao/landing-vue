@@ -1,9 +1,9 @@
 <template>
   <div>
-    <desctop-1 :itemData="itemData" />
-    <desctop-2 :funcData="funcData" />
-    <desctop-3 />
-    <desctop-4 :specificData="specificData" />
+      <desctop-1 :itemData="itemData" />
+      <desctop-2 :funcData="funcData" />
+      <desctop-3 />
+      <desctop-4 :specificData="specificData" />
   </div>
 </template>
 

@@ -99,7 +99,7 @@ p {
 .priceblock span {
   font-size: 25px;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 400;
   line-height: 29px;
   letter-spacing: 0em;
   text-align: left;

@@ -1,12 +1,21 @@
 <template>
   <div class="desctop">
     <h2>Каталог</h2>
+    <catalog-cards
+    :cards="CatalogData.cards"
+    />
   </div>
 </template>
 
 <script>
+import CatalogCards from '../items/CatalogCards.vue';
+
 export default {
+  components: { CatalogCards },
   name: 'DesctopCatalog',
+  props: {
+    CatalogData: Object,
+  },
 };
 </script>
 
@@ -16,7 +25,7 @@ export default {
   width: 100%;
   height: 750px;
   top: 0;
-  background-color: #808080;
+  background-color: #ffffff;
   background-size: cover;
   position: relative;
 }
@@ -26,6 +35,16 @@ h2 {
   top: 15%;
   transform: translate(-50%, 0);
   font-size: 22pt;
-  color: rgb(233, 245, 255);
+  color: rgb(0, 0, 0);
+}
+.catalog-cards {
+  position: absolute;
+  top: 150px;
+  left: 25%;
+  width: 100%;
+  height: auto;
+  max-width: 900px;
+  display: inline-flex;
+  text-align: left;
 }
 </style>

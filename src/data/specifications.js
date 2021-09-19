@@ -1,5 +1,4 @@
 const SPEC = {
-  title: '123',
   specifics: [
     {
       id: 1,
