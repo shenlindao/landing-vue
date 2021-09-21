@@ -4,14 +4,19 @@
     <catalog-cards
     :cards="CatalogData.cards"
     />
+    <catalog-filter/>
   </div>
 </template>
 
 <script>
 import CatalogCards from '../items/CatalogCards.vue';
+import CatalogFilter from '../items/CatalogFilter.vue';
 
 export default {
-  components: { CatalogCards },
+  components: {
+    CatalogCards,
+    CatalogFilter,
+  },
   name: 'DesctopCatalog',
   props: {
     CatalogData: Object,
