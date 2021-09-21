@@ -42,19 +42,23 @@ export default {
   props: {
     CatalogData: Object,
   },
-  // methods: {
-  //   setCategory(option) {
-  //     this.sortedCards = [];
-  //     const vm = this;
-  //     this.CatalogData.cards.map((item) => {
-  //       if (item.type === option.name) {
-  //         vm.sortedCards.push(item);
-  //         console.log('123');
-  //       }
-  //     });
-  //     this.selected = option.name;
-  //   },
-  // },
+  methods: {
+    setCategory(option) {
+      // this.selected = option.name;
+      this.sortedCards = [];
+      const PRODUCTS = this.CatalogData.cards;
+      PRODUCTS.map((item) => {
+        if (item.type === option.name) {
+          this.sortedCards.push(item);
+        }
+      });
+      // this.test.map((item) => {
+      //   if (item.type === option.name) {
+      //     vm.sortedCards.push(item);
+      //   }
+      // });
+    },
+  },
 };
 </script>
 

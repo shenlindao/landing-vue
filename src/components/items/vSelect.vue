@@ -10,7 +10,6 @@
         v-for="option in options"
         :key="option.value"
         @click="selectOption(option)"
-        @selected="optionSelect"
       >
         {{option.name}}
       </p>
@@ -36,9 +35,9 @@ export default {
     },
   },
   methods: {
-    optionSelect(option) {
-      this.selected = option.name;
-    },
+    // optionSelect(option) {
+    //   this.selected = option.name;
+    // },
     selectOption(option) {
       this.$emit('select', option);
       this.areOptionsVisible = false;
