@@ -3,9 +3,9 @@
     <v-subheader>Категории</v-subheader>
     <p>Select: {{selected}}</p>
     <v-select
-      :options="options"
-      @select="optionSelect"
       :selected="selected"
+      :options="options"
+      @select="sortByCategories($event)"
     />
     <v-subheader>Цена</v-subheader>
       <div class="range-slider">
@@ -38,6 +38,7 @@ import VSelect from './vSelect.vue';
 
 export default {
   name: 'CatalogFilter',
+  emits: ['sortedByCategories'],
   components: {
     VSelect,
   },
@@ -45,17 +46,23 @@ export default {
     return {
       minPrice: 0,
       maxPrice: 300000,
-      options: [
-        { name: 'Option 1', value: 1 },
-        { name: 'Option 2', value: 2 },
-        { name: 'Option 3', value: 3 },
-      ],
-      selected: 'Select',
     };
   },
+  props: {
+    options: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    selected: {
+      type: String,
+      default: '',
+    },
+  },
   methods: {
-    optionSelect(option) {
-      this.selected = option.name;
+    sortByCategories(option) {
+      this.$emit('sortedByCategories', option);
     },
     setRangeSliders() {
       if (this.minPrice > this.maxPrice) {

@@ -1,10 +1,12 @@
 <template>
   <div class="desctop">
     <h2>Каталог</h2>
-    <catalog-cards
-    :cards="CatalogData.cards"
+    <catalog-cards :cards="filteredProducts" />
+    <catalog-filter
+      :selected="selected"
+      :options="options"
+      @sortedByCategories="setCategory($event)"
     />
-    <catalog-filter/>
   </div>
 </template>
 
@@ -13,14 +15,46 @@ import CatalogCards from '../items/CatalogCards.vue';
 import CatalogFilter from '../items/CatalogFilter.vue';
 
 export default {
+  name: 'DesctopCatalog',
   components: {
     CatalogCards,
     CatalogFilter,
   },
-  name: 'DesctopCatalog',
+  data() {
+    return {
+      options: [
+        { name: 'Все', value: 'ALL' },
+        { name: 'Массажное кресло', value: 'massage-chair' },
+        { name: 'Массажная накидка', value: 'massage-cape' },
+      ],
+      selected: 'Все',
+      sortedCards: [],
+    };
+  },
+  computed: {
+    filteredProducts() {
+      if (this.sortedCards.length) {
+        return this.sortedCards;
+      }
+      return this.CatalogData.cards;
+    },
+  },
   props: {
     CatalogData: Object,
   },
+  // methods: {
+  //   setCategory(option) {
+  //     this.sortedCards = [];
+  //     const vm = this;
+  //     this.CatalogData.cards.map((item) => {
+  //       if (item.type === option.name) {
+  //         vm.sortedCards.push(item);
+  //         console.log('123');
+  //       }
+  //     });
+  //     this.selected = option.name;
+  //   },
+  // },
 };
 </script>
 
