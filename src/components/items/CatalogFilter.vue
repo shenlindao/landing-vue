@@ -1,7 +1,6 @@
 <template>
   <v-card class="mx-auto catalog-filter" max-width="300" tile>
     <v-subheader>Категории</v-subheader>
-    <p>Select: {{selected}}</p>
     <v-select
       :selected="selected"
       :options="options"
@@ -83,6 +82,7 @@ export default {
   width: 100%;
   height: auto;
   text-align: left;
+  padding: 10px;
 }
 .range-slider {
   margin: auto 16px;
@@ -97,11 +97,23 @@ export default {
 }
 .range-slider input[type="range"] {
   width: 100%;
+  cursor: pointer;
 }
 input[type="range"]::-webkit-slider-thumb {
   z-index: 2;
   position: relative;
-  top: 2px;
-  margin-top: -7px;
+  top: 3px;
+  margin-top: -9px;
+  width: 10px;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: #367ebd;
+  height: 3px;
+  cursor: pointer;
+  border: none;
+}
+.range-values {
+  margin-top: 20px;
 }
 </style>

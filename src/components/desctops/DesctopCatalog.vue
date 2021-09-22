@@ -44,25 +44,16 @@ export default {
   },
   methods: {
     setCategory(option) {
-      // this.selected = option.name;
+      const vm = this;
+      this.selected = option.name;
       this.sortedCards = [];
       const PRODUCTS = this.CatalogData.cards;
-      PRODUCTS.map((item) => {
-        if (item.type === option.name) {
-          this.sortedCards.push(item);
-        }
-      });
-      // this.test.map((item) => {
-      //   if (item.type === option.name) {
-      //     vm.sortedCards.push(item);
-      //   }
-      // });
+      vm.sortedCards = PRODUCTS.filter((item) => item.type === option.name);
     },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .desctop {
   width: 100%;
@@ -85,9 +76,11 @@ h2 {
   top: 150px;
   left: 25%;
   width: 100%;
+  max-width: 1200px;
   height: auto;
-  max-width: 900px;
   display: inline-flex;
   text-align: left;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 </style>

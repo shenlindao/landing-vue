@@ -1,6 +1,7 @@
 import FujimoQI from '@/assets/pics/fujimo-qi.jpg';
 import FujimoTON from '@/assets/pics/fujimo-ton.jpg';
 import FujimoKEN from '@/assets/pics/fujimo-ken.jpg';
+import FujimoPRIME from '@/assets/pics/fujimo-prime.jpg';
 
 const CATALOG = {
   cards: [
@@ -31,14 +32,15 @@ const CATALOG = {
       price: 199000,
       count: 5,
     },
-    // {
-    //   id: 4,
-    //   picture: '',
-    //   raiting: ,
-    //   model: '',
-    //   price: ,
-    //   count: ,
-    // },
+    {
+      id: 4,
+      picture: FujimoPRIME,
+      raiting: 5,
+      type: 'Массажная накидка',
+      model: 'FUJIMO PRIME',
+      price: 27900,
+      count: 10,
+    },
     // {
     //   id: 5,
     //   picture: '',

@@ -1,7 +1,7 @@
 <template>
   <div class="catalog-cards">
     <v-card
-      class="mx-auto my-12 catalog-card-filling"
+      class="mx-3 my-12 catalog-card-filling"
       max-width="270"
       elevation="4"
       outlined
