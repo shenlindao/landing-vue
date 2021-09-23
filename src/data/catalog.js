@@ -4,6 +4,7 @@ import FUJIMO_KEN from '@/assets/pics/fujimo-ken.jpg';
 import FUJIMO_PRIME from '@/assets/pics/fujimo-prime.jpg';
 import FUJIMO_KENKO from '@/assets/pics/fujimo-kenko.jpg';
 import FUJIMO_OKI from '@/assets/pics/fujimo-oki.jpg';
+import FUJIMO_LOTUS from '@/assets/pics/fujimo-lotus.jpg';
 
 const CATALOG = {
   cards: [
@@ -61,14 +62,15 @@ const CATALOG = {
       price: 21900,
       count: 5,
     },
-    // {
-    //   id: 7,
-    //   picture: '',
-    //   raiting: ,
-    //   model: '',
-    //   price: ,
-    //   count: ,
-    // },
+    {
+      id: 7,
+      picture: FUJIMO_LOTUS,
+      raiting: 5,
+      type: 'Массажная накидка',
+      model: 'FUJIMO LOTUS',
+      price: 18900,
+      count: 4,
+    },
   ],
 };
 

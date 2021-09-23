@@ -10,16 +10,16 @@
       <div class="range-slider">
         <input
           type="range"
-          min="0"
-          max="300000"
+          :min="0"
+          :max="300000"
           step="1000"
           v-model.number="minPrice"
           @change="changeRangeSliders($event)"
         />
         <input
           type="range"
-          min="0"
-          max="300000"
+          :min="0"
+          :max="300000"
           step="1000"
           v-model.number="maxPrice"
           @change="changeRangeSliders($event)"
@@ -71,6 +71,9 @@ export default {
     },
     changeRangeSliders() {
       this.$emit('changedByRangeSliders');
+    },
+    searchingText() {
+      this.$emit('searchText');
     },
   },
 };

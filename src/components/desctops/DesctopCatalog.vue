@@ -25,6 +25,9 @@ export default {
     CatalogCards,
     CatalogFilter,
   },
+  created() {
+    this.$store.dispatch('loadMassive', 1000);
+  },
   data() {
     return {
       options: [
@@ -56,7 +59,7 @@ export default {
         this.maxPrice = this.minPrice;
         this.minPrice = tmp;
       }
-      // this.setCategory();
+      this.setCategory();
     },
     setCategory(option) {
       const vm = this;
@@ -76,6 +79,7 @@ export default {
 .desctop {
   width: 100%;
   height: 100%;
+  min-height: 100vh;
   top: 0;
   background-color: #ffffff;
   background-size: cover;
@@ -83,16 +87,17 @@ export default {
 }
 h2 {
   margin-top: 80px;
+  margin-bottom: 20px;
   font-size: 22pt;
   color: black;
 }
 .catalog-content {
   width: 100%;
-  margin-bottom: 150px;
+  margin-bottom: 100px;
   display: inline-flex;
 }
 .catalog-filter {
-  top: 48px;
+  top: 18px;
   width: 100%;
   height: fit-content;
   text-align: left;
