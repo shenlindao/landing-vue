@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto catalog-filter" max-width="300" tile>
+  <v-card class="mx-5 catalog-filter" max-width="300" tile>
     <v-subheader>Категории</v-subheader>
     <v-select
       :selected="selected"
@@ -14,7 +14,7 @@
           max="300000"
           step="1000"
           v-model.number="minPrice"
-          @change="setRangeSliders"
+          @change="changeRangeSliders($event)"
         />
         <input
           type="range"
@@ -22,7 +22,7 @@
           max="300000"
           step="1000"
           v-model.number="maxPrice"
-          @change="setRangeSliders"
+          @change="changeRangeSliders($event)"
         />
       </div>
       <div class="range-values">
@@ -37,15 +37,12 @@ import VSelect from './vSelect.vue';
 
 export default {
   name: 'CatalogFilter',
-  emits: ['sortedByCategories'],
+  emits: [
+    'sortedByCategories',
+    'changedByRangeSliders',
+  ],
   components: {
     VSelect,
-  },
-  data() {
-    return {
-      minPrice: 0,
-      maxPrice: 300000,
-    };
   },
   props: {
     options: {
@@ -58,32 +55,28 @@ export default {
       type: String,
       default: '',
     },
+    minPrice: {
+      type: Number,
+      default: 0,
+    },
+    maxPrice: {
+      type: Number,
+      default: 300000,
+    },
+    CatalogData: Object,
   },
   methods: {
     sortByCategories(option) {
       this.$emit('sortedByCategories', option);
     },
-    setRangeSliders() {
-      if (this.minPrice > this.maxPrice) {
-        const tmp = this.maxPrice;
-        this.maxPrice = this.minPrice;
-        this.minPrice = tmp;
-      }
+    changeRangeSliders() {
+      this.$emit('changedByRangeSliders');
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
-.catalog-filter {
-  position: absolute;
-  top: 200px;
-  left: 1%;
-  width: 100%;
-  height: auto;
-  text-align: left;
-  padding: 10px;
-}
 .range-slider {
   margin: auto 16px;
   text-align: center;

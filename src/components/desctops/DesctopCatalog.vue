@@ -1,12 +1,17 @@
 <template>
   <div class="desctop">
     <h2>Каталог</h2>
-    <catalog-cards :cards="filteredProducts" />
-    <catalog-filter
-      :selected="selected"
-      :options="options"
-      @sortedByCategories="setCategory($event)"
-    />
+    <div class="catalog-content">
+      <catalog-filter
+        :selected="selected"
+        :options="options"
+        :minPrice="minPrice"
+        :maxPrice="maxPrice"
+        @sortedByCategories="setCategory($event)"
+        @changedByRangeSliders="setRangeSliders()"
+      />
+      <catalog-cards :cards="filteredProducts" />
+    </div>
   </div>
 </template>
 
@@ -29,6 +34,8 @@ export default {
       ],
       selected: 'Все',
       sortedCards: [],
+      minPrice: 0,
+      maxPrice: 300000,
     };
   },
   computed: {
@@ -43,12 +50,23 @@ export default {
     CatalogData: Object,
   },
   methods: {
+    setRangeSliders() {
+      if (this.minPrice > this.maxPrice) {
+        const tmp = this.maxPrice;
+        this.maxPrice = this.minPrice;
+        this.minPrice = tmp;
+      }
+      // this.setCategory();
+    },
     setCategory(option) {
       const vm = this;
-      this.selected = option.name;
-      this.sortedCards = [];
       const PRODUCTS = this.CatalogData.cards;
-      vm.sortedCards = PRODUCTS.filter((item) => item.type === option.name);
+      vm.sortedCards = PRODUCTS.filter((item) => item.price
+      >= vm.minPrice && item.price <= vm.maxPrice);
+      if (option) {
+        vm.sortedCards = PRODUCTS.filter((item) => item.type === option.name);
+        this.selected = option.name;
+      }
     },
   },
 };
@@ -57,26 +75,31 @@ export default {
 <style scoped lang="scss">
 .desctop {
   width: 100%;
-  height: 750px;
+  height: 100%;
   top: 0;
   background-color: #ffffff;
   background-size: cover;
   position: relative;
 }
 h2 {
-  position: absolute;
-  left: 50%;
-  top: 15%;
-  transform: translate(-50%, 0);
+  margin-top: 80px;
   font-size: 22pt;
-  color: rgb(0, 0, 0);
+  color: black;
+}
+.catalog-content {
+  width: 100%;
+  margin-bottom: 150px;
+  display: inline-flex;
+}
+.catalog-filter {
+  top: 48px;
+  width: 100%;
+  height: fit-content;
+  text-align: left;
+  padding: 10px;
 }
 .catalog-cards {
-  position: absolute;
-  top: 150px;
-  left: 25%;
   width: 100%;
-  max-width: 1200px;
   height: auto;
   display: inline-flex;
   text-align: left;
