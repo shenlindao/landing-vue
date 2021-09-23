@@ -54,14 +54,24 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppButton from './AppButton.vue';
 
 export default {
   components: { AppButton },
   name: 'CatalogCards',
-  props: {
-    cards: Array,
+  computed: {
+    ...mapGetters({
+      getCatalog: 'catalogVuex/getCatalog',
+      getProductCount: 'catalogVuex/getProductCount',
+    }),
+    cards() {
+      return this.getCatalog;
+    },
   },
+  // props: {
+  //   cards: Array,
+  // },
 };
 </script>
 

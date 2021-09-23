@@ -1,20 +1,14 @@
 <template>
-    <desctop-catalog :CatalogData="CatalogData" />
+    <desctop-catalog/>
 </template>
 
 <script>
 import DesctopCatalog from '../components/desctops/DesctopCatalog.vue';
-import CatalogData from '../data/catalog';
 
 export default {
   name: 'Catalog',
   components: {
     DesctopCatalog,
-  },
-  data() {
-    return {
-      CatalogData,
-    };
   },
 };
 </script>

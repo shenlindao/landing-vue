@@ -10,7 +10,7 @@
         @sortedByCategories="setCategory($event)"
         @changedByRangeSliders="setRangeSliders()"
       />
-      <catalog-cards :cards="filteredProducts" />
+      <catalog-cards/>
     </div>
   </div>
 </template>
@@ -24,9 +24,6 @@ export default {
   components: {
     CatalogCards,
     CatalogFilter,
-  },
-  created() {
-    this.$store.dispatch('loadMassive', 1000);
   },
   data() {
     return {
@@ -42,16 +39,19 @@ export default {
     };
   },
   computed: {
-    filteredProducts() {
-      if (this.sortedCards.length) {
-        return this.sortedCards;
-      }
-      return this.CatalogData.cards;
-    },
+    // filteredProducts() {
+    //   if (this.sortedCards.length) {
+    //     return this.sortedCards;
+    //   }
+    //   return this.CatalogData.cards;
+    // },
+    // CatalogData() {
+    //   return this.$store.getters.getCatalog;
+    // },
   },
-  props: {
-    CatalogData: Object,
-  },
+  // props: {
+  //   CatalogData: Object,
+  // },
   methods: {
     setRangeSliders() {
       if (this.minPrice > this.maxPrice) {

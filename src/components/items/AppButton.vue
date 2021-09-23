@@ -10,7 +10,7 @@
         <template v-slot:default="dialog">
           <v-card>
             <v-toolbar
-              ><div class="zag">Отправить заявку</div>
+              ><div class="zag">Заказать</div>
               <v-btn icon @click="dialog.value = false">
                 <v-icon>mdi-close</v-icon>
               </v-btn>
@@ -89,6 +89,14 @@ export default {
       agreement: false,
     },
   }),
+  // computed: {
+  //   ...mapGetters({
+  //     getProductName: 'catalogVuex/getProductName',
+  //   }),
+  //   productName() {
+  //     return this.getProductName;
+  //   },
+  // },
   methods: {
     // postMessage() {
     //   console.log(`Имя: ${this.form.personName}`);
