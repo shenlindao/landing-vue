@@ -2,14 +2,7 @@
   <div class="desctop">
     <h2>Каталог</h2>
     <div class="catalog-content">
-      <catalog-filter
-        :selected="selected"
-        :options="options"
-        :minPrice="minPrice"
-        :maxPrice="maxPrice"
-        @sortedByCategories="setCategory($event)"
-        @changedByRangeSliders="setRangeSliders()"
-      />
+      <catalog-filter/>
       <catalog-cards/>
     </div>
   </div>
@@ -24,53 +17,6 @@ export default {
   components: {
     CatalogCards,
     CatalogFilter,
-  },
-  data() {
-    return {
-      options: [
-        { name: 'Все', value: 'ALL' },
-        { name: 'Массажное кресло', value: 'massage-chair' },
-        { name: 'Массажная накидка', value: 'massage-cape' },
-      ],
-      selected: 'Все',
-      sortedCards: [],
-      minPrice: 0,
-      maxPrice: 300000,
-    };
-  },
-  computed: {
-    // filteredProducts() {
-    //   if (this.sortedCards.length) {
-    //     return this.sortedCards;
-    //   }
-    //   return this.CatalogData.cards;
-    // },
-    // CatalogData() {
-    //   return this.$store.getters.getCatalog;
-    // },
-  },
-  // props: {
-  //   CatalogData: Object,
-  // },
-  methods: {
-    setRangeSliders() {
-      if (this.minPrice > this.maxPrice) {
-        const tmp = this.maxPrice;
-        this.maxPrice = this.minPrice;
-        this.minPrice = tmp;
-      }
-      this.setCategory();
-    },
-    setCategory(option) {
-      const vm = this;
-      const PRODUCTS = this.CatalogData.cards;
-      vm.sortedCards = PRODUCTS.filter((item) => item.price
-      >= vm.minPrice && item.price <= vm.maxPrice);
-      if (option) {
-        vm.sortedCards = PRODUCTS.filter((item) => item.type === option.name);
-        this.selected = option.name;
-      }
-    },
   },
 };
 </script>

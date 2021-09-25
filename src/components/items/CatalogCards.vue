@@ -7,7 +7,7 @@
       outlined
       shaped
       tile
-      v-for="card in cards"
+      v-for="card in filteredCards"
       :key="card.id"
     >
       <!-- Изображение -->
@@ -18,7 +18,8 @@
         <v-row align="center" class="mx-0">
           <v-rating
             :value="card.raiting"
-            color="amber"
+            background-color="orange lighten-3"
+            color="orange"
             dense
             half-increments
             readonly
@@ -60,17 +61,27 @@ import AppButton from './AppButton.vue';
 export default {
   components: { AppButton },
   name: 'CatalogCards',
+  // computed: {
+  //   ...mapGetters({
+  //     getCatalog: 'catalogVuex/getCatalog',
+  //   }),
+  //   cards() {
+  //     return this.getCatalog;
+  //   },
+  // },
   computed: {
     ...mapGetters({
-      getCatalog: 'catalogVuex/getCatalog',
-      getProductCount: 'catalogVuex/getProductCount',
+      allCards: 'catalogVuex/allCards',
+      getFilteredCard: 'catalogVuex/getFilteredCard',
     }),
-    cards() {
-      return this.getCatalog;
+    filteredCards() {
+      return (this.getFilteredCard || this.allCards);
     },
   },
-  // props: {
-  //   cards: Array,
+  // computed: {
+  //   filteredCards() {
+  //     return (this.$store.getters.getFilteredCard || this.$store.getters.allCards);
+  //   },
   // },
 };
 </script>

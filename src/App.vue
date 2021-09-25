@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+// import { mapActions } from 'vuex';
 import LayOut from './components/layout/Layout.vue';
 
 export default {
@@ -17,14 +17,14 @@ export default {
   components: {
     LayOut,
   },
-  methods: {
-    ...mapActions({
-      loadCatalog: 'catalogVuex/loadCatalog',
-    }),
-  },
-  created() {
-    this.loadCatalog(1000);
-  },
+  // methods: {
+  //   ...mapActions({
+  //     loadCatalog: 'catalogVuex/loadCatalog',
+  //   }),
+  // },
+  // created() {
+  //   this.loadCatalog(1000);
+  // },
 };
 </script>
 
