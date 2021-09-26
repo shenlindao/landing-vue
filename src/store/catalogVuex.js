@@ -1,5 +1,5 @@
+import _ from 'lodash';
 import CatalogData from '../data/catalog';
-
 // const removerAcentos = (string) => {
 //   const mapaAcentosHex = {
 //     a: /[\xE0-\xE6]/g,
@@ -27,11 +27,22 @@ export default {
   getters: {
     allCards: (state) => state.cards,
 
-    getCard: (state) => state.card,
+    // getCard: (state) => state.card,
 
-    getSearchWord: (state) => state.searchWord,
+    // getSearchWord: (state) => state.searchWord,
 
     getFilteredCard: (state) => state.filteredCards,
+
+    getFilteredByPriceMin: (state) => state.filteredByPriceMin,
+
+    getFilteredByPriceMax: (state) => state.filteredByPriceMax,
+
+    getMinPrice: (state) => (state.cards.length
+      ? Number(_.minBy(state.cards, 'price').price)
+      : 0),
+    getMaxPrice: (state) => (state.cards.length
+      ? Number(_.maxBy(state.cards, 'price').price)
+      : 0),
   },
   mutations: {
     SET_CARD(state, card) {
@@ -44,7 +55,8 @@ export default {
       } else {
         state.searchWord = word.trim().toLowerCase();
         state.filteredCards = state.cards.filter((card) => card.type.toLowerCase().includes(word)
-          || card.model.toLowerCase().includes(word));
+          || card.model.toLowerCase().includes(word)
+          || String(card.price).includes(word));
       }
     },
   },

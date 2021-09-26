@@ -61,28 +61,17 @@ import AppButton from './AppButton.vue';
 export default {
   components: { AppButton },
   name: 'CatalogCards',
-  // computed: {
-  //   ...mapGetters({
-  //     getCatalog: 'catalogVuex/getCatalog',
-  //   }),
-  //   cards() {
-  //     return this.getCatalog;
-  //   },
-  // },
   computed: {
     ...mapGetters({
       allCards: 'catalogVuex/allCards',
       getFilteredCard: 'catalogVuex/getFilteredCard',
     }),
     filteredCards() {
-      return (this.getFilteredCard || this.allCards);
+      return (this.getFilteredCard
+        || this.allCards
+      );
     },
   },
-  // computed: {
-  //   filteredCards() {
-  //     return (this.$store.getters.getFilteredCard || this.$store.getters.allCards);
-  //   },
-  // },
 };
 </script>
 
