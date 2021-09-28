@@ -65,10 +65,14 @@ export default {
     ...mapGetters({
       allCards: 'catalogVuex/allCards',
       getFilteredCard: 'catalogVuex/getFilteredCard',
+      getFilteredByPriceMin: 'catalogVuex/getFilteredByPriceMin',
+      getFilteredByPriceMax: 'catalogVuex/getFilteredByPriceMax',
     }),
     filteredCards() {
       return (this.getFilteredCard
         || this.allCards
+        || this.getFilteredByPriceMin
+        || this.getFilteredByPriceMax
       );
     },
   },
@@ -93,5 +97,8 @@ export default {
 }
 .card-avalible {
   margin-bottom: 10px;
+}
+.catalog-card-filling{
+  max-height: 475px;
 }
 </style>

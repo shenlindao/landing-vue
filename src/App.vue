@@ -37,4 +37,18 @@ export default {
   color: #2c3e50;
   margin-top: 0;
 }
+.v-input--selection-controls {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+.v-messages {
+    min-height: 0 !important;
+}
+label.v-label.theme--light {
+    font-size: 13px;
+    color: #1f1f1f;
+}
+.theme--light.v-subheader {
+    color: unset;
+}
 </style>

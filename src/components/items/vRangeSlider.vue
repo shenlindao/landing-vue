@@ -3,49 +3,59 @@
       <div class="range-slider">
         <v-subheader>Цена</v-subheader>
         <input
+          :min="barMinValue"
+          :max="barMaxValue"
           type="range"
           step="1000"
-          v-model.number="minPrice"
+          v-model.number="barMinValue"
         />
         <input
+          :min="barMinValue"
+          :max="barMaxValue"
           type="range"
           step="1000"
-          v-model.number="maxPrice"
+          v-model.number="barMaxValue"
         />
       </div>
       <div class="range-values">
-        <p>Min: {{minPrice}}</p>
-        <p>Max: {{maxPrice}}</p>
+        <p>Min: {{barMinValue}}</p>
+        <p>Max: {{barMaxValue}}</p>
       </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
 
 export default {
   name: 'vRangeSlider',
   computed: {
-    ...mapGetters('catalogVuex', {
-      minPriceAll: 'minPrice',
-      maxPriceAll: 'maxPrice',
-    }),
-    // minPrice: {
-    //   get() {
-    //     return this.$store.state.minPrice;
-    //   },
-    //   set(value) {
-    //     this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MIN', value);
-    //   },
+    // ...mapGetters({
+    //   getMinPrice: 'catalogVuex/getMinPrice',
+    //   getMaxPrice: 'catalogVuex/getMaxPrice',
+    // }),
+    // vMinValue() {
+    //   return this.getMinPrice;
     // },
-    // maxPrice: {
-    //   get() {
-    //     return this.$store.state.maxPrice;
-    //   },
-    //   set(value) {
-    //     this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MAX', value);
-    //   },
+    // vMaxValue() {
+    //   return this.getMaxPrice;
     // },
+    barMinValue: {
+      get() {
+        return this.$store.state.minPrice;
+      },
+      set(value) {
+        this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MIN', value);
+      },
+    },
+    barMaxValue: {
+      get() {
+        return this.$store.state.maxPrice;
+      },
+      set(value) {
+        this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MAX', value);
+      },
+    },
   },
 };
 </script>

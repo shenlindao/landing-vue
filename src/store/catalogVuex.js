@@ -1,20 +1,6 @@
 import _ from 'lodash';
 import CatalogData from '../data/catalog';
-// const removerAcentos = (string) => {
-//   const mapaAcentosHex = {
-//     a: /[\xE0-\xE6]/g,
-//     e: /[\xE8-\xEB]/g,
-//     i: /[\xEC-\xEF]/g,
-//     o: /[\xF2-\xF6]/g,
-//     u: /[\xF9-\xFC]/g,
-//     c: /\xE7/g,
-//   };
-//   for (const letra in mapaAcentosHex) {
-//     const expressaoRegular = mapaAcentosHex[letra];
-//     string = string.replace(expressaoRegular, letra);
-//   }
-//   return string;
-// };
+import massageData from '../data/massage';
 
 export default {
   namespaced: true,
@@ -23,9 +9,18 @@ export default {
     card: {},
     searchWord: null,
     filteredCards: null,
+    massages: massageData.massages,
+    // minPrice: CatalogData.cards.length
+    //   ? Number(_.minBy(CatalogData.cards, 'price').price)
+    //   : 0,
+    // maxPrice: CatalogData.cards.length
+    //   ? Number(_.maxBy(CatalogData.cards, 'price').price)
+    //   : 0,
   },
   getters: {
     allCards: (state) => state.cards,
+
+    getMassages: (state) => state.massages,
 
     // getCard: (state) => state.card,
 
@@ -59,6 +54,12 @@ export default {
           || String(card.price).includes(word));
       }
     },
+    // FILTERED_BY_PRICE_MIN(state, price) {
+    //   state.filteredByPriceMin = state.cards.filter((card) => card.price >= price);
+    // },
+    // FILTERED_BY_PRICE_MAX(state, price) {
+    //   state.filteredByPriceMax = state.cards.filter((card) => card.price <= price);
+    // },
   },
   actions: {
     SET_CARD({ commit }, card) {
@@ -67,5 +68,11 @@ export default {
     FILTERED_CARDS({ commit }, word) {
       commit('FILTERED_CARDS', word);
     },
+    // FILTERED_BY_PRICE_MIN({ commit }, price) {
+    //   commit('FILTERED_BY_PRICE_MIN', price);
+    // },
+    // FILTERED_BY_PRICE_MAX({ commit }, price) {
+    //   commit('FILTERED_BY_PRICE_MAX', price);
+    // },
   },
 };

@@ -1,47 +1,39 @@
 <template>
   <v-card class="mx-5 catalog-filter" max-width="300" tile>
-    <v-text-field
-      label="Поиск"
-      hide-details="auto"
-      v-model="searchWord"
-    ></v-text-field>
-    <v-subheader>Фильтрация по цене:</v-subheader>
-    <MultiRangeSlider
-    :min="barMinValue"
-    :max="barMaxValue"
-    :ruler="false"
-    :label="true"
-    :minValue="barMinValue"
-    :maxValue="barMaxValue"
-    />
-    <div class="range-values">
-      <p>Min: {{barMinValue}}</p>
-      <p>Max: {{barMaxValue}}</p>
-    </div>
+    <v-container fluid>
+      <v-text-field
+        label="Поиск"
+        hide-details="auto"
+        v-model="searchWord"
+      ></v-text-field>
+    </v-container>
+    <v-container fluid>
+      <v-subheader>Фильтрация по цене:</v-subheader>
+      <MultiRangeSlider
+      :min="barMinValue"
+      :max="barMaxValue"
+      :ruler="false"
+      :label="true"
+      :step="1000"
+      :minValue="barMinValue"
+      :maxValue="barMaxValue"
+      />
+    </v-container>
+    <filter-massage/>
   </v-card>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import MultiRangeSlider from 'multi-range-slider-vue';
+import FilterMassage from './FilterMassage.vue';
 
 export default {
   name: 'CatalogFilter',
   components: {
     MultiRangeSlider,
+    FilterMassage,
   },
-  // data() {
-  //   return {
-  //     barMinValue: 0,
-  //     barMaxValue: 300000,
-  //   };
-  // },
-  // methods: {
-  //   UpdateValues(e) {
-  //     this.barMinValue = e.minValue;
-  //     this.barMaxValue = e.maxValue;
-  //   },
-  // },
   computed: {
     ...mapGetters({
       getMinPrice: 'catalogVuex/getMinPrice',
@@ -65,7 +57,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .range-slider {
   margin: auto 16px;
   text-align: center;

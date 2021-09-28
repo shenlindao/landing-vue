@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import FUJIMO_QI from '@/assets/pics/fujimo-qi.jpg';
 import FUJIMO_TON from '@/assets/pics/fujimo-ton.jpg';
 import FUJIMO_KEN from '@/assets/pics/fujimo-ken.jpg';
@@ -5,6 +7,12 @@ import FUJIMO_PRIME from '@/assets/pics/fujimo-prime.jpg';
 import FUJIMO_KENKO from '@/assets/pics/fujimo-kenko.jpg';
 import FUJIMO_OKI from '@/assets/pics/fujimo-oki.jpg';
 import FUJIMO_LOTUS from '@/assets/pics/fujimo-lotus.jpg';
+
+import massage from './massage';
+
+const massageFujimoQi = _.filter(massage, (item) => item.id === 1
+  || item.id === 2
+  || item.id === 4);
 
 const CATALOG = {
   cards: [
@@ -16,6 +24,8 @@ const CATALOG = {
       model: 'FUJIMO TON',
       price: 250000,
       count: 9,
+      massage: massage.massages,
+      title: 'Разминающий роликовый',
     },
     {
       id: 2,
@@ -25,6 +35,7 @@ const CATALOG = {
       model: 'FUJIMO QI',
       price: 215000,
       count: 12,
+      massage: massageFujimoQi,
     },
     {
       id: 3,
