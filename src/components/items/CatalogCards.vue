@@ -11,7 +11,12 @@
       :key="card.id"
     >
       <!-- Изображение -->
-      <v-img height="250" :src="`${card.picture}`"> </v-img>
+
+      <v-img height="250"
+      :src="`${card.picture}`"
+      :class="{ 'catalog-img-link': card.router }"
+      @click="$router.push({ name: card.router })"
+      />
 
       <!-- Рейтинг -->
       <v-card-text>
@@ -100,5 +105,8 @@ export default {
 }
 .catalog-card-filling{
   max-height: 475px;
+}
+.catalog-img-link {
+  cursor: pointer;
 }
 </style>

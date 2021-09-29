@@ -39,5 +39,10 @@ export default new VueRouter({
       name: 'notfound',
       component: notFound,
     },
+    {
+      path: '/fujimo-ton',
+      name: 'fujimo-ton',
+      component: Home, // в дальнейшем заменить
+    },
   ],
 });

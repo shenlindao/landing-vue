@@ -9,35 +9,27 @@ export default {
     card: {},
     searchWord: null,
     filteredCards: null,
+    minPrice: CatalogData.cards.length
+      ? Number(_.minBy(CatalogData.cards, 'price').price)
+      : 0,
+    maxPrice: CatalogData.cards.length
+      ? Number(_.maxBy(CatalogData.cards, 'price').price)
+      : 0,
     massages: massageData.massages,
-    // minPrice: CatalogData.cards.length
-    //   ? Number(_.minBy(CatalogData.cards, 'price').price)
-    //   : 0,
-    // maxPrice: CatalogData.cards.length
-    //   ? Number(_.maxBy(CatalogData.cards, 'price').price)
-    //   : 0,
+    cardsMassages: CatalogData.cards.massage,
+    findMassage: [],
   },
   getters: {
     allCards: (state) => state.cards,
-
-    getMassages: (state) => state.massages,
-
-    // getCard: (state) => state.card,
-
-    // getSearchWord: (state) => state.searchWord,
-
+    getCard: (state) => state.card,
+    getSearchWord: (state) => state.searchWord,
     getFilteredCard: (state) => state.filteredCards,
-
     getFilteredByPriceMin: (state) => state.filteredByPriceMin,
-
     getFilteredByPriceMax: (state) => state.filteredByPriceMax,
-
-    getMinPrice: (state) => (state.cards.length
-      ? Number(_.minBy(state.cards, 'price').price)
-      : 0),
-    getMaxPrice: (state) => (state.cards.length
-      ? Number(_.maxBy(state.cards, 'price').price)
-      : 0),
+    getMinPrice: (state) => state.minPrice,
+    getMaxPrice: (state) => state.maxPrice,
+    getMassages: (state) => state.massages,
+    getFindMassage: (state) => state.findMassage,
   },
   mutations: {
     SET_CARD(state, card) {
@@ -52,6 +44,19 @@ export default {
         state.filteredCards = state.cards.filter((card) => card.type.toLowerCase().includes(word)
           || card.model.toLowerCase().includes(word)
           || String(card.price).includes(word));
+      }
+    },
+    FILTERED_BY_MSAASGE(state, payload) {
+      if (!(payload)) {
+        state.findMassage = [];
+        console.log(payload);
+        state.filteredCards = null;
+      } else {
+        state.findMassage.push(payload);
+        // state.filteredCards = state.cards.filter((card) => state
+        // .findMassage.indexOf(card) !== -1);
+        state.filteredCards = state.cards.filter((card) => state.findMassage
+          .findIndex((vid) => vid === card.title) !== -1);
       }
     },
     // FILTERED_BY_PRICE_MIN(state, price) {
@@ -74,5 +79,8 @@ export default {
     // FILTERED_BY_PRICE_MAX({ commit }, price) {
     //   commit('FILTERED_BY_PRICE_MAX', price);
     // },
+    FILTERED_BY_MSAASGE({ commit }, payload) {
+      commit('FILTERED_BY_MSAASGE', payload);
+    },
   },
 };

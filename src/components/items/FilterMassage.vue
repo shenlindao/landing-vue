@@ -2,12 +2,14 @@
   <v-container fluid>
       <v-subheader>Фильтрация по виду массажа:</v-subheader>
         <v-checkbox
-        v-for="massage in massages"
+        v-for="massage in massages.slice(0,-1)"
         :key="massage.id"
         :label="massage.title"
         :value="massage.title"
         color="red"
+        v-model="findMassage"
         ></v-checkbox>
+        <p>{{thisMassage}}</p>
   </v-container>
 </template>
 
@@ -19,17 +21,21 @@ export default {
   computed: {
     ...mapGetters({
       getMassages: 'catalogVuex/getMassages',
+      getFindMassage: 'catalogVuex/getFindMassage',
     }),
-    // massages() {
-    //   return (this.getMassages);
-    // },
-    massages: {
+    massages() {
+      return (this.getMassages);
+    },
+    findMassage: {
       get() {
-        return (this.getMassages);
+        return this.$store.state.findMassage;
       },
-      set(value) {
-        this.$store.dispatch('catalogVuex/FILTERED_CARDS', value);
+      set(payload) {
+        this.$store.dispatch('catalogVuex/FILTERED_BY_MSAASGE', payload);
       },
+    },
+    thisMassage() {
+      return (this.getFindMassage);
     },
   },
 };

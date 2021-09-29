@@ -10,9 +10,10 @@ import FUJIMO_LOTUS from '@/assets/pics/fujimo-lotus.jpg';
 
 import massage from './massage';
 
-const massageFujimoQi = _.filter(massage, (item) => item.id === 1
-  || item.id === 2
-  || item.id === 4);
+export const massageFujimoQi = _.filter(massage.massages, (item) => item.id === 1
+  || item.id === 2);
+// console.log(massage.massages);
+// console.log(massageFujimoQi);
 
 const CATALOG = {
   cards: [
@@ -24,8 +25,8 @@ const CATALOG = {
       model: 'FUJIMO TON',
       price: 250000,
       count: 9,
-      massage: massage.massages,
       title: 'Разминающий роликовый',
+      router: 'fujimo-ton',
     },
     {
       id: 2,
@@ -36,6 +37,7 @@ const CATALOG = {
       price: 215000,
       count: 12,
       massage: massageFujimoQi,
+      router: '',
     },
     {
       id: 3,
@@ -45,6 +47,8 @@ const CATALOG = {
       model: 'FUJIMO KEN',
       price: 199000,
       count: 5,
+      router: '',
+      massage: massage.massages,
     },
     {
       id: 4,
@@ -54,6 +58,7 @@ const CATALOG = {
       model: 'FUJIMO PRIME',
       price: 27900,
       count: 10,
+      router: '',
     },
     {
       id: 5,
@@ -63,6 +68,7 @@ const CATALOG = {
       model: 'FUJIMO KENKO',
       price: 18900,
       count: 14,
+      router: '',
     },
     {
       id: 6,
@@ -72,6 +78,7 @@ const CATALOG = {
       model: 'FUJIMO OKI',
       price: 21900,
       count: 5,
+      router: '',
     },
     {
       id: 7,
@@ -81,6 +88,7 @@ const CATALOG = {
       model: 'FUJIMO LOTUS',
       price: 18900,
       count: 4,
+      router: '',
     },
   ],
 };
