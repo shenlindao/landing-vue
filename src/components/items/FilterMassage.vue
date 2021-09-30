@@ -28,10 +28,10 @@ export default {
     },
     findMassage: {
       get() {
-        return this.$store.state.findMassage;
+        return this.$store.getters.getFindMassage;
       },
       set(payload) {
-        this.$store.dispatch('catalogVuex/FILTERED_BY_MSAASGE', payload);
+        this.$store.dispatch('catalogVuex/FILTERED_BY_MASSAGE', payload);
       },
     },
     thisMassage() {
@@ -41,5 +41,5 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 </style>

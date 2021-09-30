@@ -30,8 +30,6 @@ export default {
     getCard: (state) => state.card,
     getSearchWord: (state) => state.searchWord,
     getFilteredCard: (state) => state.filteredCards,
-    getFilteredByPriceMin: (state) => state.filteredByPriceMin,
-    getFilteredByPriceMax: (state) => state.filteredByPriceMax,
     getMinPrice: (state) => state.minPrice,
     getMaxPrice: (state) => state.maxPrice,
     getMinPriceSearch: (state) => state.minPriceSearch,
@@ -64,7 +62,7 @@ export default {
       state.filteredCards = state.cards.filter((card) => card.price <= price
       && card.price >= state.minPriceSearch);
     },
-    FILTERED_BY_MSAASGE(state, payload) {
+    FILTERED_BY_MASSAGE(state, payload) {
       if (!(payload)) {
         state.findMassage = [];
         console.log(payload);
@@ -95,8 +93,8 @@ export default {
     FILTERED_BY_PRICE_MAX({ commit }, price) {
       commit('FILTERED_BY_PRICE_MAX', price);
     },
-    FILTERED_BY_MSAASGE({ commit }, payload) {
-      commit('FILTERED_BY_MSAASGE', payload);
+    FILTERED_BY_MASSAGE({ commit }, payload) {
+      commit('FILTERED_BY_MASSAGE', payload);
     },
   },
 };
