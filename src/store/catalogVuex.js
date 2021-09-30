@@ -15,6 +15,12 @@ export default {
     maxPrice: CatalogData.cards.length
       ? Number(_.maxBy(CatalogData.cards, 'price').price)
       : 0,
+    minPriceSearch: CatalogData.cards.length
+      ? Number(_.minBy(CatalogData.cards, 'price').price)
+      : 0,
+    maxPriceSearch: CatalogData.cards.length
+      ? Number(_.maxBy(CatalogData.cards, 'price').price)
+      : 0,
     massages: massageData.massages,
     cardsMassages: CatalogData.cards.massage,
     findMassage: [],
@@ -28,6 +34,8 @@ export default {
     getFilteredByPriceMax: (state) => state.filteredByPriceMax,
     getMinPrice: (state) => state.minPrice,
     getMaxPrice: (state) => state.maxPrice,
+    getMinPriceSearch: (state) => state.minPriceSearch,
+    getMaxPriceSearch: (state) => state.maxPriceSearch,
     getMassages: (state) => state.massages,
     getFindMassage: (state) => state.findMassage,
   },
@@ -35,7 +43,7 @@ export default {
     SET_CARD(state, card) {
       state.card = card;
     },
-    FILTERED_CARDS(state, word) {
+    FILTERED_CARDS_BY_SEARCH(state, word) {
       if (!(word) || word === '{}') {
         state.searchWord = null;
         state.filteredCards = null;
@@ -45,6 +53,16 @@ export default {
           || card.model.toLowerCase().includes(word)
           || String(card.price).includes(word));
       }
+    },
+    FILTERED_BY_PRICE_MIN(state, price) {
+      state.minPriceSearch = price;
+      state.filteredCards = state.cards.filter((card) => card.price >= price
+        && card.price <= state.maxPriceSearch);
+    },
+    FILTERED_BY_PRICE_MAX(state, price) {
+      state.maxPriceSearch = price;
+      state.filteredCards = state.cards.filter((card) => card.price <= price
+      && card.price >= state.minPriceSearch);
     },
     FILTERED_BY_MSAASGE(state, payload) {
       if (!(payload)) {
@@ -63,26 +81,20 @@ export default {
         });
       }
     },
-    // FILTERED_BY_PRICE_MIN(state, price) {
-    //   state.filteredByPriceMin = state.cards.filter((card) => card.price >= price);
-    // },
-    // FILTERED_BY_PRICE_MAX(state, price) {
-    //   state.filteredByPriceMax = state.cards.filter((card) => card.price <= price);
-    // },
   },
   actions: {
     SET_CARD({ commit }, card) {
       commit('SET_CARD', card);
     },
-    FILTERED_CARDS({ commit }, word) {
-      commit('FILTERED_CARDS', word);
+    FILTERED_CARDS_BY_SEARCH({ commit }, word) {
+      commit('FILTERED_CARDS_BY_SEARCH', word);
     },
-    // FILTERED_BY_PRICE_MIN({ commit }, price) {
-    //   commit('FILTERED_BY_PRICE_MIN', price);
-    // },
-    // FILTERED_BY_PRICE_MAX({ commit }, price) {
-    //   commit('FILTERED_BY_PRICE_MAX', price);
-    // },
+    FILTERED_BY_PRICE_MIN({ commit }, price) {
+      commit('FILTERED_BY_PRICE_MIN', price);
+    },
+    FILTERED_BY_PRICE_MAX({ commit }, price) {
+      commit('FILTERED_BY_PRICE_MAX', price);
+    },
     FILTERED_BY_MSAASGE({ commit }, payload) {
       commit('FILTERED_BY_MSAASGE', payload);
     },

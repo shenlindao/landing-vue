@@ -3,15 +3,15 @@
       <div class="range-slider">
         <v-subheader>Цена</v-subheader>
         <input
-          :min="barMinValue"
-          :max="barMaxValue"
+          :min="storeMinValue"
+          :max="storevMaxValue"
           type="range"
           step="1000"
           v-model.number="barMinValue"
         />
         <input
-          :min="barMinValue"
-          :max="barMaxValue"
+          :min="storeMinValue"
+          :max="storevMaxValue"
           type="range"
           step="1000"
           v-model.number="barMaxValue"
@@ -25,24 +25,26 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'vRangeSlider',
   computed: {
-    // ...mapGetters({
-    //   getMinPrice: 'catalogVuex/getMinPrice',
-    //   getMaxPrice: 'catalogVuex/getMaxPrice',
-    // }),
-    // vMinValue() {
-    //   return this.getMinPrice;
-    // },
-    // vMaxValue() {
-    //   return this.getMaxPrice;
-    // },
+    ...mapGetters({
+      getMinPrice: 'catalogVuex/getMinPriceSearch',
+      getMaxPrice: 'catalogVuex/getMaxPriceSearch',
+      minValue: 'catalogVuex/getMinPrice',
+      maxValue: 'catalogVuex/getMaxPrice',
+    }),
+    storeMinValue() {
+      return this.minValue;
+    },
+    storevMaxValue() {
+      return this.maxValue;
+    },
     barMinValue: {
       get() {
-        return this.$store.state.minPrice;
+        return this.getMinPrice;
       },
       set(value) {
         this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MIN', value);
@@ -50,7 +52,7 @@ export default {
     },
     barMaxValue: {
       get() {
-        return this.$store.state.maxPrice;
+        return this.getMaxPrice;
       },
       set(value) {
         this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MAX', value);
@@ -61,4 +63,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 </style>

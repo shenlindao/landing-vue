@@ -9,48 +9,41 @@
     </v-container>
     <v-container fluid>
       <v-subheader>Фильтрация по цене:</v-subheader>
-      <MultiRangeSlider
-      :min="barMinValue"
-      :max="barMaxValue"
-      :ruler="false"
-      :label="true"
-      :step="1000"
-      :minValue="barMinValue"
-      :maxValue="barMaxValue"
-      />
     </v-container>
+    <v-range-slider/>
     <filter-massage/>
   </v-card>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import MultiRangeSlider from 'multi-range-slider-vue';
+// import { mapGetters } from 'vuex';
+// import MultiRangeSlider from 'multi-range-slider-vue';
 import FilterMassage from './FilterMassage.vue';
+import VRangeSlider from './vRangeSlider.vue';
 
 export default {
   name: 'CatalogFilter',
   components: {
-    MultiRangeSlider,
     FilterMassage,
+    VRangeSlider,
   },
   computed: {
-    ...mapGetters({
-      getMinPrice: 'catalogVuex/getMinPrice',
-      getMaxPrice: 'catalogVuex/getMaxPrice',
-    }),
-    barMinValue() {
-      return this.getMinPrice;
-    },
-    barMaxValue() {
-      return this.getMaxPrice;
-    },
+    // ...mapGetters({
+    //   getMinPrice: 'catalogVuex/getMinPrice',
+    //   getMaxPrice: 'catalogVuex/getMaxPrice',
+    // }),
+    // barMinValue() {
+    //   return this.getMinPrice;
+    // },
+    // barMaxValue() {
+    //   return this.getMaxPrice;
+    // },
     searchWord: {
       get() {
         return this.$store.state.searchWord;
       },
       set(value) {
-        this.$store.dispatch('catalogVuex/FILTERED_CARDS', value);
+        this.$store.dispatch('catalogVuex/FILTERED_CARDS_BY_SEARCH', value);
       },
     },
   },
