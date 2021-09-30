@@ -53,10 +53,14 @@ export default {
         state.filteredCards = null;
       } else {
         state.findMassage.push(payload);
-        // state.filteredCards = state.cards.filter((card) => state
-        // .findMassage.indexOf(card) !== -1);
-        state.filteredCards = state.cards.filter((card) => state.findMassage
-          .findIndex((vid) => vid === card.title) !== -1);
+        state.filteredCards = state.cards.filter((card) => {
+          if (card.massage) {
+            const result = card.massage
+              .filter((i) => state.findMassage.includes(i.title));
+            return Boolean(result.length);
+          }
+          return false;
+        });
       }
     },
     // FILTERED_BY_PRICE_MIN(state, price) {

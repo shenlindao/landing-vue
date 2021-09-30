@@ -12,8 +12,6 @@ import massage from './massage';
 
 export const massageFujimoQi = _.filter(massage.massages, (item) => item.id === 1
   || item.id === 2);
-// console.log(massage.massages);
-// console.log(massageFujimoQi);
 
 const CATALOG = {
   cards: [
@@ -26,6 +24,7 @@ const CATALOG = {
       price: 250000,
       count: 9,
       title: 'Разминающий роликовый',
+      massage: massage.massages,
       router: 'fujimo-ton',
     },
     {
