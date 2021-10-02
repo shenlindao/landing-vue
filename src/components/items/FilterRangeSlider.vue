@@ -34,8 +34,6 @@ export default {
   name: 'FilterRangeSlider',
   computed: {
     ...mapGetters({
-      getMinPrice: 'catalogVuex/getMinPriceSearch',
-      getMaxPrice: 'catalogVuex/getMaxPriceSearch',
       minValue: 'catalogVuex/getMinPrice',
       maxValue: 'catalogVuex/getMaxPrice',
     }),
@@ -47,18 +45,24 @@ export default {
     },
     barMinValue: {
       get() {
-        return this.getMinPrice;
+        return this.$store.state.catalogVuex.filters.minPriceSearch;
       },
-      set(value) {
-        this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MIN', value);
+      set(minPriceSearch) {
+        this.$store.dispatch('catalogVuex/setFilters', {
+          ...this.$store.state.catalogVuex.filters,
+          minPriceSearch,
+        });
       },
     },
     barMaxValue: {
       get() {
-        return this.getMaxPrice;
+        return this.$store.state.catalogVuex.filters.maxPriceSearch;
       },
-      set(value) {
-        this.$store.dispatch('catalogVuex/FILTERED_BY_PRICE_MAX', value);
+      set(maxPriceSearch) {
+        this.$store.dispatch('catalogVuex/setFilters', {
+          ...this.$store.state.catalogVuex.filters,
+          maxPriceSearch,
+        });
       },
     },
   },

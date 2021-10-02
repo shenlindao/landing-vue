@@ -3,7 +3,7 @@
       <v-text-field
         label="Поиск"
         hide-details="auto"
-        v-model="searchWord"
+        v-model="word"
       ></v-text-field>
     </v-container>
 </template>
@@ -12,12 +12,16 @@
 export default {
   name: 'FilterSearch',
   computed: {
-    searchWord: {
+    word: {
       get() {
-        return this.$store.state.searchWord;
+        return this.$store.state.catalogVuex.filters.word;
       },
-      set(value) {
-        this.$store.dispatch('catalogVuex/FILTERED_CARDS_BY_SEARCH', value);
+      set(word) {
+        console.log('Payload', word);
+        this.$store.dispatch('catalogVuex/setFilters', {
+          ...this.$store.state.catalogVuex.filters,
+          word: word.trim().toLowerCase(),
+        });
       },
     },
   },

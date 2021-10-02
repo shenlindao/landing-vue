@@ -2,23 +2,47 @@ import _ from 'lodash';
 import CatalogData from '../data/catalog';
 import massageData from '../data/massage';
 
+const filterByWord = (cards, word) => {
+  if (word) {
+    return cards.filter((card) => card.type
+      .toLowerCase()
+      .includes(word)
+      || card.model.toLowerCase().includes(word)
+      || String(card.price).includes(word));
+  }
+  return cards;
+};
+
+// function filterCards(filters) {...}
+const filterCards = (filters) => {
+  let { cards } = CatalogData;
+  cards = filterByWord(cards, filters.word);
+
+  cards = cards.filter((card) => card.price >= filters.minPriceSearch
+  && card.price <= filters.maxPriceSearch);
+
+  return cards;
+};
+
 export default {
   namespaced: true,
   state: {
     cards: CatalogData.cards,
     card: {},
     searchWord: null,
-    filteredCards: null,
+    filters: {
+      word: null,
+      minPriceSearch: CatalogData.cards.length
+        ? Number(_.minBy(CatalogData.cards, 'price').price)
+        : 0,
+      maxPriceSearch: CatalogData.cards.length
+        ? Number(_.maxBy(CatalogData.cards, 'price').price)
+        : 0,
+    },
     minPrice: CatalogData.cards.length
       ? Number(_.minBy(CatalogData.cards, 'price').price)
       : 0,
     maxPrice: CatalogData.cards.length
-      ? Number(_.maxBy(CatalogData.cards, 'price').price)
-      : 0,
-    minPriceSearch: CatalogData.cards.length
-      ? Number(_.minBy(CatalogData.cards, 'price').price)
-      : 0,
-    maxPriceSearch: CatalogData.cards.length
       ? Number(_.maxBy(CatalogData.cards, 'price').price)
       : 0,
     massages: massageData.massages,
@@ -26,41 +50,15 @@ export default {
     findMassage: [],
   },
   getters: {
-    allCards: (state) => state.cards,
-    getCard: (state) => state.card,
-    getSearchWord: (state) => state.searchWord,
-    getFilteredCard: (state) => state.filteredCards,
     getMinPrice: (state) => state.minPrice,
     getMaxPrice: (state) => state.maxPrice,
-    getMinPriceSearch: (state) => state.minPriceSearch,
-    getMaxPriceSearch: (state) => state.maxPriceSearch,
     getMassages: (state) => state.massages,
     getFindMassage: (state) => state.findMassage,
   },
   mutations: {
-    SET_CARD(state, card) {
-      state.card = card;
-    },
-    FILTERED_CARDS_BY_SEARCH(state, word) {
-      if (!(word) || word === '{}') {
-        state.searchWord = null;
-        state.filteredCards = null;
-      } else {
-        state.searchWord = word.trim().toLowerCase();
-        state.filteredCards = state.cards.filter((card) => card.type.toLowerCase().includes(word)
-          || card.model.toLowerCase().includes(word)
-          || String(card.price).includes(word));
-      }
-    },
-    FILTERED_BY_PRICE_MIN(state, price) {
-      state.minPriceSearch = price;
-      state.filteredCards = state.cards.filter((card) => card.price >= price
-        && card.price <= state.maxPriceSearch);
-    },
-    FILTERED_BY_PRICE_MAX(state, price) {
-      state.maxPriceSearch = price;
-      state.filteredCards = state.cards.filter((card) => card.price <= price
-      && card.price >= state.minPriceSearch);
+    setFilters(state, newFilters) {
+      state.filters = newFilters;
+      state.cards = filterCards(state.filters);
     },
     FILTERED_BY_MASSAGE(state, payload) {
       if (!(payload)) {
@@ -81,20 +79,9 @@ export default {
     },
   },
   actions: {
-    SET_CARD({ commit }, card) {
-      commit('SET_CARD', card);
-    },
-    FILTERED_CARDS_BY_SEARCH({ commit }, word) {
-      commit('FILTERED_CARDS_BY_SEARCH', word);
-    },
-    FILTERED_BY_PRICE_MIN({ commit }, price) {
-      commit('FILTERED_BY_PRICE_MIN', price);
-    },
-    FILTERED_BY_PRICE_MAX({ commit }, price) {
-      commit('FILTERED_BY_PRICE_MAX', price);
-    },
-    FILTERED_BY_MASSAGE({ commit }, payload) {
-      commit('FILTERED_BY_MASSAGE', payload);
+    setFilters({ commit }, newFilters) {
+      console.log(newFilters);
+      commit('setFilters', newFilters);
     },
   },
 };

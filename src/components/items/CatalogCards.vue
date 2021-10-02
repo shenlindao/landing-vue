@@ -7,7 +7,7 @@
       outlined
       shaped
       tile
-      v-for="card in filteredCards"
+      v-for="card in cards"
       :key="card.id"
     >
       <!-- Изображение -->
@@ -73,12 +73,8 @@ export default {
       getFilteredByPriceMin: 'catalogVuex/getFilteredByPriceMin',
       getFilteredByPriceMax: 'catalogVuex/getFilteredByPriceMax',
     }),
-    filteredCards() {
-      return (this.getFilteredCard
-        || this.allCards
-        || this.getFilteredByPriceMin
-        || this.getFilteredByPriceMax
-      );
+    cards() {
+      return this.$store.state.catalogVuex.cards;
     },
   },
 };
