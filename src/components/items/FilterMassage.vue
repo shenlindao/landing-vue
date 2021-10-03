@@ -9,7 +9,6 @@
         color="red"
         v-model="findMassage"
         ></v-checkbox>
-        <p>{{thisMassage}}</p>
   </v-container>
 </template>
 
@@ -21,7 +20,6 @@ export default {
   computed: {
     ...mapGetters({
       getMassages: 'catalogVuex/getMassages',
-      getFindMassage: 'catalogVuex/getFindMassage',
     }),
     massages() {
       return (this.getMassages);
@@ -31,11 +29,11 @@ export default {
         return this.$store.state.catalogVuex.filters.findMassage;
       },
       set(checkbox) {
-        console.log(checkbox);
+        this.$store.dispatch('catalogVuex/setFilters', {
+          ...this.$store.state.catalogVuex.filters,
+          checkbox,
+        });
       },
-    },
-    thisMassage() {
-      return (this.getFindMassage);
     },
   },
 };

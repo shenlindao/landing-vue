@@ -17,7 +17,6 @@ export default {
         return this.$store.state.catalogVuex.filters.word;
       },
       set(word) {
-        console.log('Payload', word);
         this.$store.dispatch('catalogVuex/setFilters', {
           ...this.$store.state.catalogVuex.filters,
           word: word.trim().toLowerCase(),
