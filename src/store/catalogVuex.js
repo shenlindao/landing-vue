@@ -16,13 +16,12 @@ const filterByWord = (cards, word) => {
 const filterByPrice = (cards, minPrice, maxPrice) => cards.filter((card) => card.price >= minPrice
   && card.price <= maxPrice);
 
-const filtersByMassage = (cards, checkbox) => {
-  if (checkbox) {
-    filters.findMassage.push(checkbox);
+const filtersByMassage = (cards, findMassage) => {
+  if (findMassage.length > 0) {
     cards.filter((card) => {
       if (card.massage) {
         const result = card.massage
-          .filter((i) => filters.findMassage.includes(i.title));
+          .filter((i) => findMassage.includes(i.title));
         return Boolean(result.length);
       }
       return false;

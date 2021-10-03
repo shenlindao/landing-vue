@@ -28,10 +28,10 @@ export default {
       get() {
         return this.$store.state.catalogVuex.filters.findMassage;
       },
-      set(checkbox) {
+      set(findMassage) {
         this.$store.dispatch('catalogVuex/setFilters', {
           ...this.$store.state.catalogVuex.filters,
-          checkbox,
+          findMassage,
         });
       },
     },
