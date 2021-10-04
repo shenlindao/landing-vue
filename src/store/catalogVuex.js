@@ -18,11 +18,10 @@ const filterByPrice = (cards, minPrice, maxPrice) => cards.filter((card) => card
 
 const filtersByMassage = (cards, findMassage) => {
   if (findMassage.length > 0) {
-    cards.filter((card) => {
+    return cards.filter((card) => {
       if (card.massage) {
-        const result = card.massage
-          .filter((i) => findMassage.includes(i.title));
-        return Boolean(result.length);
+        const result = card.massage.map((i) => i.title);
+        return findMassage.every((v) => result.includes(v));
       }
       return false;
     });
@@ -103,7 +102,7 @@ export default {
   },
   actions: {
     setFilters({ commit }, newFilters) {
-      console.log(newFilters);
+      // console.log(newFilters);
       commit('setFilters', newFilters);
     },
   },

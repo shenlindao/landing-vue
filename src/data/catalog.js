@@ -7,9 +7,9 @@ import FUJIMO_PRIME from '@/assets/pics/fujimo-prime.jpg';
 import FUJIMO_KENKO from '@/assets/pics/fujimo-kenko.jpg';
 import FUJIMO_OKI from '@/assets/pics/fujimo-oki.jpg';
 import FUJIMO_LOTUS from '@/assets/pics/fujimo-lotus.jpg';
-
 import massage from './massage';
 
+export const massageFull = massage.massages.slice(0, -1);
 export const massageFujimoQi = _.filter(massage.massages, (item) => item.id === 1
   || item.id === 2);
 
@@ -24,7 +24,7 @@ const CATALOG = {
       price: 250000,
       count: 9,
       title: 'Разминающий роликовый',
-      massage: massage.massages,
+      massage: massageFull,
       router: 'fujimo-ton',
     },
     {
@@ -47,7 +47,7 @@ const CATALOG = {
       price: 199000,
       count: 5,
       router: '',
-      massage: massage.massages,
+      massage: massageFull,
     },
     {
       id: 4,

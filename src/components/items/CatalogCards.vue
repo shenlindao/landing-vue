@@ -60,19 +60,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import AppButton from './AppButton.vue';
 
 export default {
   components: { AppButton },
   name: 'CatalogCards',
   computed: {
-    ...mapGetters({
-      allCards: 'catalogVuex/allCards',
-      getFilteredCard: 'catalogVuex/getFilteredCard',
-      getFilteredByPriceMin: 'catalogVuex/getFilteredByPriceMin',
-      getFilteredByPriceMax: 'catalogVuex/getFilteredByPriceMax',
-    }),
     cards() {
       return this.$store.state.catalogVuex.cards;
     },
