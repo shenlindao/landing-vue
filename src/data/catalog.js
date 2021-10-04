@@ -12,10 +12,16 @@ import categories from './categories';
 
 console.log(categories);
 
-export const massageFull = massage.massages.slice(0, -1);
-export const massageFujimoQi = _
+export const massageChairFull = massage.massages.slice(0, -1);
+export const massageNotFull = _
   .filter(massage.massages, (item) => item.id === 1
-    || item.id === 2);
+    || item.id === 3
+    || item.id === 4);
+export const massageCapesFull = _
+  .filter(massage.massages, (item) => item.id === 1
+    || item.id === 3);
+export const massageCapesNotFull = _
+  .filter(massage.massages, (item) => item.id === 1);
 
 export const categoryChair = _.filter(categories.categories,
   ((category) => category.id === 1));
@@ -26,83 +32,86 @@ const CATALOG = {
   cards: [
     {
       id: 1,
+      router: 'fujimo-ton',
       picture: FUJIMO_TON,
       raiting: 5,
       type: 'Массажное кресло',
       model: 'FUJIMO TON',
       price: 250000,
       count: 9,
-      title: 'Разминающий роликовый',
-      massage: massageFull,
-      router: 'fujimo-ton',
+      massage: massageChairFull,
       category: categoryChair,
     },
     {
       id: 2,
+      router: '',
       picture: FUJIMO_QI,
       raiting: 4.5,
       type: 'Массажное кресло',
       model: 'FUJIMO QI',
       price: 215000,
       count: 12,
-      massage: massageFujimoQi,
-      router: '',
+      massage: massageNotFull,
       category: categoryChair,
     },
     {
       id: 3,
+      router: '',
       picture: FUJIMO_KEN,
       raiting: 4,
       type: 'Массажное кресло',
       model: 'FUJIMO KEN',
       price: 199000,
       count: 5,
-      router: '',
-      massage: massageFull,
+      massage: massageChairFull,
       category: categoryChair,
     },
     {
       id: 4,
+      router: '',
       picture: FUJIMO_PRIME,
       raiting: 5,
       type: 'Массажная накидка',
       model: 'FUJIMO PRIME',
       price: 27900,
       count: 10,
-      router: '',
+      massage: massageCapesFull,
       category: categoryCapes,
     },
     {
       id: 5,
+      router: '',
       picture: FUJIMO_KENKO,
       raiting: 4.5,
       type: 'Массажное кресло',
       model: 'FUJIMO KENKO',
       price: 189000,
       count: 14,
-      router: '',
+      massage: massageNotFull,
       category: categoryChair,
     },
     {
       id: 6,
+      router: '',
       picture: FUJIMO_OKI,
       raiting: 4,
       type: 'Массажное кресло',
       model: 'FUJIMO OKI',
       price: 219000,
       count: 5,
-      router: '',
+      massage: massageNotFull,
       category: categoryChair,
     },
     {
       id: 7,
+      router: '',
       picture: FUJIMO_LOTUS,
       raiting: 5,
       type: 'Массажная накидка',
       model: 'FUJIMO LOTUS',
       price: 18900,
       count: 4,
-      router: '',
+      massage: massageCapesNotFull,
       category: categoryCapes,
     },
   ],

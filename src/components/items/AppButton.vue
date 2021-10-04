@@ -89,19 +89,7 @@ export default {
       agreement: false,
     },
   }),
-  // computed: {
-  //   ...mapGetters({
-  //     getProductName: 'catalogVuex/getProductName',
-  //   }),
-  //   productName() {
-  //     return this.getProductName;
-  //   },
-  // },
   methods: {
-    // postMessage() {
-    //   console.log(`Имя: ${this.form.personName}`);
-    //   console.log(`Телфон: ${this.form.personPhone}`);
-    // },
     checkForm() {
       this.$v.form.$touch();
       if (!this.$v.form.$error) {

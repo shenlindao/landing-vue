@@ -33,7 +33,7 @@ const filtersByMassage = (cards, findMassage) => {
 };
 
 const filtersByCategories = (cards, findCategory) => {
-  if (findCategory.length > 0) {
+  if (findCategory.length > 0 && findCategory !== 'Все категории') {
     return cards.filter((card) => {
       if (card.category) {
         const res = card.category
@@ -46,19 +46,6 @@ const filtersByCategories = (cards, findCategory) => {
   }
   return cards;
 };
-
-// const filtersCategories = (cards, findCategory) => {
-//   if (findCategory) {
-//     return cards.filter((card) => {
-//       if (card.massage) {
-//         const category = card.category.map((i) => i.title);
-//         return category.includes(findCategory);
-//       }
-//       return false;
-//     });
-//   }
-//   return cards;
-// };
 
 const filterCards = (filters) => {
   let { cards } = CatalogData;
@@ -97,7 +84,7 @@ export default {
         ? Number(_.maxBy(CatalogData.cards, 'price').price)
         : 0,
       findMassage: [],
-      findCategory: [],
+      findCategory: 'Все категории',
     },
 
     minPrice: CatalogData.cards.length
