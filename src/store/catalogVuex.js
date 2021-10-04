@@ -1,6 +1,9 @@
 import _ from 'lodash';
 import CatalogData from '../data/catalog';
 import massageData from '../data/massage';
+import categoriesData from '../data/categories';
+
+const categories = categoriesData.categories.map((i) => i.title);
 
 const filterByWord = (cards, word) => {
   if (word) {
@@ -29,6 +32,34 @@ const filtersByMassage = (cards, findMassage) => {
   return cards;
 };
 
+const filtersByCategories = (cards, findCategory) => {
+  if (findCategory.length > 0) {
+    return cards.filter((card) => {
+      if (card.category) {
+        const res = card.category
+          .filter((l) => findCategory
+            .includes(l.title));
+        return Boolean(res.length);
+      }
+      return false;
+    });
+  }
+  return cards;
+};
+
+// const filtersCategories = (cards, findCategory) => {
+//   if (findCategory) {
+//     return cards.filter((card) => {
+//       if (card.massage) {
+//         const category = card.category.map((i) => i.title);
+//         return category.includes(findCategory);
+//       }
+//       return false;
+//     });
+//   }
+//   return cards;
+// };
+
 const filterCards = (filters) => {
   let { cards } = CatalogData;
   cards = filterByWord(
@@ -43,6 +74,10 @@ const filterCards = (filters) => {
   cards = filtersByMassage(
     cards,
     filters.findMassage,
+  );
+  cards = filtersByCategories(
+    cards,
+    filters.findCategory,
   );
   return cards;
 };
@@ -62,6 +97,7 @@ export default {
         ? Number(_.maxBy(CatalogData.cards, 'price').price)
         : 0,
       findMassage: [],
+      findCategory: [],
     },
 
     minPrice: CatalogData.cards.length
@@ -72,37 +108,22 @@ export default {
       : 0,
     massages: massageData.massages,
     cardsMassages: CatalogData.cards.massage,
+    categories,
   },
   getters: {
     getMinPrice: (state) => state.minPrice,
     getMaxPrice: (state) => state.maxPrice,
     getMassages: (state) => state.massages,
+    getCategories: (state) => state.categories,
   },
   mutations: {
     setFilters(state, newFilters) {
       state.filters = newFilters;
       state.cards = filterCards(state.filters);
     },
-    // FILTERED_BY_MASSAGE(state, payload) {
-    //   if (!(payload)) {
-    //     state.findMassage = [];
-    //     state.filteredCards = null;
-    //   } else {
-    //     state.findMassage.push(payload);
-    //     state.filteredCards = state.cards.filter((card) => {
-    //       if (card.massage) {
-    //         const result = card.massage
-    //           .filter((i) => state.findMassage.includes(i.title));
-    //         return Boolean(result.length);
-    //       }
-    //       return false;
-    //     });
-    //   }
-    // },
   },
   actions: {
     setFilters({ commit }, newFilters) {
-      // console.log(newFilters);
       commit('setFilters', newFilters);
     },
   },

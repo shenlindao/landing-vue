@@ -8,10 +8,19 @@ import FUJIMO_KENKO from '@/assets/pics/fujimo-kenko.jpg';
 import FUJIMO_OKI from '@/assets/pics/fujimo-oki.jpg';
 import FUJIMO_LOTUS from '@/assets/pics/fujimo-lotus.jpg';
 import massage from './massage';
+import categories from './categories';
+
+console.log(categories);
 
 export const massageFull = massage.massages.slice(0, -1);
-export const massageFujimoQi = _.filter(massage.massages, (item) => item.id === 1
-  || item.id === 2);
+export const massageFujimoQi = _
+  .filter(massage.massages, (item) => item.id === 1
+    || item.id === 2);
+
+export const categoryChair = _.filter(categories.categories,
+  ((category) => category.id === 1));
+export const categoryCapes = _.filter(categories.categories,
+  ((category) => category.id === 2));
 
 const CATALOG = {
   cards: [
@@ -26,6 +35,7 @@ const CATALOG = {
       title: 'Разминающий роликовый',
       massage: massageFull,
       router: 'fujimo-ton',
+      category: categoryChair,
     },
     {
       id: 2,
@@ -37,6 +47,7 @@ const CATALOG = {
       count: 12,
       massage: massageFujimoQi,
       router: '',
+      category: categoryChair,
     },
     {
       id: 3,
@@ -48,6 +59,7 @@ const CATALOG = {
       count: 5,
       router: '',
       massage: massageFull,
+      category: categoryChair,
     },
     {
       id: 4,
@@ -58,6 +70,7 @@ const CATALOG = {
       price: 27900,
       count: 10,
       router: '',
+      category: categoryCapes,
     },
     {
       id: 5,
@@ -68,6 +81,7 @@ const CATALOG = {
       price: 189000,
       count: 14,
       router: '',
+      category: categoryChair,
     },
     {
       id: 6,
@@ -78,6 +92,7 @@ const CATALOG = {
       price: 219000,
       count: 5,
       router: '',
+      category: categoryChair,
     },
     {
       id: 7,
@@ -88,6 +103,7 @@ const CATALOG = {
       price: 18900,
       count: 4,
       router: '',
+      category: categoryCapes,
     },
   ],
 };

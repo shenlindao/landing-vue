@@ -9,14 +9,14 @@
           :min="storeMinValue"
           :max="storevMaxValue"
           type="range"
-          step="1000"
+          step="100"
           v-model.number="barMinValue"
         />
         <input
           :min="storeMinValue"
           :max="storevMaxValue"
           type="range"
-          step="1000"
+          step="100"
           v-model.number="barMaxValue"
         />
       </div>
