@@ -4,7 +4,6 @@
       <v-subheader>Фильтрация по цене:</v-subheader>
     </v-container>
       <div class="range-slider">
-        <v-subheader>Цена</v-subheader>
         <input
           :min="storeMinValue"
           :max="storevMaxValue"
@@ -20,10 +19,28 @@
           v-model.number="barMaxValue"
         />
       </div>
-      <div class="range-values">
-        <p>Min: {{barMinValue}}</p>
-        <p>Max: {{barMaxValue}}</p>
-      </div>
+      <v-container class="range-inputs">
+        <v-text-field
+          :value="barMinValue"
+          :min="storeMinValue"
+          :max="barMaxValue"
+          class="mt-0 pt-0 range-input-slot"
+          hide-details
+          single-line
+          type="number"
+          v-model.number="barMinValue"
+        ></v-text-field>
+        <v-text-field
+          :value="barMaxValue"
+          :min="barMinValue"
+          :max="storevMaxValue"
+          class="mt-0 pt-0 range-input-slot"
+          hide-details
+          single-line
+          type="number"
+          v-model.number="barMaxValue"
+        ></v-text-field>
+      </v-container>
   </div>
 </template>
 
@@ -99,7 +116,13 @@ input[type="range"]::-webkit-slider-runnable-track {
   cursor: pointer;
   border: none;
 }
-.range-values {
-  margin-top: 20px;
+.range-inputs {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.range-input-slot {
+  max-width: 32%;
 }
 </style>
