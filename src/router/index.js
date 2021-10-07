@@ -3,7 +3,7 @@ import Home from '../pages/Home.vue';
 import Delivery from '../pages/Delivery.vue';
 import Pay from '../pages/Pay.vue';
 import Contacts from '../pages/Contacts.vue';
-import Catalog from '../pages/Catalog.vue';
+// import Catalog from '../pages/Catalog.vue';
 import notFound from '../pages/notFound.vue';
 
 export default new VueRouter({
@@ -32,7 +32,7 @@ export default new VueRouter({
     {
       path: '/catalog',
       name: 'catalog',
-      component: Catalog,
+      component: () => import(/* webpackChunkName: "group-foo" */ '../pages/Catalog.vue'),
     },
     {
       path: '*',

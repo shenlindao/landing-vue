@@ -5,83 +5,65 @@
     </v-container>
       <div class="range-slider">
         <input
-          :min="storeMinValue"
-          :max="storevMaxValue"
+          :min="minPrice"
+          :max="maxPrice"
           type="range"
           step="100"
-          v-model.number="barMinValue"
+          v-model.number="minPriceSearch"
+          @input="$emit('changeMin', minPriceSearch)"
         />
         <input
-          :min="storeMinValue"
-          :max="storevMaxValue"
+          :min="minPrice"
+          :max="maxPrice"
           type="range"
           step="100"
-          v-model.number="barMaxValue"
+          v-model.number="maxPriceSearch"
+          @input="$emit('changeMax', maxPriceSearch)"
         />
       </div>
       <v-container class="range-inputs">
         <v-text-field
-          :value="barMinValue"
-          :min="storeMinValue"
-          :max="barMaxValue"
+          :value="minPriceSearch"
+          :min="minPrice"
+          :max="maxPrice"
           class="mt-0 pt-0 range-input-slot"
           hide-details
           single-line
           type="number"
-          v-model.number="barMinValue"
+          v-model.number="minPriceSearch"
+          @input="$emit('changeMin', minPriceSearch)"
         ></v-text-field>
         <v-text-field
-          :value="barMaxValue"
-          :min="barMinValue"
-          :max="storevMaxValue"
+          :value="maxPriceSearch"
+          :min="minPrice"
+          :max="maxPrice"
           class="mt-0 pt-0 range-input-slot"
           hide-details
           single-line
           type="number"
-          v-model.number="barMaxValue"
+          v-model.number="maxPriceSearch"
+          @input="$emit('changeMax', maxPriceSearch)"
         ></v-text-field>
       </v-container>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
 
 export default {
   name: 'FilterRangeSlider',
-  computed: {
-    ...mapGetters({
-      minValue: 'catalogVuex/getMinPrice',
-      maxValue: 'catalogVuex/getMaxPrice',
-    }),
-    storeMinValue() {
-      return this.minValue;
-    },
-    storevMaxValue() {
-      return this.maxValue;
-    },
-    barMinValue: {
-      get() {
-        return this.$store.state.catalogVuex.filters.minPriceSearch;
-      },
-      set(minPriceSearch) {
-        this.$store.dispatch('catalogVuex/setFilters', {
-          ...this.$store.state.catalogVuex.filters,
-          minPriceSearch,
-        });
-      },
-    },
-    barMaxValue: {
-      get() {
-        return this.$store.state.catalogVuex.filters.maxPriceSearch;
-      },
-      set(maxPriceSearch) {
-        this.$store.dispatch('catalogVuex/setFilters', {
-          ...this.$store.state.catalogVuex.filters,
-          maxPriceSearch,
-        });
-      },
-    },
+  props: {
+    initialMinPriceSearch: Number,
+    initialMaxPriceSearch: Number,
+    minPrice: Number,
+    maxPrice: Number,
+  },
+  data() {
+    return {
+      minPriceSearch: this.initialMinPriceSearch,
+      maxPriceSearch: this.initialMaxPriceSearch,
+    };
   },
 };
 </script>

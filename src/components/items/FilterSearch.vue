@@ -4,6 +4,7 @@
         label="Поиск"
         hide-details="auto"
         v-model="word"
+        @input="$emit('search', word)"
       ></v-text-field>
     </v-container>
 </template>
@@ -11,18 +12,13 @@
 <script>
 export default {
   name: 'FilterSearch',
-  computed: {
-    word: {
-      get() {
-        return this.$store.state.catalogVuex.filters.word;
-      },
-      set(word) {
-        this.$store.dispatch('catalogVuex/setFilters', {
-          ...this.$store.state.catalogVuex.filters,
-          word: word.trim().toLowerCase(),
-        });
-      },
-    },
+  props: {
+    initialWord: String,
+  },
+  data() {
+    return {
+      word: this.initialWord,
+    };
   },
 };
 </script>

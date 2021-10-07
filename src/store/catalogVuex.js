@@ -150,5 +150,8 @@ export default {
         .replace(/,/g, '_')}`;
       router.push({ query: { filter: queryPath } });
     },
+    // setQuery({ commit }, newFilters) {
+
+    // },
   },
 };

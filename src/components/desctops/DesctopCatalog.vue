@@ -2,21 +2,67 @@
   <div class="desctop">
     <h2>Каталог</h2>
     <div class="catalog-content">
-      <catalog-filter/>
-      <catalog-cards/>
+      <catalog-filter
+        @filterChanged="updateFilter"
+        :filters="filters"
+        :minPrice="minPrice"
+        :maxPrice="maxPrice"
+      />
+      <catalog-cards :cards="cards"/>
     </div>
   </div>
 </template>
 
 <script>
+import _ from 'lodash';
 import CatalogCards from '../items/CatalogCards.vue';
 import CatalogFilter from '../items/CatalogFilter.vue';
+import cardService from '../../services/catalogService';
+
+const [minPrice, maxPrice] = [
+  Number(_.minBy(cardService.getCards(), 'price').price),
+  Number(_.maxBy(cardService.getCards(), 'price').price),
+];
+
+const defaultFilters = {
+  word: null,
+  minPriceSearch: minPrice,
+  maxPriceSearch: maxPrice,
+  findMassage: [],
+  findCategory: 'Все категории',
+};
 
 export default {
   name: 'DesctopCatalog',
   components: {
     CatalogCards,
     CatalogFilter,
+  },
+  methods: {
+    updateFilter(filter) {
+      console.log('New filter', filter);
+      this.$router.push({ query: filter });
+    },
+  },
+  data() {
+    return {
+      filters: { ...defaultFilters, ...this.$route.query },
+      minPrice,
+      maxPrice,
+    };
+  },
+  computed: {
+    cards() {
+      return cardService.getCards(this.filters);
+    },
+    // filters() {
+    //   const filters = defaultFilters;
+    //   filters.word = this.query.word || null;
+    //   filters.minPriceSearch = this.query.minPriceSearch
+    // || Number(_.minBy(this.cards, 'price').price);
+    //   console.log(filters.minPriceSearch);
+    //   return filters;
+    // },
   },
 };
 </script>

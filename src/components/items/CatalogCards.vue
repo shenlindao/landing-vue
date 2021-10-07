@@ -78,10 +78,8 @@ export default {
   components: { AppButton },
   mixins: [paginationMixin],
   name: 'CatalogCards',
-  computed: {
-    cards() {
-      return this.$store.state.catalogVuex.cards;
-    },
+  props: {
+    cards: Array,
   },
   async mounted(cards) {
     this.setupPagination(cards);
