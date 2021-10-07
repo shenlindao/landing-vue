@@ -56,19 +56,35 @@
 
       </v-card-text>
     </v-card>
+    <!-- <paginate
+    :page-count="20"
+    :click-handler="pageChangeHandler"
+    :prev-text="'Назад'"
+    :next-text="'Вперед'"
+    :container-class="'className'"
+    /> -->
+    <v-pagination
+      v-model="page"
+      :length="pageCount"
+    ></v-pagination>
   </div>
 </template>
 
 <script>
+import paginationMixin from '@/mixins/pagination.mixin';
 import AppButton from './AppButton.vue';
 
 export default {
   components: { AppButton },
+  mixins: [paginationMixin],
   name: 'CatalogCards',
   computed: {
     cards() {
       return this.$store.state.catalogVuex.cards;
     },
+  },
+  async mounted(cards) {
+    this.setupPagination(cards);
   },
 };
 </script>

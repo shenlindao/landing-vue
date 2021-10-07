@@ -10,8 +10,6 @@ import FUJIMO_LOTUS from '@/assets/pics/fujimo-lotus.jpg';
 import massage from './massage';
 import categories from './categories';
 
-console.log(categories);
-
 export const massageChairFull = massage.massages.slice(0, -1);
 export const massageNotFull = _
   .filter(massage.massages, (item) => item.id === 1

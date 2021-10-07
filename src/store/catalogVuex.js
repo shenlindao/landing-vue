@@ -1,7 +1,35 @@
 import _ from 'lodash';
+import translit from 'cyrillic-to-translit-js';
 import CatalogData from '../data/catalog';
 import massageData from '../data/massage';
 import categoriesData from '../data/categories';
+import router from '../router/index';
+
+const params = document.location.search
+  .substr(1)
+  .replaceAll('filter=', '')
+  .split('%26');
+const dict = {};
+let g;
+let param;
+if (params !== '') {
+  for (g = 0; g < params.length; g += 1) {
+    param = params[g].split('%3D');
+    if (param.length === 2) {
+      dict[param[0]] = decodeURIComponent(param[1].replace(/\+/g, ' '));
+    }
+  }
+}
+dict.maxPriceSearch = Number(dict.maxPriceSearch);
+dict.minPriceSearch = Number(dict.minPriceSearch);
+dict.findMassage = `${translit().reverse(dict.findMassage)
+  .replace(/щии/g, 'щий')
+  .replace(/вии/g, 'вый')
+  .replace(/нии/g, 'ный')
+}`;
+dict.findMassage = dict.findMassage.split('_');
+dict.findCategory = `${translit().reverse(dict.findCategory).replace(/-/g, ' ')}`;
+console.log(dict);
 
 const categories = categoriesData.categories.map((i) => i.title);
 
@@ -111,7 +139,16 @@ export default {
   },
   actions: {
     setFilters({ commit }, newFilters) {
+      console.log(newFilters);
       commit('setFilters', newFilters);
+
+      const queryPath = `${translit()
+        .transform(Object
+          .entries(newFilters)
+          .map(([k, v]) => `${k}=${v}`)
+          .join('&'), '-')
+        .replace(/,/g, '_')}`;
+      router.push({ query: { filter: queryPath } });
     },
   },
 };
