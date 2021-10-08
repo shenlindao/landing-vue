@@ -7,6 +7,8 @@
         :filters="filters"
         :minPrice="minPrice"
         :maxPrice="maxPrice"
+        :massages="massages"
+        :categories="categories"
       />
       <catalog-cards :cards="cards"/>
     </div>
@@ -18,6 +20,8 @@ import _ from 'lodash';
 import CatalogCards from '../items/CatalogCards.vue';
 import CatalogFilter from '../items/CatalogFilter.vue';
 import cardService from '../../services/catalogService';
+import massageData from '../../data/massage';
+import categoriesData from '../../data/categories';
 
 const [minPrice, maxPrice] = [
   Number(_.minBy(cardService.getCards(), 'price').price),
@@ -38,31 +42,34 @@ export default {
     CatalogCards,
     CatalogFilter,
   },
-  methods: {
-    updateFilter(filter) {
-      console.log('New filter', filter);
-      this.$router.push({ query: filter });
-    },
-  },
   data() {
+    const queryParams = {
+      word: this.$route.query.word,
+      minPriceSearch: Number(this.$route.query.minPriceSearch),
+      maxPriceSearch: Number(this.$route.query.maxPriceSearch),
+      findMassage: String(this.$route.query.findMassage).split(','),
+      findCategory: String(this.$route.query.findCategory),
+    };
     return {
-      filters: { ...defaultFilters, ...this.$route.query },
+      filters: {
+        ...defaultFilters,
+        ...queryParams,
+      },
       minPrice,
       maxPrice,
+      massages: massageData.massages,
+      categories: categoriesData.categories,
     };
   },
   computed: {
     cards() {
       return cardService.getCards(this.filters);
     },
-    // filters() {
-    //   const filters = defaultFilters;
-    //   filters.word = this.query.word || null;
-    //   filters.minPriceSearch = this.query.minPriceSearch
-    // || Number(_.minBy(this.cards, 'price').price);
-    //   console.log(filters.minPriceSearch);
-    //   return filters;
-    // },
+  },
+  methods: {
+    updateFilter(filter) {
+      this.$router.push({ query: filter });
+    },
   },
 };
 </script>

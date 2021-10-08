@@ -44,10 +44,7 @@ const filtersByCategories = (cards, findCategory) => {
 };
 
 const getCards = (filters = null) => {
-  console.log('geCards', filters);
-  let {
-    cards,
-  } = CatalogData;
+  let { cards } = CatalogData;
   if (filters === null) return cards;
   cards = filterByWord(
     cards,

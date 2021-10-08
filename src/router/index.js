@@ -32,7 +32,7 @@ export default new VueRouter({
     {
       path: '/catalog',
       name: 'catalog',
-      component: () => import(/* webpackChunkName: "group-foo" */ '../pages/Catalog.vue'),
+      component: () => import('../pages/Catalog.vue'),
     },
     {
       path: '*',

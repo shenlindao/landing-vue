@@ -29,7 +29,6 @@ dict.findMassage = `${translit().reverse(dict.findMassage)
 }`;
 dict.findMassage = dict.findMassage.split('_');
 dict.findCategory = `${translit().reverse(dict.findCategory).replace(/-/g, ' ')}`;
-console.log(dict);
 
 const categories = categoriesData.categories.map((i) => i.title);
 
@@ -139,9 +138,7 @@ export default {
   },
   actions: {
     setFilters({ commit }, newFilters) {
-      console.log(newFilters);
       commit('setFilters', newFilters);
-
       const queryPath = `${translit()
         .transform(Object
           .entries(newFilters)
@@ -150,8 +147,5 @@ export default {
         .replace(/,/g, '_')}`;
       router.push({ query: { filter: queryPath } });
     },
-    // setQuery({ commit }, newFilters) {
-
-    // },
   },
 };
