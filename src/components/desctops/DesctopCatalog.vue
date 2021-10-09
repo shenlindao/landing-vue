@@ -11,17 +11,23 @@
         :categories="categories"
       />
       <catalog-cards :cards="cards"/>
-      <!-- <v-pagination
-      v-model="pageChangeHandler"
-      :length="pageCount"
-      /> -->
+      <paginate
+        :page-count="10"
+        :page-range="3"
+        :margin-pages="2"
+        :click-handler="pageChangeHandler"
+        :prev-text="'Назад'"
+        :next-text="'Вперед'"
+        :container-class="'pagination'"
+        :page-class="'waves-effect'"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import _ from 'lodash';
-// import paginationMixin from '@/mixins/pagination.mixin';
+import paginationMixin from '@/mixins/pagination.mixin';
 import CatalogCards from '../items/CatalogCards.vue';
 import CatalogFilter from '../items/CatalogFilter.vue';
 import cardService from '../../services/catalogService';
@@ -43,7 +49,7 @@ const defaultFilters = {
 
 export default {
   name: 'DesctopCatalog',
-  // mixins: [paginationMixin],
+  mixins: [paginationMixin],
   components: {
     CatalogCards,
     CatalogFilter,
@@ -53,9 +59,13 @@ export default {
       word: this.$route.query.word,
       minPriceSearch: Number(this.$route.query.minPriceSearch),
       maxPriceSearch: Number(this.$route.query.maxPriceSearch),
-      findMassage: String(this.$route.query.findMassage).split(','),
+      findMassage:
+        this.$route.query.findMassage === undefined
+          ? defaultFilters.findMassage
+          : String(this.$route.query.findMassage).split(','),
       findCategory: String(this.$route.query.findCategory),
     };
+    console.log(queryParams);
     if (JSON.stringify(this.$route.query) !== '{}') {
       return {
         filters: { ...queryParams },

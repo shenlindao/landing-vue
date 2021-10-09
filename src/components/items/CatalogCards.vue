@@ -56,18 +56,28 @@
 
       </v-card-text>
     </v-card>
+    <!-- <v-pagination
+      v-model="pageChangeHandler"
+      :length="pageCount"
+    /> -->
   </div>
 </template>
 
 <script>
+// import paginationMixin from '@/mixins/pagination.mixin';
 import AppButton from './AppButton.vue';
 
 export default {
   components: { AppButton },
   name: 'CatalogCards',
+  // mixins: [paginationMixin],
   props: {
     cards: Array,
   },
+  // async mounted() {
+  //   console.log(cards);
+  //   this.setupPagination(cards);
+  // },
 };
 </script>
 
