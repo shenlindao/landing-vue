@@ -50,11 +50,17 @@ export default {
       findMassage: String(this.$route.query.findMassage).split(','),
       findCategory: String(this.$route.query.findCategory),
     };
+    if (JSON.stringify(this.$route.query) !== '{}') {
+      return {
+        filters: { ...queryParams },
+        minPrice,
+        maxPrice,
+        massages: massageData.massages,
+        categories: categoriesData.categories,
+      };
+    }
     return {
-      filters: {
-        ...defaultFilters,
-        ...queryParams,
-      },
+      filters: { ...defaultFilters },
       minPrice,
       maxPrice,
       massages: massageData.massages,
