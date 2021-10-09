@@ -11,12 +11,17 @@
         :categories="categories"
       />
       <catalog-cards :cards="cards"/>
+      <!-- <v-pagination
+      v-model="pageChangeHandler"
+      :length="pageCount"
+      /> -->
     </div>
   </div>
 </template>
 
 <script>
 import _ from 'lodash';
+// import paginationMixin from '@/mixins/pagination.mixin';
 import CatalogCards from '../items/CatalogCards.vue';
 import CatalogFilter from '../items/CatalogFilter.vue';
 import cardService from '../../services/catalogService';
@@ -38,6 +43,7 @@ const defaultFilters = {
 
 export default {
   name: 'DesctopCatalog',
+  // mixins: [paginationMixin],
   components: {
     CatalogCards,
     CatalogFilter,
@@ -77,6 +83,9 @@ export default {
       this.$router.push({ query: filter });
     },
   },
+  // async mounted(cards) {
+  //   this.setupPagination(cards);
+  // },
 };
 </script>
 
