@@ -4,15 +4,17 @@ export default {
   data() {
     return {
       page: +this.$route.query.page || 1,
-      pageSize: 5,
+      pageSize: 3,
       pageCount: 0,
       allItems: [],
       items: [],
     };
   },
+
   methods: {
     pageChangeHandler(page) {
-      this.$router.push(`${this.$route.path}?page=${page}`);
+      // this.$router.push(`${this.$route.path}?page=${page}`);
+      this.$router.push({ query: { page: `${page}` } });
       this.items = this.allItems[page - 1] || this.allItems[0];
     },
     setupPagination(allItems) {

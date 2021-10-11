@@ -10,17 +10,17 @@
         :massages="massages"
         :categories="categories"
       />
-      <catalog-cards :cards="cards"/>
-      <paginate
-        :page-count="10"
-        :page-range="3"
-        :margin-pages="2"
-        :click-handler="pageChangeHandler"
-        :prev-text="'Назад'"
-        :next-text="'Вперед'"
-        :container-class="'pagination'"
-        :page-class="'waves-effect'"
-      />
+      <catalog-cards :cards="items">
+        <div class="vtf-pagination">
+          <v-pagination
+          v-model="page"
+          :length="pageCount"
+          @input="pageChangeHandler"
+          total-visible="4"
+          class="vtf-pagination"
+          />
+        </div>
+      </catalog-cards>
     </div>
   </div>
 </template>
@@ -93,9 +93,9 @@ export default {
       this.$router.push({ query: filter });
     },
   },
-  // async mounted(cards) {
-  //   this.setupPagination(cards);
-  // },
+  async mounted() {
+    this.setupPagination(this.cards);
+  },
 };
 </script>
 
@@ -119,6 +119,7 @@ h2 {
   width: 100%;
   margin-bottom: 100px;
   display: inline-flex;
+  position: relative;
 }
 .catalog-filter {
   top: 18px;
@@ -134,5 +135,11 @@ h2 {
   text-align: left;
   overflow: hidden;
   flex-wrap: wrap;
+}
+.vtf-pagination {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 330px;
 }
 </style>
