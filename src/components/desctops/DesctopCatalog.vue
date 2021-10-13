@@ -10,7 +10,7 @@
         :massages="massages"
         :categories="categories"
       />
-      <catalog-cards :cards="items">
+      <catalog-cards :cards="itms">
         <div class="vtf-pagination">
           <v-pagination
           v-model="page"
@@ -87,15 +87,20 @@ export default {
     cards() {
       return cardService.getCards(this.filters);
     },
+    itms() {
+      return this.setupPagination(this.cards);
+    },
   },
   methods: {
     updateFilter(filter) {
+      this.page = 1;
       this.$router.push({ query: filter });
+      this.$router.push({ query: { ...this.$route.query, page: `${this.page}` } });
     },
   },
-  async mounted() {
-    this.setupPagination(this.cards);
-  },
+  // async mounted() {
+  //   this.setupPagination(this.cards);
+  // },
 };
 </script>
 

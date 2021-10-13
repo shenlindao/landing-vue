@@ -13,8 +13,7 @@ export default {
 
   methods: {
     pageChangeHandler(page) {
-      // this.$router.push(`${this.$route.path}?page=${page}`);
-      this.$router.push({ query: { page: `${page}` } });
+      this.$router.push({ query: { ...this.$route.query, page: `${page}` } });
       this.items = this.allItems[page - 1] || this.allItems[0];
     },
     setupPagination(allItems) {
