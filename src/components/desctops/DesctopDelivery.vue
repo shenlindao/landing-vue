@@ -1,12 +1,38 @@
 <template>
   <div class="desctop">
     <h2>Доставка</h2>
+    <v-alert
+      class="alert-block"
+      v-if="errored"
+      prominent
+      type="error"
+    >
+    Информация не подгружена
+    </v-alert>>
+    <div class="delivery-block">
+      {{ info }}
+    </div>
   </div>
 </template>
 
 <script>
+const axios = require('axios');
+
 export default {
   name: 'DesctopDelivery',
+  data() {
+    return {
+      info: null,
+      errored: false,
+    };
+  },
+  mounted() {
+    axios
+      .get('https://glav-dostavka.ru/api/calc/?responseFormat=json&method=api_city')
+      .then((response) => { (this.info = response); })
+      .catch((error) => console.log(error));
+    this.errored = true;
+  },
 };
 </script>
 
@@ -27,5 +53,15 @@ h2 {
   transform: translate(-50%, 0);
   font-size: 22pt;
   color: rgb(233, 245, 255);
+}
+.delivery-block,
+.alert-block {
+  margin-top: 200px;
+  color: #fff;
+  position: absolute;
+}
+.alert-block {
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 </style>

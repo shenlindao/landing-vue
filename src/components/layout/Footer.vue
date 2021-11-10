@@ -9,23 +9,19 @@
       class="black lighten-1 white--text text-center"
     >
       <v-card-text>
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4 white--text"
-          icon
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
+        <v-btn class="mx-4 white--text" icon href="https://vk.com/shenlin">
+        <font-awesome-icon :icon="['fab', 'vk']" />
+        </v-btn>
+        <v-btn class="mx-4 white--text" icon href="https://t.me/Shenlindao">
+        <font-awesome-icon :icon="['fab', 'telegram-plane']" />
+        </v-btn>
+        <v-btn class="mx-4 white--text" icon href="https://wa.me/+79653693279">
+        <font-awesome-icon :icon="['fab', 'whatsapp']" />
         </v-btn>
       </v-card-text>
 
       <v-card-text class="white--text pt-0">
-        Разработка проекта на Vue - Кривонос Артём
-      </v-card-text>
-      <v-card-text class="white--text pt-0">
-        Дизайн проекта на Figma - Захаров Олег
+        Разработка проекта - Кривонос Артём
       </v-card-text>
 
       <v-card-text class="white--text">
@@ -36,13 +32,11 @@
 </template>
 
 <script>
-
 export default {
   name: 'Footer',
   data: () => ({
     icons: [
-      'mdi-instagram',
-      'mdi-facebook',
+      ['fab', 'vk'],
     ],
   }),
 };

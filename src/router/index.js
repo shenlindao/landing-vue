@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router';
 import Home from '../pages/Home.vue';
+import FujimoTon from '../pages/FujimoTon.vue';
 import Delivery from '../pages/Delivery.vue';
 import Pay from '../pages/Pay.vue';
 import Contacts from '../pages/Contacts.vue';
@@ -42,7 +43,7 @@ export default new VueRouter({
     {
       path: '/fujimo-ton',
       name: 'fujimo-ton',
-      component: Home, // в дальнейшем заменить
+      component: FujimoTon,
     },
   ],
 });
