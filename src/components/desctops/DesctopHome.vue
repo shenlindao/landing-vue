@@ -1,38 +1,22 @@
 <template>
   <div class="desctop" :style="{ backgroundImage: 'url(' + bgimg + ')' }">
-    <v-carousel
-      cycle
-      interval="10000"
-      hide-delimiter-background
-      show-arrows-on-hover
-      class="home-carusel"
-      height="70vh"
-    >
-      <v-carousel-item
-        v-for="(item, i) in items"
-        :key="i"
-        :src="item.src"
-      ></v-carousel-item>
-    </v-carousel>
-    <v-carousel
-      light
-      hide-delimiters
-      hide-delimiter-background
-      class="popular-carusel"
-      height="max-content"
-    >
-        <v-carousel-item
-        v-for="card in cards"
-        :key="card.id"
-        >
+    <swiper :options="swiperOptionsBanner">
+      <swiper-slide v-for="(item, i) in items" :key="i">
+        <div align="center"><img :src="item.src" /></div>
+      </swiper-slide>
+      <div class="swiper-pagination" slot="pagination"></div>
+    </swiper>
+<div class="swiper">
+    <swiper :options="swiperOptionsPopular" class="slider-popular">
+      <swiper-slide v-for="card in cards" :key="card.id">
         <v-card
-        class="mx-3 my-5 catalog-card-filling"
-        max-width="270"
-        elevation="4"
-        outlined
-        shaped
-        tile
-      >
+          class="mx-3 my-5 catalog-card-filling"
+          max-width="270"
+          elevation="4"
+          outlined
+          shaped
+          tile
+        >
           <!-- Изображение -->
           <v-img
             height="250"
@@ -74,20 +58,29 @@
               <img :src="require(`@/assets/pics/for_buy_button.svg`)" />
             </app-button>
           </v-card-text>
-          </v-card>
-        </v-carousel-item>
-    </v-carousel>
+        </v-card>
+      </swiper-slide>
+    </swiper>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { Autoplay } from 'swiper';
 import BackgroundImg from '@/assets/pics/home-bg-1.jpg';
 import cardService from '../../services/catalogService';
 import AppButton from '../items/AppButton.vue';
 
+Swiper.use([Autoplay]);
+
 export default {
   name: 'DesctopHome',
   components: {
+    Swiper,
+    SwiperSlide,
     AppButton,
   },
   computed: {
@@ -97,6 +90,33 @@ export default {
   },
   data() {
     return {
+      swiperOptionsBanner: {
+        slidesPerView: 1,
+        autoplay: {
+          disableOnInteraction: false,
+          delay: 2000,
+        },
+        speed: 500,
+        initialSlide: 0,
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          type: 'bullets',
+        },
+        paginationClickable: true,
+      },
+      swiperOptionsPopular: {
+        slidesPerView: 3,
+        autoplay: {
+          disableOnInteraction: false,
+          delay: 2000,
+        },
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      },
       bgimg: BackgroundImg,
       items: [
         {
@@ -126,9 +146,40 @@ export default {
 }
 .home-carusel {
   max-width: 90%;
+  max-height: 70vh;
   width: auto;
+}
+.slider-popular {
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  position: inherit;
   left: 50%;
-  transform: translate(-50%, 100px);
+  transform: translate(-50%, 0);
+}
+.swiper {
+  position: relative;
+}
+.swiper-slide {
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+  overflow: hidden;
+}
+.v-card__text {
+  width: unset;
+}
+button.buy-btn {
+  padding: unset !important;
+}
+.slider-popular .swiper-slidec {
+  max-height: 75vh;
+  margin: 20px 0 50px 0;
+  overflow: visible;
+}
+.swiper-slide img {
+  border-radius: 30px;
+  max-height: 60vh;
 }
 .popular-carusel {
   max-width: 400px;
