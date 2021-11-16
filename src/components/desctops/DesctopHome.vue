@@ -1,87 +1,91 @@
 <template>
   <div class="desctop" :style="{ backgroundImage: 'url(' + bgimg + ')' }">
-    <swiper :options="swiperOptionsBanner">
-      <swiper-slide v-for="(item, i) in items" :key="i">
-        <div align="center"><img :src="item.src" /></div>
-      </swiper-slide>
-      <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
-<div class="swiper">
-    <swiper :options="swiperOptionsPopular" class="slider-popular">
-      <swiper-slide v-for="card in cards" :key="card.id">
-        <v-card
-          class="mx-3 my-5 catalog-card-filling"
-          max-width="270"
-          elevation="4"
-          outlined
-          shaped
-          tile
-        >
-          <!-- Изображение -->
-          <v-img
-            height="250"
-            :src="`${card.picture}`"
-            :class="{ 'catalog-img-link': card.router }"
-            @click="$router.push({ name: card.router })"
-          />
-          <!-- Рейтинг -->
-          <v-card-text>
-            <v-row align="center" class="mx-0">
-              <v-rating
-                :value="card.raiting"
-                background-color="orange lighten-3"
-                color="orange"
-                dense
-                half-increments
-                readonly
-                size="14"
-              >
-              </v-rating>
-              <div class="grey--text ms-4">
-                {{ card.raiting }}
+    <hooper :settings="hooperSettingsBanner">
+      <slide v-for="(item, i) in items" :key="i">
+        <div align="center"><img class="hooper-img" :src="item.src" /></div>
+      </slide>
+      <hooper-pagination slot="hooper-addons"></hooper-pagination>
+    </hooper>
+    <div class="swiper">
+      <hooper :settings="hooperSettingsPopular" class="slider-popular">
+        <slide v-for="card in cards" :key="card.id">
+          <v-card
+            class="mx-3 my-5 catalog-card-filling"
+            max-width="270"
+            elevation="4"
+            outlined
+            shaped
+            tile
+          >
+            <!-- Изображение -->
+            <v-img
+              height="250"
+              :src="`${card.picture}`"
+              :class="{ 'catalog-img-link': card.router }"
+              @click="$router.push({ name: card.router })"
+            />
+            <!-- Рейтинг -->
+            <v-card-text>
+              <v-row align="center" class="mx-0">
+                <v-rating
+                  :value="card.raiting"
+                  background-color="orange lighten-3"
+                  color="orange"
+                  dense
+                  half-increments
+                  readonly
+                  size="14"
+                >
+                </v-rating>
+                <div class="grey--text ms-4">
+                  {{ card.raiting }}
+                </div>
+              </v-row>
+              <!-- Название -->
+              <v-card-title>
+                {{ card.type }}
+                <br />
+                {{ card.model }}
+              </v-card-title>
+              <!-- Цена -->
+              <div class="card-price">
+                {{ card.price.toLocaleString("ru-RU") }} <span>₽</span>
               </div>
-            </v-row>
-            <!-- Название -->
-            <v-card-title>
-              {{ card.type }}
-              <br />
-              {{ card.model }}
-            </v-card-title>
-            <!-- Цена -->
-            <div class="card-price">
-              {{ card.price.toLocaleString("ru-RU") }} <span>₽</span>
-            </div>
-            <!-- Доступное количество -->
-            <div class="card-avalible">Доступно: {{ card.count }}</div>
-            <!-- Кнопка "Купить" -->
-            <app-button>
-              <img :src="require(`@/assets/pics/for_buy_button.svg`)" />
-            </app-button>
-          </v-card-text>
-        </v-card>
-      </swiper-slide>
-    </swiper>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
+              <!-- Доступное количество -->
+              <div class="card-avalible">Доступно: {{ card.count }}</div>
+              <!-- Кнопка "Купить" -->
+              <app-button>
+                <img :src="require(`@/assets/pics/for_buy_button.svg`)" />
+              </app-button>
+            </v-card-text>
+          </v-card>
+        </slide>
+        <hooper-navigation slot="hooper-addons"></hooper-navigation>
+      </hooper>
+    </div>
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { Autoplay } from 'swiper';
+import {
+  Hooper,
+  Slide,
+  Pagination as HooperPagination,
+  Navigation as HooperNavigation,
+} from 'hooper';
+import 'hooper/dist/hooper.css';
 import BackgroundImg from '@/assets/pics/home-bg-1.jpg';
 import cardService from '../../services/catalogService';
 import AppButton from '../items/AppButton.vue';
 
-Swiper.use([Autoplay]);
-
 export default {
   name: 'DesctopHome',
   components: {
-    Swiper,
-    SwiperSlide,
     AppButton,
+    Hooper,
+    Slide,
+    HooperPagination,
+    HooperNavigation,
   },
   computed: {
     cards() {
@@ -90,32 +94,21 @@ export default {
   },
   data() {
     return {
-      swiperOptionsBanner: {
-        slidesPerView: 1,
-        autoplay: {
-          disableOnInteraction: false,
-          delay: 2000,
-        },
-        speed: 500,
-        initialSlide: 0,
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-        },
-        paginationClickable: true,
+      hooperSettingsBanner: {
+        itemsToShow: 1,
+        centerMode: false,
+        pagination: 'fraction',
+        autoPlay: true,
+        playSpeed: '5000',
+        wheelControl: false,
       },
-      swiperOptionsPopular: {
-        slidesPerView: 3,
-        autoplay: {
-          disableOnInteraction: false,
-          delay: 2000,
-        },
-        loop: true,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
+      hooperSettingsPopular: {
+        itemsToShow: 3,
+        centerMode: false,
+        autoPlay: false,
+        playSpeed: '5000',
+        wheelControl: false,
+        hoverPause: false,
       },
       bgimg: BackgroundImg,
       items: [
@@ -144,10 +137,18 @@ export default {
   background-size: cover;
   position: relative;
 }
-.home-carusel {
-  max-width: 90%;
-  max-height: 70vh;
+.hooper {
+  height: auto;
   width: auto;
+}
+.hooper-slide {
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+  overflow: hidden;
+}
+ul.hooper-track {
+  padding: 0;
 }
 .slider-popular {
   max-width: 900px;
@@ -157,17 +158,13 @@ export default {
   left: 50%;
   transform: translate(-50%, 0);
 }
-.swiper {
-  position: relative;
-}
-.swiper-slide {
-  height: 100%;
-  width: 100%;
-  margin-top: 100px;
-  overflow: hidden;
-}
 .v-card__text {
   width: unset;
+}
+svg.icon.icon-arrowLeft,
+svg.icon.icon-arrowRight {
+  width: 45px !important;
+  height: 45px !important;
 }
 button.buy-btn {
   padding: unset !important;
@@ -177,9 +174,10 @@ button.buy-btn {
   margin: 20px 0 50px 0;
   overflow: visible;
 }
-.swiper-slide img {
+.hooper-img {
   border-radius: 30px;
-  max-height: 60vh;
+  height: 60vh;
+  width: auto;
 }
 .popular-carusel {
   max-width: 400px;
@@ -225,5 +223,20 @@ button.buy-btn {
 }
 .catalog-img-link {
   cursor: pointer;
+}
+</style>
+
+<style lang="scss">
+ul.hooper-track {
+  padding: 0;
+}
+svg.icon.icon-arrowLeft,
+svg.icon.icon-arrowRight {
+  width: 45px !important;
+  height: 45px !important;
+}
+.hooper-next, .hooper-prev {
+  padding: 0 !important;
+  transform: translateY(0) !important;
 }
 </style>
