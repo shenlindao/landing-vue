@@ -1,12 +1,17 @@
 <template>
   <div class="desctop" :style="{ backgroundImage: 'url(' + bgimg + ')' }">
+    <div class="hooper-main-block">
     <hooper :settings="hooperSettingsBanner">
-      <slide v-for="(item, i) in items" :key="i">
-        <div align="center"><img class="hooper-img" :src="item.src" /></div>
+      <slide v-for="(banner, i) in banners" :key="i">
+        <div align="center">
+          <img class="hooper-img" :src="banner.link" />
+          </div>
       </slide>
       <hooper-pagination slot="hooper-addons"></hooper-pagination>
     </hooper>
-    <div class="swiper">
+    </div>
+    <div class="hooper-main-block">
+      <h2>Популярные товары</h2>
       <hooper :settings="hooperSettingsPopular" class="slider-popular">
         <slide v-for="card in cards" :key="card.id">
           <v-card
@@ -87,6 +92,9 @@ export default {
     HooperPagination,
     HooperNavigation,
   },
+  props: {
+    bannersData: Object,
+  },
   computed: {
     cards() {
       return cardService.getCards();
@@ -111,20 +119,7 @@ export default {
         hoverPause: false,
       },
       bgimg: BackgroundImg,
-      items: [
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-        },
-        {
-          src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-        },
-      ],
+      banners: this.bannersData.content,
     };
   },
 };
@@ -137,6 +132,19 @@ export default {
   background-size: cover;
   position: relative;
 }
+.hooper-main-block {
+  margin-top: 75px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+}
+.hooper-main-block:last-child {
+  padding-bottom: 100px;
+}
 .hooper {
   height: auto;
   width: auto;
@@ -144,7 +152,6 @@ export default {
 .hooper-slide {
   height: 100%;
   width: 100%;
-  margin-top: 100px;
   overflow: hidden;
 }
 ul.hooper-track {
@@ -169,14 +176,9 @@ svg.icon.icon-arrowRight {
 button.buy-btn {
   padding: unset !important;
 }
-.slider-popular .swiper-slidec {
-  max-height: 75vh;
-  margin: 20px 0 50px 0;
-  overflow: visible;
-}
 .hooper-img {
   border-radius: 30px;
-  height: 60vh;
+  height: 88vh;
   width: auto;
 }
 .popular-carusel {
