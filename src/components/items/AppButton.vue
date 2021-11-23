@@ -1,7 +1,12 @@
 <template>
   <v-row justify="space-around">
     <v-col cols="auto">
-      <v-dialog transition="dialog-top-transition" max-width="560" height="600">
+      <v-dialog
+        transition="dialog-top-transition"
+        class="main-form"
+        max-width="670"
+        margin-bottom="20px"
+      >
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" class="buy-btn">
             <slot />
@@ -15,6 +20,30 @@
                 <v-icon>mdi-close</v-icon>
               </v-btn>
             </v-toolbar>
+            <v-col cols="12">
+              <v-text-field
+                :value="`${productName}`"
+                readonly
+                class="form-product-title"
+              >
+              </v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-select
+                :items="payTitle"
+                label="Выберете тип оплаты"
+                v-model.trim="form.payVariant"
+              >
+              </v-select>
+              <v-alert
+              dense
+              outlined
+              type="error"
+              v-if="$v.form.payVariant.$dirty && !$v.form.payVariant.required"
+              >
+              Пожалуйста, выберете подходящий тип оплаты!
+              </v-alert>
+            </v-col>
             <v-col cols="12">
               <v-text-field
                 label="Имя"
@@ -45,7 +74,7 @@
               type="error"
               v-if="$v.form.personPhone.$dirty && !$v.form.personPhone.required"
               >
-              Пожалуйста, укажите свой номер телефона
+              Пожалуйста, укажите свой номер телефона!
               </v-alert>
             <v-checkbox
               v-model="form.agreement"
@@ -59,7 +88,7 @@
               type="error"
               v-if="$v.form.agreement.$dirty && !$v.form.agreement.mustBeTrue"
               >
-              Требуется ваше согласие на обработку персональных данных
+              Требуется ваше согласие на обработку персональных данных!
               </v-alert>
             <v-btn text @click="checkForm" class="order-btn">
               Подтвердить
@@ -84,11 +113,24 @@ export default {
   },
   data: () => ({
     form: {
+      payVariant: '',
       personName: '',
       personPhone: '',
       agreement: false,
     },
   }),
+  props: {
+    productName: String,
+    payVariants: Array,
+  },
+  computed: {
+    payTitle() {
+      return this.payVariants.map((i) => i.title);
+    },
+    payText() {
+      return this.payVariants.map((i) => i.text);
+    },
+  },
   methods: {
     checkForm() {
       this.$v.form.$touch();
@@ -101,6 +143,9 @@ export default {
   },
   validations: {
     form: {
+      payVariant: {
+        required,
+      },
       personName: {
         required,
       },
@@ -118,8 +163,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.v-dialog {
-  height: inherit;
+.main-form {
+  max-height: 100% !important;
 }
 .v-card.v-sheet.theme--light {
   height: 100%;

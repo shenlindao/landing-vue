@@ -50,7 +50,10 @@
         <div class="card-avalible">Доступно: {{ card.count }}</div>
 
         <!-- Кнопка "Купить" -->
-        <app-button>
+        <app-button
+        :productName="card.type + ' ' + card.model"
+        :payVariants="payVariants"
+        >
           <img :src="require(`@/assets/pics/for_buy_button.svg`)" />
         </app-button>
 
@@ -68,6 +71,7 @@ export default {
   name: 'CatalogCards',
   props: {
     cards: Array,
+    payVariants: Array,
   },
 };
 </script>

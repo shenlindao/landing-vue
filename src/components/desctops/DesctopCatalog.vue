@@ -10,7 +10,10 @@
         :massages="massages"
         :categories="categories"
       />
-      <catalog-cards :cards="itms">
+      <catalog-cards
+      :cards="cards"
+      :payVariants="payVariants"
+      >
         <div class="vtf-pagination">
           <v-pagination
           v-model="page"
@@ -83,6 +86,9 @@ export default {
       categories: categoriesData.categories,
     };
   },
+  props: {
+    payVariants: Array,
+  },
   computed: {
     cards() {
       return cardService.getCards(this.filters);
@@ -144,7 +150,7 @@ h2 {
 .vtf-pagination {
   position: absolute;
   display: block;
-  bottom: 0;
-  left: 330px;
+  left: 50%;
+  bottom: -20px;
 }
 </style>

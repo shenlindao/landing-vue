@@ -1,12 +1,16 @@
 <template>
   <div>
-    <desctop-home :bannersData="bannersData"/>
+    <desctop-home
+    :bannersData="bannersData"
+    :payVariants="payVariants"
+    />
   </div>
 </template>
 
 <script>
 import DesctopHome from '../components/desctops/DesctopHome.vue';
 import bannersData from '../data/banners';
+import payData from '../data/pay';
 
 export default {
   name: 'Home',
@@ -16,10 +20,8 @@ export default {
   data() {
     return {
       bannersData,
+      payVariants: payData.content,
     };
   },
 };
 </script>
-
-<style scoped>
-</style>

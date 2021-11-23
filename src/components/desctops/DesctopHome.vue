@@ -59,7 +59,10 @@
               <!-- Доступное количество -->
               <div class="card-avalible">Доступно: {{ card.count }}</div>
               <!-- Кнопка "Купить" -->
-              <app-button>
+              <app-button
+              :payVariants="payVariants"
+              :productName="card.type + ' ' + card.model"
+              >
                 <img :src="require(`@/assets/pics/for_buy_button.svg`)" />
               </app-button>
             </v-card-text>
@@ -94,6 +97,7 @@ export default {
   },
   props: {
     bannersData: Object,
+    payVariants: Array,
   },
   computed: {
     cards() {

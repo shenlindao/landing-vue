@@ -1,3 +1,29 @@
+import Visa from '@/assets/pics/Payment Method/Visa.svg';
+import Webmoney from '@/assets/pics/Payment Method/Webmoney.svg';
+import Yandex from '@/assets/pics/Payment Method/Yandex.svg';
+import AmazonPay from '@/assets/pics/Payment Method/AmazonPay.svg';
+import ApplePay from '@/assets/pics/Payment Method/ApplePay.svg';
+import GooglePay from '@/assets/pics/Payment Method/GooglePay.svg';
+import Maestro from '@/assets/pics/Payment Method/Maestro.svg';
+import Mastercard from '@/assets/pics/Payment Method/Mastercard.svg';
+import PayPal from '@/assets/pics/Payment Method/PayPal.svg';
+import Qiwi from '@/assets/pics/Payment Method/Qiwi.svg';
+import UnionPay from '@/assets/pics/Payment Method/UnionPay.svg';
+
+export const PAY_CARD = [
+  { icon: Mastercard },
+  { icon: PayPal },
+  { icon: Qiwi },
+  { icon: UnionPay },
+  { icon: Visa },
+  { icon: Webmoney },
+  { icon: Yandex },
+  { icon: AmazonPay },
+  { icon: ApplePay },
+  { icon: GooglePay },
+  { icon: Maestro },
+];
+
 const PAY_VARIANTS = {
   content: [
     {
@@ -8,7 +34,7 @@ const PAY_VARIANTS = {
     {
       title: 'Оплата картой',
       text: 'Заказанный товар можно оплатить банковской картой онлайн. Для этого сообщите менеджеру точную информацию о том, какие товары Вы желаете приобрести. После подтверждения итоговой суммы Вы получите ссылку на оплату.<br>Пожалуйста, уточняйте все детали заказа сразу.',
-      // pic: ,
+      pic: PAY_CARD,
     },
     {
       title: 'Оплата по квитанции',

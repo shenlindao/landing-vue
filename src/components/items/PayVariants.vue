@@ -6,6 +6,8 @@
     <v-expansion-panels
       accordion
       focusable
+      multiple
+      v-model="panel"
     >
       <v-expansion-panel
         v-for="(pay,i) in pays"
@@ -18,6 +20,14 @@
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <div class="pay-block-text" v-html="pay.text"></div>
+          <div class="pay-block-image">
+            <div class="pay-image"
+              v-for="(icn,i) in pay.pic"
+              :key="i"
+            >
+              <img class="pay-card-img" :src="icn.icon" />
+            </div>
+          </div>
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -33,6 +43,8 @@ export default {
   data() {
     return {
       pays: this.payData.content,
+      panel: [1],
+      payIcon: this.payData.content.pic,
     };
   },
 };
@@ -40,11 +52,7 @@ export default {
 
 <style scoped lang="scss">
 .pay-block {
-  max-width: 1200px;
-  position: absolute;
-  top: 220px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  margin: 200px 15% 220px 15%;
 }
 .pay-block-title {
   font-size: 14pt;
@@ -52,5 +60,13 @@ export default {
 }
 .pay-block-text {
   text-align: left;
+}
+.pay-block-image {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 </style>

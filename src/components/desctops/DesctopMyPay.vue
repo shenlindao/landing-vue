@@ -22,7 +22,6 @@ export default {
 <style scoped lang="scss">
 .desctop {
   width: 100%;
-  height: 750px;
   top: 0;
   background-size: cover;
   position: relative;
@@ -30,7 +29,7 @@ export default {
 h2 {
   position: absolute;
   left: 50%;
-  top: 15%;
+  top: -120px;
   transform: translate(-50%, 0);
   font-size: 22pt;
 }
